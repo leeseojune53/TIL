@@ -10,13 +10,14 @@ namespace ConsoleApp1
     {
         private struct d
         {
-            public static int x = 1;
+            public int x;
         }
         static void Main(string[] args)
         {
             d D = new d();
+            D.x = 1;
             Console.WriteLine("Hell world");
-            Console.WriteLine(d.x);
+            Console.WriteLine(D.x);
         }
     }
 }
