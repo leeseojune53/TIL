@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Circle", "Circle\Circle.csproj", "{9FDA68B1-9897-45BE-AF15-5C3F35BBA49E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inheritance", "Inheritance\Inheritance.csproj", "{E827865B-C8F3-489E-B813-2BB9323420B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delegate", "Delegate\Delegate.csproj", "{962B8850-87D0-4C83-8FE7-C6830CD75F24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{9FDA68B1-9897-45BE-AF15-5C3F35BBA49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FDA68B1-9897-45BE-AF15-5C3F35BBA49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FDA68B1-9897-45BE-AF15-5C3F35BBA49E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E827865B-C8F3-489E-B813-2BB9323420B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E827865B-C8F3-489E-B813-2BB9323420B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E827865B-C8F3-489E-B813-2BB9323420B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E827865B-C8F3-489E-B813-2BB9323420B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{962B8850-87D0-4C83-8FE7-C6830CD75F24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{962B8850-87D0-4C83-8FE7-C6830CD75F24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{962B8850-87D0-4C83-8FE7-C6830CD75F24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{962B8850-87D0-4C83-8FE7-C6830CD75F24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
