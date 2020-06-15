@@ -13,6 +13,7 @@ public class Mathematics
     static int Multiply(int x, int y) { return x * y; }
     static int Divied(int x, int y) { return x / y; }
 
+
     CalcDelegate[] methods;
     public Mathematics()
     {
