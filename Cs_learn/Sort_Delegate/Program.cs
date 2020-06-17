@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sort_Delegate
 {
-    delegate bool CompareDelegate(Person arg1, Person arg2);
+    delegate bool CompareDelegate(object arg1, object arg2);
     class Person
     {
         public int Age;
@@ -26,50 +26,52 @@ namespace Sort_Delegate
 
     }
 
-    class SortPerson
+    class SortObject
     {
-        Person[] men;
+        Object[] things;
 
-        public SortPerson(Person[] men)
+        public SortObject(Object[] things)
         {
-            this.men = men;
+            this.things = things;
         }
 
         public void Sort(CompareDelegate compareMethod)
         {
-            Person temp;
-            for(int i = 0; i < men.Length; i++)
+            object temp;
+            for(int i = 0; i < things.Length; i++)
             {
 
                 int lowPos = i;
-                for(int j = i + 1; j < men.Length; j++)
+                for(int j = i + 1; j < things.Length; j++)
                 {
                     
-                    if (compareMethod(men[j],men[lowPos]))
+                    if (compareMethod(things[j],things[lowPos]))
                     {
                         lowPos = j;
                     }
                 }
-                temp = men[lowPos];
-                men[lowPos] = men[i];
-                men[i] = temp;
+                temp = things[lowPos];
+                things[lowPos] = things[i];
+                things[i] = temp;
             }
 
         }
 
         public void Display()
         {
-            for(int i = 0; i < men.Length; i++)
+            for(int i = 0; i < things.Length; i++)
             {
-                Console.WriteLine(men[i] + ",");
+                Console.WriteLine(things[i] + ",");
             }
         }
     }
     class Program
     {
-        static bool AscSortByName(Person arg1, Person arg2)
+        static bool AscSortByName(object arg1, object arg2)
         {
-            return arg1.Name.CompareTo(arg2.Name) < 0;
+            Person person1 = arg1 as Person;
+            Person person2 = arg2 as Person;
+            return person1.Name.CompareTo(person2.Name) < 0;
         }
         static void Main(string[] args)
         {
@@ -81,7 +83,7 @@ namespace Sort_Delegate
                 new Person(62,"Mads"),
             };
 
-            SortPerson so = new SortPerson(personArray);
+            SortObject so = new SortObject(personArray);
             so.Sort(AscSortByName);
             so.Display();
         }
