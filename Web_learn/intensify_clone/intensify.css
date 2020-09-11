@@ -1,0 +1,297 @@
+.header{
+    width: 1920px;
+    height: 104px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.075);
+}
+
+.mainLogo{
+    position: absolute;
+    left: 44%;
+    top: 18px;
+}
+
+.body{
+    margin: 0px;
+}
+
+.hambuger{
+    padding-top: 37px;
+    padding-left: 37px;
+    cursor: pointer;
+}
+
+
+.Login{
+    text-align: center;
+    width: 66px;
+    height: 54px;
+    border: 0.5px solid #dee1e3;
+    border-radius: 3px;
+    padding: 0px 31.5px;
+    text-decoration: none;
+    position: absolute;
+    right: 30px;
+    transition-duration: 0.3s;
+    vertical-align: top;
+    margin: 25px 23px 0px 0px;
+}
+
+.Login:hover{
+    background-color: #eeecec;
+}
+.Login h5 {
+    margin: 0;
+    margin-top: 26%;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #727a82;
+}
+
+.banner{
+    margin-top: 105px;
+    width: 1920px;
+    height: 731px;
+    background-image: url(image/banner.jpg);
+    background-size: cover;
+    background-position-x: -81px;
+    overflow: auto;
+}
+
+.bannertext{
+    text-align: center;
+    margin-top: 230px;
+}
+
+.bannertext h1{
+    color: #25a2c3;
+    font-size: 52px;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    padding-top: 6px;
+    margin-right: 17px;
+    margin-bottom: 21px;
+}
+
+.bannertext p{
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    color: #767d85;
+    font-weight: 300;
+    margin-top: 14px;
+    margin-right: 11px;
+    margin-bottom: 63px;
+    line-height: 30px;
+}
+
+.Startbutton{
+    text-decoration: none;
+    color: #fff;
+    background-color: #f6755e;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 20px 60px;
+    margin-right: 15px;
+}
+
+.one{
+    width: 1920px;
+    height: 370px;
+    padding: 100px 0px 75px 0px;
+    display: flex;
+    color: #767d85;
+}
+
+.textgroupone{
+    margin-left: 402px;
+    margin-right: 100px;
+}
+
+.textone{
+    text-align: right;
+    margin-bottom: 85px;
+}
+
+.textone p{
+    line-height: 27px;
+}
+
+
+.textone h5{
+    margin-top: 25px;
+    font-family: "Montserrat", sans-serif;
+    color: #25a2c3;
+    font-size: 22px;
+}
+
+.imageone{
+    margin-top: 4px;
+    width: 338px;
+    height: 338px;
+    border-radius: 70%;
+}
+
+.textgrouptwo{
+    text-align: left;
+    margin-left: 60px;
+}
+
+.two{
+    width: 1920px;
+    height: 250px;
+    padding: 104px 0px 71px 0px;
+    background: #f6755e;
+    text-align: center;
+}
+
+.textgroupthr h2{
+    margin-top: 0px;
+    color: #ffffff;
+    font-size: 35px;
+}
+
+.textgroupthr h5{
+    font-size: 18px;
+    color: #fcdcd6;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.name{
+    color: #fff;
+    font-weight: 500;
+    padding-top: 18px;
+}
+
+.job{
+    font-size: 14px;
+    color: #fcdcd6;
+    font-weight: 100;
+}
+
+.three{
+    width: 1920px;
+    height: 350px;
+    padding: 104px 388px;
+    margin-bottom: 2px;
+    display: flex;
+}
+
+.three h5{
+    font-family: "Montserrat", sans-serif;
+    color: #25a2c3;
+    font-size: 22px;
+    margin: 0px 0px;
+}
+
+.three p{
+    color: #767d85;
+    line-height: 30px !important;
+    font: inherit;
+    font-size: 17.3px;
+    font-weight: 100;
+}
+
+.itembox{
+    width: 335.9px;
+    height: 350px;
+    border: 1px solid #dee1e3;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 57px;
+}
+
+.textimage{
+    width: 335.984px;
+    height: 160.750px;
+    background: #000;
+}
+.textimage img{
+    width: 100%;
+    height: 100%;
+}
+
+.text{
+    margin: 25px 0px 0px 25px;
+    width: 261px;
+    height: 170px;
+}
+
+
+
+.four{
+    width: 1920px;
+    height: 414px;
+    background: #25a2c3;
+    text-align: center;
+}
+
+.box{
+    padding-top: 80px;
+    
+}
+
+.box h2{
+    font-size: 35px;
+    color: #fff;
+}
+
+
+.information{
+    padding-left: 550px;
+    display: flex;
+}
+
+.information i{
+    padding: 4px 5px 0px 0px;
+}
+
+.inf{
+    display: flex;
+    padding: 0px 35px;
+    color: #c8e7f0;
+    
+}
+
+.inf p{
+    margin-top: 0px;
+}
+
+
+
+.copyright{
+    width: 550px;
+    height: 25px;
+    border-top:  1px solid rgba(255, 255, 255, 0.25);
+    font: inherit;
+    font-size: 13px;
+    color: #a7d9e7;
+    position: absolute;
+    text-align: center;
+    left: 35.8%;
+    margin-top: 23px;
+}
+
+.copyright a{
+    text-decoration: none;
+    color: #a7d9e7;
+    
+}
+
+.textbox{
+    width: 550px;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.texttwo{
+    margin-right: 5px;
+}
