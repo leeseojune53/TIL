@@ -1,6 +1,6 @@
 public class MarketGood {
-    private String name;
-    private int retailPrice;
+    public final String name;
+    public final int retailPrice;
     private int discountRate;
 
     public MarketGood(String name, int retailPrice, int discountRate){
@@ -17,13 +17,6 @@ public class MarketGood {
         discountRate = 0;
     }
 
-    public String getName(){
-        return name;
-    }
-
-    public int getRetailPrice(){
-        return retailPrice;
-    }
 
     public void setDiscountRate(int discountRate){
         this.discountRate = discountRate;
