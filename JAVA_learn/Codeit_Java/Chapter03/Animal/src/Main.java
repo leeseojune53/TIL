@@ -8,6 +8,7 @@ public class Main {
         animals.add(new Dog("심바"));
         animals.add(new Pig("품바"));
 
+
         for (AbstractAnimal animal : animals) {
             System.out.print(animal.name + "의 울음 소리: ");
             animal.cry();
