@@ -99,6 +99,12 @@
     border-radius: 3px;
     padding: 20px 60px;
     margin-right: 15px;
+    border-width: 0px;
+    outline: 0;
+}
+
+.Startbutton:hover{
+    cursor: pointer;
 }
 
 .one{

@@ -4,6 +4,7 @@
     <head>
         <title>Intensify - TEMPLATED</title>
         <link rel="stylesheet" href="intensify.css" type="text/css">
+        <script src="intensify.js"></script>
         <link rel="shortcut icon" href="image/shortcutlogo.ico" type="image/x-icon">
         <script src="https://kit.fontawesome.com/e0ebf6bb6d.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -17,7 +18,7 @@
                 <img src="image/Logo.JPG" alt="Logo">
             </div>
         
-            <a class="Login" href="https://templated.co/items/demos/intensify/index.html#">
+            <a class="Login">
                 <h5>LOG IN</h5>
             </a> 
         </header>
@@ -30,14 +31,14 @@
                     Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod <br>
                     sed arcu cras consecuat lorem ipsum dolor sit amet.
                 </p>
-                <a class="Startbutton" href="https://templated.co/items/demos/intensify/index.html#one">
+                <a class="Startbutton" id="Start">
                     GET STARTED
                 </a>
             </div>
         </div >
 
         <!--첫번째 화면-->
-        <div class="one">
+        <div class="one" id="one">
             <!--왼쪽 텍스트 그룹-->
             <div class="textgroupone">
                 <div class="textone">
@@ -153,6 +154,14 @@
             
             
         </div>
+        
+        <script>
+            const btn = document.getElementById('Start')
+
+            btn.addEventListener('click', function() {
+                window.scrollTo({top: 730, left: 0,  behavior: 'smooth'});
+            });
+        </script>
 
     </body>
 </html>
