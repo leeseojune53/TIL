@@ -1,0 +1,281 @@
+body{
+    width: 1903px;
+    height: 896px;
+    overflow : hidden;
+    margin : 0px 0px 0px 0px;
+}
+
+.mainfullsheet{
+    background-color: rgb(240, 242, 245);
+    width: 1903px;
+    height: 496px;
+    padding-top: 92px;
+    padding-bottom: 132px;
+}
+
+.mainsheet{
+    margin-left: 461.500px;
+    margin-right: 461.500px;
+    width: 980px;
+    height: 496px;
+}
+
+
+.facebook{
+    padding-top: 8px;
+    padding-bottom: 16px;
+    width: 536px;
+    height: 34px;
+}
+
+.text1{
+    width: 536px;
+    height: 32px;
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 32px;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+}
+
+.text2{
+    width: 536px;
+    height: 24px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 24px;
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    color: #606770;
+}
+
+.outbox{
+    border-radius: 8px;
+    width: 160px;
+    height: 206px;
+    box-shadow: 0 0 0 1px #dddfe2;
+    display: block;
+    cursor: pointer;
+}
+
+.outbox:hover{
+    box-shadow: 0 1px 8px 5px #dddfe2;
+    transition: all .2s ease-out;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    width: 160px;
+    height: 160px;
+    background-color: #f5f6f7;
+    color: #385898;
+}
+
+.accountadd{
+    padding: 12px;
+    width: 136px;
+    height: 22px;
+    text-align: center;
+    color: #1877f2;
+    background-color: #fff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.loginpage{
+    margin-top: 40px;
+    padding-top: 10px;
+    padding-bottom: 24px;
+    width: 396px;
+    height: 311px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-sizing: content-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    text-align: center;
+}
+
+.inputpage{
+    width: 396px;
+    height: 128px;
+    text-align: center;
+    
+}
+
+.id{
+    cursor: text;
+    direction: ltr;
+    border: 1px solid #dddfe2;;
+    padding: 14px 16px 14px 16px;
+    width: 330px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 6px;
+    text-align: left;
+    outline-style: none;
+    font-size: 17px;
+}
+
+.loginpos{
+    padding-top: 6px;
+    width: 396px;
+    height: 48px;
+}
+
+.loginbutton{
+    padding: 0px 16px 0px 16px;
+    width: 332px;
+    height: 48px;
+    background-color: #1877f2;
+    border-radius: 6px;
+    font-size: 20px;
+    color: #fff;
+    box-sizing: content-box;
+    outline-style: none;
+    line-height: 48px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.accountfound{
+    
+    color: #1877f2;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 1.34;
+    text-align: center;
+    vertical-align: top;
+}
+
+.line{
+    margin: 20px 16px;
+    border-bottom: 1px;
+    width: 364px;
+    border-bottom: 1px solid #dadde1;
+}
+
+.newaccount{
+    width: 111.453px;
+    height: 48px;
+    padding: 0px 16px;
+    background-color: #42b72a;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 48px;
+    box-sizing: content-box;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    outline-style: none;
+}
+
+.text3{
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    margin-top: 28px;
+    width: 396px;
+    height: 18px;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    border-top: none;
+    line-height: 1.34;
+}
+
+
+.makepage{
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.makepage:hover{
+    text-decoration: underline;
+}
+
+.lang{
+    display: flex;
+    align-items: center;
+    color: #8a8d91;
+    direction: ltr;
+    font-size: 12px;
+    font-family: Helvetica, Arial, sans-serif;
+    list-style: none;
+    line-height: 1.34;
+    vertical-align: top;
+    margin: 0px 0px 0px 0px;
+    padding: 8px 0px 0px 0px;
+}
+
+.cursor:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.more_lang{
+    display: inline-block;
+    background-color: #f5f6f7;
+    position: relative;
+    border-radius: 2px;
+    border: 1px solid #ccd0d5;;
+    padding: 0px 8px;
+    width: 12px;
+    height: 18px;
+    outline: none;
+    vertical-align: middle;
+    font-weight: 700;
+    list-style-position: outside;
+}
+
+.more_lang:hover{
+    cursor: pointer;
+}
+
+.more_lang_img{
+    width: 12px;
+    height: 12px;
+    position: relative;
+    vertical-align: middle;
+    background-color: #f5f6f7;
+}   
+
+.bottom_menu{
+    padding-left: 14px;
+    height: 19px;
+    color: #8a8d91;
+    list-style: none;
+    font-size: 12px;
+    line-height: 1.6;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    direction: ltr;
+    font-family: inherit;
+}
+
+.bottom_menu:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    
+}
+
+.AdChoices{
+    width: 12px;
+    padding-bottom: 2px;
+}
+
+.facebook_2020{
+    font-family: inherit;
+    font-size: 11px;
+    color: #737373;
+    margin-top: 20px;
+}
