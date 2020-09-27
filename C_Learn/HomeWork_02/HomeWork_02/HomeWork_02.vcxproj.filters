@@ -15,6 +15,14 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HomeWork_02.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="HomeWork_02.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
