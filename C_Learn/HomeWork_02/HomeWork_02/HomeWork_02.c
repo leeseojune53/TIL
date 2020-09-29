@@ -13,6 +13,8 @@ void LInsert(List* list, Ldata node) {
 	Node* Pred = list->Head;
 	
 	while (Pred->Next != NULL && list->comp(node, Pred->Next)) {
+		if (node->S != Pred->Next->S)
+			node->R++;
 		Pred = Pred->Next;
 	}
 	Newnode->Next = Pred->Next;
