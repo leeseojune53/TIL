@@ -3,8 +3,8 @@
 
 int main()
 {
-    List* List_main;
-    InitList(List_main);
-
+    List List_main;
+    InitList(&List_main);
+    printf("1");
     return 0;
 }
