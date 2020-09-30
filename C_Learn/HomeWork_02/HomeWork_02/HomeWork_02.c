@@ -11,10 +11,12 @@ void InitList(List* list) {
 void LInsert(List* list, Ldata node) {
 	Node* Newnode = node;
 	Node* Pred = list->Head;
-	
+
+	node->R = 1;
+
 	while (Pred->Next != NULL && list->comp(node, Pred->Next)) {
-		if (node->S != Pred->Next->S)
-			node->R++;
+		if (node->S == Pred->Next->S && node->N < Pred->Next->N)
+			break;
 		Pred = Pred->Next;
 	}
 	Newnode->Next = Pred->Next;
@@ -23,24 +25,23 @@ void LInsert(List* list, Ldata node) {
 	(list->NumOfData)++;
 }
 
-int LFirst(List* list, Ldata* node) {
+int LFirst(List* list, Ldata node) {
 	if (list->Head->Next == NULL) {
 		return FALSE; //첫 자료가 없을때
 	}
 	list->Before = list->Head;
 	list->Cur = list->Head->Next;
-	*node = list->Cur;
+	*node = *list->Cur;
 	return TRUE; //첫 자료가 있을때
 }
 
-int LNext(List* list, Ldata* node) {
+int LNext(List* list, Ldata node) {
 	if (list->Cur->Next == NULL)
 		return FALSE;
 
 	list->Before = list->Cur;
 	list->Cur = list->Cur->Next;
-
-	*node = list->Cur;
+	*node = *list->Cur;
 	return TRUE;
 }
 
@@ -56,14 +57,14 @@ Ldata LRemove(List* list) {
 }
 
 void LPrint(List* list) {
-	list->Cur = list->Head->Next;
-	if (list->Cur == NULL)
+	Node node;
+	if (!LFirst(list, &node))
 		return;
-	printf("-----------------------------\nName Kor Eng Mat Com Sum Rnk\n-----------------------------");
-	while (list->Cur != NULL) {
-		printf("%c %d %d %d %d %d %d", list->Cur->N, list->Cur->K, list->Cur->E, list->Cur->M, list->Cur->C, list->Cur->S, list->Cur->R);
-		list->Cur = list->Cur->Next;
-	}
+	LFirst(list, &node);
+	printf("-----------------------------\nName Kor Eng Mat Com Sum Rnk\n-----------------------------\n");
+	do {
+		printf("%c   %3d %3d %3d %3d %3d  %2d\n", node.N, node.K, node.E, node.M, node.C, node.S, node.R);
+	} while (LNext(list, &node));
 }
 
 int LCount(List* list) {
@@ -74,3 +75,26 @@ void SetSortRule(List* list, int (*comp)(Ldata, Ldata)) {
 	list->comp = comp;
 }
 
+void Rank(List* list) {
+	list->Before = list->Head;
+	list->Cur = list->Head->Next;
+	for (int i = 0; i < LCount(list); i++) {
+		if (list->Before->S == list->Cur->S)
+			list->Cur->R = list->Before->R;
+		else list->Cur->R = i + 1;
+		list->Before = list->Cur;
+		list->Cur = list->Cur->Next;
+	}
+}
+
+void Tie_delete(List* list) {
+	int count = LCount(list);
+	list->Before = list->Head;
+	list->Cur = list->Head->Next;
+	for (int i = 0; i < count; i++) {
+		if (list->Before->S == list->Cur->S)
+			LRemove(list);
+		list->Before = list->Cur;
+		list->Cur = list->Cur->Next;
+	}
+}
