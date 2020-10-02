@@ -13,8 +13,19 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/e2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@null">
+            <requestFocus/>
+        </EditText>
+
+        <EditText
+            android:id="@+id/e1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_gravity="right">
             <requestFocus/>
         </EditText>
 
@@ -125,12 +136,13 @@
                     android:text="0"
                     />
                 <Button
+                    android:id="@+id/buttonclear"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="."
+                    android:text="C"
                     />
                 <Button
-                    android:id="@+id/buttonEqual"
+                    android:id="@+id/buttonresult"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="="
