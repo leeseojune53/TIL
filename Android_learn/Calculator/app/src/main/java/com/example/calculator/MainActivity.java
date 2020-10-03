@@ -14,11 +14,12 @@ public class MainActivity extends AppCompatActivity {
     private Button button1,button2,button3,button4,button5,button6,button7,button8,button9,button0;
     private Button buttonplus,buttonMinus,buttonmul,buttondiv,buttonresult,buttonclear;
 
-    private EditText edit, calctext; 
+    private EditText edit, calctext;
 
     private int a;
     private int where = 0;
     private boolean IsClick = false;
+    private boolean IsResult = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,65 +56,103 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if(v==button1){
+                    if(IsResult){
+                        edit.setText("");
+                        IsResult = false;
+                    }
                     edit.setText(edit.getText().toString()+1);
-                    if(IsClick) calcmore();
                 }
                 else if(v==button2){
+                    if(IsResult){
+                        edit.setText("");
+                        IsResult = false;
+                    }
                     edit.setText(edit.getText().toString()+2);
-                    if(IsClick) calcmore();
                 }
                 else if(v==button3){
+                    if(IsResult){
+                        edit.setText("");
+                        IsResult = false;
+                    }
                     edit.setText(edit.getText().toString()+3);
-                    if(IsClick) calcmore();
                 }
                 else if(v==button4){
+                    if(IsResult){
+                        edit.setText("");
+                        IsResult = false;
+                    }
                     edit.setText(edit.getText().toString()+4);
-                    if(IsClick) calcmore();
                 }
                 else if(v==button5){
+                    if(IsResult){
+                        edit.setText("");
+                        IsResult = false;
+                    }
                     edit.setText(edit.getText().toString()+5);
-                    if(IsClick) calcmore();
                 }
                 else if(v==button6){
+                    if(IsResult){
+                        edit.setText("");
+                        IsResult = false;
+                    }
                     edit.setText(edit.getText().toString()+6);
-                    if(IsClick) calcmore();
                 }
                 else if(v==button7){
+                    if(IsResult){
+                        edit.setText("");
+                        IsResult = false;
+                    }
                     edit.setText(edit.getText().toString()+7);
-                    if(IsClick) calcmore();
                 }
                 else if(v==button8){
+                    if(IsResult){
+                        edit.setText("");
+                        IsResult = false;
+                    }
                     edit.setText(edit.getText().toString()+8);
-                    if(IsClick) calcmore();
                 }
                 else if(v==button9){
+                    if(IsResult){
+                        edit.setText("");
+                        IsResult = false;
+                    }
                     edit.setText(edit.getText().toString()+9);
-                    if(IsClick) calcmore();
                 }
                 else if(v==button0){
+                    if(IsResult){
+                        edit.setText("");
+                        IsResult = false;
+                    }
                     edit.setText(edit.getText().toString()+0);
-                    if(IsClick) calcmore();
                 }
 
                 else if(v==buttonplus){
+                    IsResult = false;
+                    if(IsClick) calcmore();
                     a = Integer.valueOf(edit.getText().toString().trim());
                     edit.setText("");
                     where = 1;
                     IsClick = true;
                 }
                 else if(v==buttonMinus){
+                    IsResult = false;
+                    if(IsClick) calcmore();
                     a = Integer.valueOf(edit.getText().toString().trim());
                     edit.setText("");
                     where = 2;
                     IsClick = true;
                 }
                 else if(v==buttonmul){
+                    IsResult = false;
+                    if(IsClick) calcmore();
                     a = Integer.valueOf(edit.getText().toString().trim());
                     edit.setText("");
                     where = 3;
                     IsClick = true;
                 }
                 else if(v==buttondiv){
+                    IsResult = false;
+                    if(IsClick) calcmore();
                     a = Integer.valueOf(edit.getText().toString().trim());
                     edit.setText("");
                     where = 4;
@@ -121,12 +160,18 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(v==buttonresult){
-                    edit.setText(Integer.toString(a));
+                    if(!IsResult){
+                        calcmore();
+                        edit.setText(Integer.toString(a));
+                    }
 
+                    IsResult = true;
                 }
 
                 else if(v==buttonclear){
                     edit.setText("");
+                    a = 0;
+                    IsResult = false;
                 }
             }
         };
