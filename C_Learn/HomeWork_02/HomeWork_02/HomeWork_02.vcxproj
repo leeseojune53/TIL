@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="HomeWork_02.c" />
+    <ClCompile Include="Homework_02_1210.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>

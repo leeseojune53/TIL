@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button1,button2,button3,button4,button5,button6,button7,button8,button9,button0;
     private Button buttonplus,buttonMinus,buttonmul,buttondiv,buttonresult,buttonclear;
 
-    private EditText edit, calctext;
+    private EditText edit, calctext; 
 
     private int a;
     private int where = 0;

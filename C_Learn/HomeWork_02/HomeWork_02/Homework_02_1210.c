@@ -1,16 +1,19 @@
 #include "HomeWork_02.h"
 
 void InitList(List* list) {
-	list->Head = (Node*)malloc(sizeof(Node));
+	list->Head = (Ldata)malloc(sizeof(Node));
 	list->Head->Next = NULL;
 	list->Cur = list->Before = NULL;
 	list->NumOfData = 0;
 	list->comp = NULL;
 }
 
-void LInsert(List* list, Ldata node) {
-	Node* Newnode = node;
-	Node* Pred = list->Head;
+void LInsert(List* list, Ldata node) { // Ldata = Node*
+	
+	Ldata Newnode = node;
+	Ldata Pred = list->Head;
+
+	
 
 	node->R = 1;
 
@@ -25,7 +28,7 @@ void LInsert(List* list, Ldata node) {
 	(list->NumOfData)++;
 }
 
-int LFirst(List* list, Ldata node) {
+int LFirst(List* list, Ldata node) { 
 	if (list->Head->Next == NULL) {
 		return FALSE; //첫 자료가 없을때
 	}
@@ -46,7 +49,7 @@ int LNext(List* list, Ldata node) {
 }
 
 Ldata LRemove(List* list) {
-	Node* rpos = list->Cur;
+	Ldata rpos = list->Cur;
 	Ldata rdata = rpos;
 
 	list->Before->Next = list->Cur->Next;
@@ -77,24 +80,24 @@ void SetSortRule(List* list, int (*comp)(Ldata, Ldata)) {
 
 void Rank(List* list) {
 	list->Before = list->Head;
-	list->Cur = list->Head->Next;
+	list->Cur = list->Head->Next; // LFIRST
 	for (int i = 0; i < LCount(list); i++) {
 		if (list->Before->S == list->Cur->S)
 			list->Cur->R = list->Before->R;
 		else list->Cur->R = i + 1;
 		list->Before = list->Cur;
-		list->Cur = list->Cur->Next;
+		list->Cur = list->Cur->Next; // LNEXT
 	}
 }
 
 void Tie_delete(List* list) {
 	int count = LCount(list);
 	list->Before = list->Head;
-	list->Cur = list->Head->Next;
+	list->Cur = list->Head->Next; // LFIRST
 	for (int i = 0; i < count; i++) {
 		if (list->Before->S == list->Cur->S)
 			LRemove(list);
 		list->Before = list->Cur;
-		list->Cur = list->Cur->Next;
+		list->Cur = list->Cur->Next;//LNEXT
 	}
 }

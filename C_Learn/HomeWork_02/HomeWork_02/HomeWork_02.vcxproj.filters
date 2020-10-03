@@ -23,7 +23,7 @@
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="HomeWork_02.c">
+    <ClCompile Include="Homework_02_1210.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
