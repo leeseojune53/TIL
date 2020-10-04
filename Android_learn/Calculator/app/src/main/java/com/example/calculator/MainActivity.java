@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                         IsResult = false;
                     }
                     edit.setText(edit.getText().toString()+1);
+                    calctext.setText(calctext.getText().toString()+1);
                 }
                 else if(v==button2){
                     if(IsResult){
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         IsResult = false;
                     }
                     edit.setText(edit.getText().toString()+2);
+                    calctext.setText(calctext.getText().toString()+2);
                 }
                 else if(v==button3){
                     if(IsResult){
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         IsResult = false;
                     }
                     edit.setText(edit.getText().toString()+3);
+                    calctext.setText(calctext.getText().toString()+3);
                 }
                 else if(v==button4){
                     if(IsResult){
@@ -82,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                         IsResult = false;
                     }
                     edit.setText(edit.getText().toString()+4);
+                    calctext.setText(calctext.getText().toString()+4);
                 }
                 else if(v==button5){
                     if(IsResult){
@@ -89,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         IsResult = false;
                     }
                     edit.setText(edit.getText().toString()+5);
+                    calctext.setText(calctext.getText().toString()+5);
                 }
                 else if(v==button6){
                     if(IsResult){
@@ -96,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         IsResult = false;
                     }
                     edit.setText(edit.getText().toString()+6);
+                    calctext.setText(calctext.getText().toString()+6);
                 }
                 else if(v==button7){
                     if(IsResult){
@@ -103,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                         IsResult = false;
                     }
                     edit.setText(edit.getText().toString()+7);
+                    calctext.setText(calctext.getText().toString()+7);
                 }
                 else if(v==button8){
                     if(IsResult){
@@ -110,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                         IsResult = false;
                     }
                     edit.setText(edit.getText().toString()+8);
+                    calctext.setText(calctext.getText().toString()+8);
                 }
                 else if(v==button9){
                     if(IsResult){
@@ -117,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                         IsResult = false;
                     }
                     edit.setText(edit.getText().toString()+9);
+                    calctext.setText(calctext.getText().toString()+9);
                 }
                 else if(v==button0){
                     if(IsResult){
@@ -124,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                         IsResult = false;
                     }
                     edit.setText(edit.getText().toString()+0);
+                    calctext.setText(calctext.getText().toString()+0);
                 }
 
                 else if(v==buttonplus){
@@ -133,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
                     edit.setText("");
                     where = 1;
                     IsClick = true;
+                    calctext.setText(calctext.getText().toString()+'+');
                 }
                 else if(v==buttonMinus){
                     IsResult = false;
@@ -141,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
                     edit.setText("");
                     where = 2;
                     IsClick = true;
+                    calctext.setText(calctext.getText().toString()+'-');
                 }
                 else if(v==buttonmul){
                     IsResult = false;
@@ -149,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
                     edit.setText("");
                     where = 3;
                     IsClick = true;
+                    calctext.setText(calctext.getText().toString()+'×');
                 }
                 else if(v==buttondiv){
                     IsResult = false;
@@ -157,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
                     edit.setText("");
                     where = 4;
                     IsClick = true;
+                    calctext.setText(calctext.getText().toString()+'÷');
                 }
 
                 if(v==buttonresult){
@@ -166,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     IsResult = true;
+                    calctext.setText("");
                 }
 
                 else if(v==buttonclear){
