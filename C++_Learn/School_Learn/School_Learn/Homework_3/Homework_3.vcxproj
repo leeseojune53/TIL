@@ -141,6 +141,9 @@
   <ItemGroup>
     <ClCompile Include="Homework_3.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CMyString.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
