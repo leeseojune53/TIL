@@ -1,10 +1,10 @@
-package com.example.restapi;
+package com.example.connection_with_rds;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RestapiApplicationTests {
+class ConnectionWithRdsApplicationTests {
 
     @Test
     void contextLoads() {

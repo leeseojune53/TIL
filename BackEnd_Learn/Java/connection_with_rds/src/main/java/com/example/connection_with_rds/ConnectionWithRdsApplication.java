@@ -1,13 +1,13 @@
-package com.example.restapi;
+package com.example.connection_with_rds;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RestapiApplication {
+public class ConnectionWithRdsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(RestapiApplication.class, args);
+        SpringApplication.run(ConnectionWithRdsApplication.class, args);
     }
 
 }

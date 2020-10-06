@@ -1,25 +1,23 @@
 #pragma once
+#include <iostream>
+#include <string.h>
+
+using namespace std;
 
 class CMyString {
 private:
-	string str;
+	char* m_pszData;
+	int m_nLenth;
 public:
-	void SetString(string s_parm) {
-		str = s_parm;
-	}
+	int SetString(const char* pszparm);
 
-	string GetString() { return str; }
+	const char* GetString() const;
 
-	CMyString(const CMyString& rhs)
-		//	:	m_nData(rhs.m_nData)
-	{
-		this->str = rhs.str;
-		cout << "CMyData(const	CMyData	&)" << endl;
-	}
+	CMyString(const CMyString& rhs);
 
-	CMyString& operator=(const CMyString& rhs) {
-		*str = *rhs.str;
-		//	객체	자신에	대한	참조를	반환한다.
-		return	*this;
-	}
+	CMyString();
+
+	CMyString& operator=(const CMyString& rhs);
+
+	~CMyString();
 };
