@@ -1,6 +1,6 @@
-package com.example.connection_with_rds.repository;
+package com.example.connection_rds.repository;
 
-import com.example.connection_with_rds.model.Member;
+import com.example.connection_rds.model.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

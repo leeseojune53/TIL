@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CMyString.cpp" />
     <ClCompile Include="Homework_3.cpp" />
   </ItemGroup>
   <ItemGroup>

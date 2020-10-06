@@ -1,4 +1,4 @@
-package com.example.connection_with_rds.configuration;
+package com.example.connection_rds.configuration;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,7 +22,7 @@ import java.util.Map;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackages = "com.example.connection_with_rds.repository", // TODO Repository 패키지 지정
+        basePackages = "com.example.connection_rds.repository", // TODO Repository 패키지 지정
         transactionManagerRef = "mariaDB_transactionManager",
         entityManagerFactoryRef = "mariaDB_entityManagerFactory"
 )
@@ -43,7 +43,7 @@ public class DBConfig {
         map.put("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
         map.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         return builder.dataSource(dataSource)
-                .packages("com.example.connection_with_rds.model") // TODO Model 패키지 지정
+                .packages("com.example.connection_rds.model") // TODO Model 패키지 지정
                 .properties(map)
                 .build();
     }

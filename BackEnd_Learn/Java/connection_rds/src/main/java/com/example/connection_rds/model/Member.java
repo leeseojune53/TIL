@@ -1,4 +1,4 @@
-package com.example.connection_with_rds.model;
+package com.example.connection_rds.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

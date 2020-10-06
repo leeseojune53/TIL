@@ -17,7 +17,11 @@ public:
 
 	CMyString();
 
+	CMyString(const char*);
+
 	CMyString& operator=(const CMyString& rhs);
 
 	~CMyString();
+
+	operator char*();
 };
