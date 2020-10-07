@@ -7,21 +7,21 @@ using namespace std;
 class CMyString {
 private:
 	char* m_pszData;
-	int m_nLenth;
+	int m_nLength;
 public:
 	int SetString(const char* pszparm);
 
 	const char* GetString() const;
 
-	CMyString(const CMyString& rhs);
+	explicit CMyString(const CMyString& rhs);
 
-	CMyString();
+	explicit CMyString();
 
-	CMyString(const char*);
+	explicit CMyString(const char* pszParam);
 
 	CMyString& operator=(const CMyString& rhs);
 
 	~CMyString();
 
-	operator char*();
+	operator char*() const;
 };
