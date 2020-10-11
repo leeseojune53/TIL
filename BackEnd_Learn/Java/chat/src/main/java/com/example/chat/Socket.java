@@ -34,15 +34,15 @@ public class Socket {
 
     @OnMessage
     public void onMessage(String message){
-        broadcast(message);
         log.info("onMessage called, message:" + message);
+        broadcast(message);
     }
 
     @OnError
     public void onError(Session session, Throwable throwable){
+        log.warning("onClose called, error:" + throwable.getMessage());
         listeners.remove(this);
         onlineCnt--;
-        log.warning("onClose called, error:" + throwable.getMessage());
     }
 
     public void broadcast(String message){

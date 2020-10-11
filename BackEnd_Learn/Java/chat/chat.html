@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="kr">
+    <head>
+        <link rel="stylesheet" href="chat.css">
+    </head>
+    <script type="text/javascript">
+        var exampleSocket;
+        var output;
+        var messagebuf;
+        function init(){
+            output = document.getElementById("output");
+        }
+        function send(){
+            exampleSocket = new WebSocket("ws://localhost:8080/websocket");
+            
+            exampleSocket.onopen = function(e){
+                writeToScreen("연결 성공");
+                writeToScreen("메세지 보냄 : " + messagebuf);
+                exampleSocket.send(messagebuf);
+            };
+            messagebuf = document.getElementById("message").value;
+            document.getElementById("message").value="";
+
+            exampleSocket.onmessage = function(e){
+                writeToScreen("메세지 받음 : " + e.data)
+            };
+
+            exampleSocket.onerror = function(e){
+                writeToScreen("에러 : " + e.data);
+            }
+            
+        }
+
+        
+        function writeToScreen(message) {
+            var pre = document.createElement("p");
+            pre.style.wordWrap = "break-word";
+            pre.innerHTML = message;
+
+            output.appendChild(pre);
+        }
+        window.addEventListener("load", init, false);
+    </script>
+    <body>
+        내용 : <input id="message" type="text" name="text" plac="put">
+        <button onclick="send();">보내기</button>
+
+        <div id = "output"></div>
+    </body>
+</html>
