@@ -12,7 +12,7 @@ import java.util.Map;
 @RestController
 public class MemberController {
 
-    @Autowired
+
     private MemberRepository memberRepository;
 
 //    @GetMapping("/test")
@@ -30,6 +30,10 @@ public class MemberController {
 //                new Member(5L, "엄복동", 17, "상주", new Date())
 //        ));
 //    }
+    @Autowired
+    public MemberController(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
 
     @RequestMapping("/insert") // CREATE
     public Member insert(@RequestBody Map<String, String> map){
