@@ -3,7 +3,6 @@ package com.example.notice.controller;
 
 import com.example.notice.model.Notice;
 import com.example.notice.repository.NoticeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,6 @@ import java.util.Map;
 public class NoticeController {
     private final NoticeRepository noticeRepository;
 
-    @Autowired
     public NoticeController(NoticeRepository noticeRepository){
         this.noticeRepository = noticeRepository;
     }

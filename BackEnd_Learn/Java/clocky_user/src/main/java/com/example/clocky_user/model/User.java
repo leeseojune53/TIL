@@ -1,4 +1,4 @@
-package com.example.clocky_notice.model;
+package com.example.clocky_user.model;
 
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,17 +8,18 @@ import java.util.Date;
 
 @Entity
 @NoArgsConstructor
-@Table(name = "test")
-public class Notice {
+@Table(name = "name_test")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String written;
+    private int password;
+    private String name;
     @CreationTimestamp
     private Date create_time;
-    public Notice(String title, String written){
-        this.title = title;
-        this.written = written;
+
+    public User(String name, int password){
+        this.password = password;
+        this.name = name;
     }
 }
