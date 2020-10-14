@@ -15,6 +15,8 @@ public:
 
 	explicit CMyString(const CMyString& rhs);
 
+	CMyString(CMyString&& rhs);
+
 	explicit CMyString();
 
 	explicit CMyString(const char* pszParam);

@@ -6,7 +6,7 @@
     <title>Insert title here</title>
 </head>
 <body>
-<form action="/daovo/add" method="get">
+<form action="/User/insert" method="post">
     <p><input type="text" name="name" placeholder="이름"></p>
     <p><input type="password" name="password" placeholder="비밀번호"></p>
 

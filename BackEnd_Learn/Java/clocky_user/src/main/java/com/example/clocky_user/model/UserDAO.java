@@ -32,7 +32,6 @@ public class UserDAO {
             conn = getConnection();
             String sql = "INSERT INTO name_test VALUES(null, ?, ?)";
             pstmt = conn.prepareStatement(sql);
-
             pstmt.setString(1, vo.getName());
             pstmt.setString(2, Integer.toString(vo.getPassword()));
 

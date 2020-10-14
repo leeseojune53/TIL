@@ -40,6 +40,19 @@ CMyString& CMyString::operator=(const CMyString& rhs) {
 	return	*this;
 }
 
+CMyString::CMyString(CMyString&& rhs) 
+	:m_pszData(nullptr)
+	, m_nLength(0) 
+{
+	cout << "CMyString 이동생성자 호출" << endl;
+
+	m_pszData = rhs.m_pszData;
+	m_nLength = rhs.m_nLength;
+
+	rhs.m_pszData = nullptr;
+	rhs.m_nLength = 0;
+}
+
 CMyString::~CMyString() { /*cout << "소멸" << endl;*/ }
 
 CMyString::operator char*() const{ return m_pszData; }
