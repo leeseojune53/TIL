@@ -15,15 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ListBaseStack.c">
+    <ClCompile Include="PostCalculator.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="ListBaseStackMain.c">
+    <ClCompile Include="PostCalculatorMain.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\63_ListBaseStack\ListBaseStack.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ListBaseStack.h">
+    <ClInclude Include="PostCalculator.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\63_ListBaseStack\ListBaseStack.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

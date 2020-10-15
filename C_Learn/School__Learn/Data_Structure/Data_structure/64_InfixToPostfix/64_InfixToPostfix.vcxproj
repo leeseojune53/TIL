@@ -19,17 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ListBaseStack.c" />
-    <ClCompile Include="ListBaseStackMain.c" />
+    <ClCompile Include="..\63_ListBaseStack\ListBaseStack.c" />
+    <ClCompile Include="InfixToPostfix.c" />
+    <ClCompile Include="InfixToPostfixMain.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ListBaseStack.h" />
+    <ClInclude Include="..\63_ListBaseStack\ListBaseStack.h" />
+    <ClInclude Include="InfixToPostfix.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{e9dc703f-f111-4e72-badc-2d14c5102430}</ProjectGuid>
-    <RootNamespace>_63_ListBaseStack</RootNamespace>
+    <ProjectGuid>{d3c0a7a1-d4e6-4927-9e20-8ca4eee8d736}</ProjectGuid>
+    <RootNamespace>_64_InfixToPostfix</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

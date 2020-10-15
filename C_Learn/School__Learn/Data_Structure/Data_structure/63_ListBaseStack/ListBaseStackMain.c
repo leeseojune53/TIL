@@ -15,11 +15,31 @@ printMenu()
 
 void printStack(Stack* s)
 {
-	// 직접 구현해보기
+	if (SIsEmpty(s)) {
+		printf("---> Stack is Empty!!");
+	}
+	else {
+		Node* pStack = s->head; 
+		while (pStack != NULL) {
+			printf("%d -> ", pStack->data);
+			pStack = pStack->next; 
+		}
+	}
 }
 void freeStack(Stack* s)
 {
-	// 직접 구현해보기
+	Data data;
+	Node* freeNode = s->head;
+	Node* freeNodeNext = freeNode;
+
+	while (freeNodeNext != NULL) {
+		freeNodeNext = freeNode->next;
+		data = freeNode->data;
+		free(freeNode);
+		freeNode = freeNodeNext;
+
+		printf("[%d]free-", data);
+	}
 }
 int main(void)
 {
