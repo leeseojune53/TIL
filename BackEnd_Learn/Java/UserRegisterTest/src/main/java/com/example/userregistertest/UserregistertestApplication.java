@@ -1,0 +1,13 @@
+package com.example.userregistertest;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class UserregistertestApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(UserregistertestApplication.class, args);
+    }
+
+}
