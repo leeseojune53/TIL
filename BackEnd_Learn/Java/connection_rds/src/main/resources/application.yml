@@ -1,0 +1,18 @@
+server:
+  port: 3333
+
+spring:
+  data:
+    maria:
+      jdbc-url: jdbc:mariadb://rds-mariadb.c1f0skt2wmdj.ap-northeast-2.rds.amazonaws.com:3306/leeseojune?useUnicode=yes&characterEncoding=UTF-8
+      driver-class-name: org.mariadb.jdbc.Driver
+      username: leeseojune
+      password: wasabi53
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        temp:
+          use_jdbc_metadata_defaults: false
+    generate-ddl: true

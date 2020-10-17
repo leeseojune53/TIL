@@ -26,7 +26,7 @@ import java.util.Map;
         transactionManagerRef = "mariaDB_transactionManager",
         entityManagerFactoryRef = "mariaDB_entityManagerFactory"
 )
-public class DBConfig {
+class DBConfig {
     @Primary
     @Bean(name = "maria_dataSource")
     @ConfigurationProperties("spring.data.maria")
@@ -48,13 +48,13 @@ public class DBConfig {
                 .build();
     }
 
-    @Primary
-    @Bean(name = "mariaDB_transactionManager")
-    public PlatformTransactionManager transactionManager(
-            @Qualifier("mariaDB_entityManagerFactory") EntityManagerFactory entityManagerFactory) {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory);
-        return transactionManager;
-    }
+//    @Primary
+//    @Bean(name = " ")
+//    public PlatformTransactionManager transactionManager(
+//            @Qualifier("mariaDB_entityManagerFactory") EntityManagerFactory entityManagerFactory) {
+//        JpaTransactionManager transactionManager = new JpaTransactionManager();
+//        transactionManager.setEntityManagerFactory(entityManagerFactory);
+//        return transactionManager;
+//    }
 
 }

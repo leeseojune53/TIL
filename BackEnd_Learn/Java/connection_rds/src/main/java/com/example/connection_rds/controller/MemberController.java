@@ -42,10 +42,10 @@ public class MemberController {
         );
     }
 
-    @RequestMapping("/select") // READ
-    public List<Member> selectAll(){
-        return memberRepository.findAll();
-    }
+//    @RequestMapping("/select") // READ
+//    public List<Member> selectAll(){
+//        return memberRepository.findAll();
+//    }
 
     @RequestMapping("/select/{id}") // READ
     public Member selectOne(@PathVariable("id") long id){
