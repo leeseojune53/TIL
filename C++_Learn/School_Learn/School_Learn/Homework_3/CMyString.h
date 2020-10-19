@@ -25,5 +25,15 @@ public:
 
 	~CMyString();
 
+	void Release();
+
+	CMyString operator+(const CMyString& rhs);
+
+	CMyString& operator+=(const CMyString& rhs);
+
 	operator char*() const;
+
+	int GetLength() const;
+
+	int Append(const char* pszParam);
 };

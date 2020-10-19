@@ -1,15 +1,14 @@
 ﻿#include	<iostream>
 #include	"CMyString.h"
 using	namespace	std;
-CMyString	TestFunc()
-{
-	CMyString	strTest("TestFunc()	return");
-	cout << strTest << endl;
-	return	strTest;
-}
 int	main()
 {
-	//	이름없는	임시	객체가	만들어진다.
-	TestFunc();
+	CMyString	strLeft("학번	:	0000"), strRight(",	이름	:	가나다"), strResult;	//	학번과	이름은	본인	것으로	수정
+	
+	strResult = strLeft + strRight;
+	cout << strResult << endl;
+	cout << strLeft << endl;
+	strLeft += strRight;
+	cout << strLeft << endl;
 	return	0;
 }

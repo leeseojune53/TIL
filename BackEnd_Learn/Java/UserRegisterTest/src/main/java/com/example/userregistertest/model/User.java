@@ -23,4 +23,7 @@ public class User {
     @CreationTimestamp
     private Date createtime;
 
+    public String toString(){
+        return "번호: " + id + "<br>이름: " + name + "<br>비밀번호: " + password;
+    }
 }

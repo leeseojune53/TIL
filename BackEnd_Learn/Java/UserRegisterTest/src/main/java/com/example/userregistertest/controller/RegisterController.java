@@ -7,6 +7,8 @@ import com.example.userregistertest.service.RegisterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/User")
 @RequiredArgsConstructor
@@ -19,7 +21,12 @@ public class RegisterController {
     }
 
     @GetMapping("/get/{id}")
-    public User selectOne(@PathVariable("id") long id){
-        return userRegister.getUser(id);
+    public String selectOne(@PathVariable("id") long id){
+        return userRegister.getUser(id).toString();
+    }
+
+    @GetMapping("/gets")
+    public Iterable<User> select(){
+        return userRegister.getUsers();
     }
 }

@@ -9,9 +9,12 @@ CMyString::CMyString(const CMyString& rhs)
 	cout << "CMyData(const	CMyData	&)" << endl;
 }
 
-CMyString::CMyString()
+CMyString::CMyString() 
+	:m_pszData(nullptr)
+	, m_nLength(0)
 {
 	//cout << "default constructor" << endl;
+	
 }
 
 const char* CMyString::GetString() const {
@@ -32,8 +35,10 @@ int CMyString::SetString(const char* pszparm) {
 
 CMyString& CMyString::operator=(const CMyString& rhs) {
 	m_nLength = strlen(rhs.GetString());
-	if (m_pszData != nullptr)
+	if (m_pszData != NULL) {
 		delete[] m_pszData;
+	}
+		
 	m_pszData = new char[m_nLength + 1];
 	strcpy(m_pszData, rhs.GetString());
 	//	객체	자신에	대한	참조를	반환한다.
@@ -57,10 +62,65 @@ CMyString::~CMyString() { /*cout << "소멸" << endl;*/ }
 
 CMyString::operator char*() const{ return m_pszData; }
 
+int CMyString::GetLength() const { return m_nLength; }
+
+int CMyString::Append(const char* pszParam) {
+	if (pszParam == NULL)
+		return 0;
+
+	int nLenParam = strlen(pszParam);
+	if (nLenParam == 0)
+		return 0;
+
+	if (m_pszData == NULL) {
+		SetString(m_pszData);
+		return m_nLength;
+	}
+
+	int nLenCur = m_nLength;
+
+	char* result = new char[m_nLength + nLenParam + 1];
+
+	strcpy(result, m_pszData);
+	strcpy(result + nLenCur, pszParam);
+
+	Release();
+
+	m_pszData = result;
+	m_nLength = nLenCur + nLenParam;
+
+	return m_nLength;
+}
+
+void CMyString::Release() {
+	if (m_pszData != nullptr) {
+		delete[] m_pszData;
+		m_pszData = nullptr;
+	}
+}
+
 CMyString::CMyString(const	char* pszParam)
 	:m_pszData(nullptr)
 	, m_nLength(0)
 {
 	SetString(pszParam);
+}
+
+CMyString CMyString::operator+(const CMyString& rhs) {
+	int len1 = m_nLength;
+	int len2 = rhs.m_nLength;
+	char* buf = new char[len1 + len2 + 1];
+	strcpy(buf, m_pszData);
+	strcpy(buf + len1, rhs.m_pszData);
+	CMyString result(buf);
+
+	delete[] buf;
+
+	return result;
+}
+
+CMyString& CMyString::operator+=(const CMyString& rhs) {
+	Append(rhs.m_pszData);
+	return *this;
 }
 

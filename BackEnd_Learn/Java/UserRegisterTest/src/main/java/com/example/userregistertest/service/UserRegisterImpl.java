@@ -6,6 +6,8 @@ import com.example.userregistertest.request.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class UserRegisterImpl implements RegisterService {
@@ -25,6 +27,11 @@ public class UserRegisterImpl implements RegisterService {
     @Override
     public User getUser(long id) {
         return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Iterable<User> getUsers() {
+        return userRepository.findAll();
     }
 
 
