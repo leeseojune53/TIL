@@ -10,5 +10,8 @@ public class Main {
         for(Shape shape : shapes){
             System.out.println("넓이 : " + shape.getArea());
         }
+
+        test test = new test();
+        test.SetA(10);
     }
 }

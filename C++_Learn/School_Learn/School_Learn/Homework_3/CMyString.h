@@ -36,4 +36,10 @@ public:
 	int GetLength() const;
 
 	int Append(const char* pszParam);
+
+	char& operator[](int nIndex);
+	char operator[](int nIndex) const;
+
+	int operator==(const CMyString& rhs);
+	int operator!=(const CMyString& rhs);
 };

@@ -107,15 +107,8 @@ CMyString::CMyString(const	char* pszParam)
 }
 
 CMyString CMyString::operator+(const CMyString& rhs) {
-	int len1 = m_nLength;
-	int len2 = rhs.m_nLength;
-	char* buf = new char[len1 + len2 + 1];
-	strcpy(buf, m_pszData);
-	strcpy(buf + len1, rhs.m_pszData);
-	CMyString result(buf);
-
-	delete[] buf;
-
+	CMyString result(m_pszData);
+	result.Append(rhs.m_pszData);
 	return result;
 }
 
@@ -124,3 +117,28 @@ CMyString& CMyString::operator+=(const CMyString& rhs) {
 	return *this;
 }
 
+char& CMyString::operator[](int nIndex) {
+	return m_pszData[nIndex];
+}
+
+char CMyString::operator[](int nIndex) const {
+	return m_pszData[nIndex];
+}
+
+int CMyString::operator==(const CMyString& rhs) {
+	if (m_pszData != NULL && rhs.m_pszData != NULL) {
+		if (strcmp(m_pszData, rhs.m_pszData) == 0)
+			return 1;
+		
+	}
+	return 0;
+}
+
+int CMyString::operator!=(const CMyString& rhs) {
+	if (m_pszData != NULL && rhs.m_pszData != NULL) {
+		if (strcmp(m_pszData, rhs.m_pszData) == 0)
+			return 0;
+
+	}
+	return 1;
+}

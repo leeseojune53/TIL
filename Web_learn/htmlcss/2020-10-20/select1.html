@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+
+        <form action="" method="GET">
+            <fieldset>
+                <ul>
+                    <li>
+                        <label>아이디: <input type="text" id="user_id" size="10"></label>
+                        
+                    </li>
+                    <li>
+                        <label>비밀번호: <input type="password" id="user_pw" size="10"></label>
+                    </li>
+                    <li>
+                        <label for="class">
+                            <select id="class">
+                                <optgroup label="공과대학">
+                                    <option value="archi">건축공학과</option>
+                                    <option value="mechanic">기계공학과</option>
+                                    <option value="indust">건축공학과</option>
+                                    <option value="elec">산업공학과</option>
+                                    <option value="computer">전기전자공학과</option>
+                                    <option value="chemical">화학공학과</option>
+                                </optgroup>
+                                <optgroup label="인문대학">
+                                    <option value="history">사학과</option>
+                                    <option value="lang">어문학부</option>
+                                    <option value="philo">철학</option>
+                                </optgroup>
+                                
+                            </select>
+                        </label>
+                    </li>
+                </ul>
+                
+                <input type="submit">
+            </fieldset>
+            <fieldset>
+                <legend>수강 과목을 선택하세요</legend>
+                <ul>
+                    <li>
+                        <span class="reg">관심분야</span>
+                        <label for="interest"></label>
+                        <datalist id="choices">
+                            <option value="grammar" label="문법"></option>
+                            <option value="voca" label="어휘"></option>
+                            <option value="speaking" label="회화"></option>
+                            <option value="listening" label="리스닝"></option>
+                            <option value="news" label="뉴스청취"></option>
+                        </datalist>
+                    </li>
+                </ul>
+            </fieldset>
+            
+        </form>
+    </body>
+</html>
