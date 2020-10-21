@@ -19,21 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\63_ListBaseStack\ListBaseStack.c" />
-    <ClCompile Include="..\64_InfixToPostfix\InfixToPostfix.c" />
-    <ClCompile Include="PostCalculator.c" />
-    <ClCompile Include="PostCalculatorMain.c" />
+    <ClCompile Include="CircularQueue.c" />
+    <ClCompile Include="CircularQueueMain.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\63_ListBaseStack\ListBaseStack.h" />
-    <ClInclude Include="..\64_InfixToPostfix\InfixToPostfix.h" />
-    <ClInclude Include="PostCalculator.h" />
+    <ClInclude Include="CircularQueue.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{087349cb-0bce-4406-a790-a1de63d7d56e}</ProjectGuid>
-    <RootNamespace>_65_PostCalculator</RootNamespace>
+    <ProjectGuid>{e85e33a5-91e2-4b0a-8990-6d1742135f96}</ProjectGuid>
+    <RootNamespace>_71_CircularQueue</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

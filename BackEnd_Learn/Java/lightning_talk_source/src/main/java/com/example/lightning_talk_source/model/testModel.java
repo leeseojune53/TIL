@@ -12,7 +12,6 @@ public class testModel {
 
     private String name;
     private testobject testObject = new testobject();
-    
 }
 
 

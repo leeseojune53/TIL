@@ -15,27 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PostCalculator.c">
+    <ClCompile Include="CircularQueue.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="PostCalculatorMain.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\63_ListBaseStack\ListBaseStack.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\64_InfixToPostfix\InfixToPostfix.c">
+    <ClCompile Include="CircularQueueMain.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PostCalculator.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\63_ListBaseStack\ListBaseStack.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\64_InfixToPostfix\InfixToPostfix.h">
+    <ClInclude Include="CircularQueue.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
