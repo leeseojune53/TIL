@@ -13,20 +13,20 @@ import java.util.Arrays;
 public class asdf {
     @GetMapping("/user")
     public User userTest() {
-        return new User("leeseojune","1234!@#$");
+        return new User("leeseojune", "1234!@#$");
     }
 
     @GetMapping("/users")
-    public ArrayList<User> memberTest(){
+    public ArrayList<User> memberTest() {
         return new ArrayList(Arrays.asList(
-                new User("leeseojune","1234"),
-                new User("chinese","1234qwer"),
-                new User("unun","hi")
+                new User("leeseojune", "1234"),
+                new User("chinese", "1234qwer"),
+                new User("unun", "hi")
         ));
     }
 
     @GetMapping("/a")
-    public String test(){
+    public String test() {
         return "hello";
     }
 }

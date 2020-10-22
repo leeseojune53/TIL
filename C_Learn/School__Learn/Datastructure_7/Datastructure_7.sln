@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "71_CircularQueue", "71_CircularQueue\71_CircularQueue.vcxproj", "{E85E33A5-91E2-4B0A-8990-6D1742135F96}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "73_HamburgerSim", "73_HamburgerSim\73_HamburgerSim.vcxproj", "{A3D2B700-D5AE-4A79-9F09-AC2FA478DEEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{E85E33A5-91E2-4B0A-8990-6D1742135F96}.Release|x64.Build.0 = Release|x64
 		{E85E33A5-91E2-4B0A-8990-6D1742135F96}.Release|x86.ActiveCfg = Release|Win32
 		{E85E33A5-91E2-4B0A-8990-6D1742135F96}.Release|x86.Build.0 = Release|Win32
+		{A3D2B700-D5AE-4A79-9F09-AC2FA478DEEB}.Debug|x64.ActiveCfg = Debug|x64
+		{A3D2B700-D5AE-4A79-9F09-AC2FA478DEEB}.Debug|x64.Build.0 = Debug|x64
+		{A3D2B700-D5AE-4A79-9F09-AC2FA478DEEB}.Debug|x86.ActiveCfg = Debug|Win32
+		{A3D2B700-D5AE-4A79-9F09-AC2FA478DEEB}.Debug|x86.Build.0 = Debug|Win32
+		{A3D2B700-D5AE-4A79-9F09-AC2FA478DEEB}.Release|x64.ActiveCfg = Release|x64
+		{A3D2B700-D5AE-4A79-9F09-AC2FA478DEEB}.Release|x64.Build.0 = Release|x64
+		{A3D2B700-D5AE-4A79-9F09-AC2FA478DEEB}.Release|x86.ActiveCfg = Release|Win32
+		{A3D2B700-D5AE-4A79-9F09-AC2FA478DEEB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
