@@ -8,15 +8,27 @@
                 list-style: none;
             }
         </style>
+        <script>
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/User/insert",
+                data: formData,
+                success: function(){},
+                dataType: "json",
+                contentType : "application/json"
+            });
+
+            var formData = JSON.stringify($("insertdata").serializeArray());
+        </script>
     </head>
     <body>
-        <form action="http://localhost:8080/User/insert" method="POST" enctype="application/x-www-form-urlencoded">
+        <form action="http://localhost:8080/User/insert" method="POST" enctype="application/x-www-form-urlencoded" name="insertdata">
         <ul>
             <li>
-                이름<input type="text" name="name">
+                <input type="text" name="name">이름
             </li>
             <li>
-                비밀번호<input type="text" name="password">
+                <input type="text" name="password">비밀번호
             </li>
             <li>
                 <input type="submit" value="회원가입">
