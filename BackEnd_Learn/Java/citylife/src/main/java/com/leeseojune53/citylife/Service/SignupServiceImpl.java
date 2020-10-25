@@ -20,7 +20,6 @@ public class SignupServiceImpl implements SignupService {
             userRepository.save(
                     User.builder()
                         .userId(request.getUserId())
-                        .nickname(request.getNickname())
                         .userPw(request.getUserPw())
                         .build()
             );
@@ -31,8 +30,8 @@ public class SignupServiceImpl implements SignupService {
     }
 
     @Override
-    public boolean isAlreadySignupService(Long id) {
-        Optional<User> user = userRepository.findById(id);
+    public boolean isAlreadySignupService(String userId) {
+        Optional<User> user = userRepository.findByUserId(userId);
         return user.isEmpty();
     }
 }

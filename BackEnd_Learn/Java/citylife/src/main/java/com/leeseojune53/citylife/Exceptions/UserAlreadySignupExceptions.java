@@ -1,8 +1,11 @@
 package com.leeseojune53.citylife.Exceptions;
 
-public class UserAlreadySignupExceptions extends RuntimeException{
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+@ResponseStatus(value = HttpStatus.CONFLICT, reason = "Overlap")
+public class UserAlreadySignupExceptions extends RuntimeException{
     public UserAlreadySignupExceptions(){
-        super("이미 회원가입 하셨습니다.");
+        super("아이디중복.");
     }
 }
