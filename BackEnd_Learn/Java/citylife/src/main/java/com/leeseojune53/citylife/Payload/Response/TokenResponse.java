@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter @AllArgsConstructor
 public class TokenResponse {
+    private final String message;
     private final String accessToken;
-    private final String tokenType;
 
 }

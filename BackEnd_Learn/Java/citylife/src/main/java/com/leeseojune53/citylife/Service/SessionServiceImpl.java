@@ -27,11 +27,14 @@ public class SessionServiceImpl implements SessionService{
 
     @Override
     public String CreateToken(LoginRequest request) {
-        User user = userRepository.findByUserId(request.getUserId())
-                .orElse(null);
 
+        User user = userRepository.findByUserId(request.getUserId()).orElse(null);
+
+        if(user == null)
+            return "존재하지 않은 아이디 입니다.";
+        System.out.println(user.getUserId());
         if(!user.getUserPw().equals(request.getUserPw())){
-            return null;
+            return "틀린 비밀번호 입니다.";
         }
 
         return jwtTokenProvider.createToken(request.getUserId());

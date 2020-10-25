@@ -16,10 +16,10 @@ public class SessionController {
     private final SessionService sessionService;
 
     @GetMapping("/login")
-    public ResponseEntity<TokenResponse> login(
+    public TokenResponse login(
             @RequestBody LoginRequest loginRequest
             ){
         String token = sessionService.CreateToken(loginRequest);
-        return ResponseEntity.ok().body(new TokenResponse(token, "brarer"));
+        return new TokenResponse("성공", token);
     }
 }
