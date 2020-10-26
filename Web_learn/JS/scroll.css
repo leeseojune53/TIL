@@ -1,0 +1,28 @@
+.nav-menu{
+    display: flex;
+    justify-content: space-between;
+/*   padding: 10px; */
+    align-items: center;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+    font-size: 18px;
+    transition: 1s;
+    word-break: break-all;
+}
+
+.nav-black{
+    background-color: black;
+    color: white;
+}
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 1300px;
+}
+
+h4, a{
+    padding: 10px;
+}
