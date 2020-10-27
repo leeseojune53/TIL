@@ -25,7 +25,7 @@ public class SessionController {
         String token = sessionService.CreateToken(loginRequest);
         JwtTokenProvider jwtTokenProvider = new JwtTokenProvider();
         System.out.println("t" + jwtTokenProvider.getuserId(token));
-        return new TokenResponse("성공", token);
+        return new TokenResponse("성공", token, token);
     }
 
 }

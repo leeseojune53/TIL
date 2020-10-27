@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Use_Pointer_shallowCpyt", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Homework_3", "Homework_3\Homework_3.vcxproj", "{FDC4B7FC-1AAF-4D9D-8A16-26E6C4044287}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "inheritance", "inheritance\inheritance.vcxproj", "{D6950E9F-FA95-4B20-9561-33D9077F594A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +83,14 @@ Global
 		{FDC4B7FC-1AAF-4D9D-8A16-26E6C4044287}.Release|x64.Build.0 = Release|x64
 		{FDC4B7FC-1AAF-4D9D-8A16-26E6C4044287}.Release|x86.ActiveCfg = Release|Win32
 		{FDC4B7FC-1AAF-4D9D-8A16-26E6C4044287}.Release|x86.Build.0 = Release|Win32
+		{D6950E9F-FA95-4B20-9561-33D9077F594A}.Debug|x64.ActiveCfg = Debug|x64
+		{D6950E9F-FA95-4B20-9561-33D9077F594A}.Debug|x64.Build.0 = Debug|x64
+		{D6950E9F-FA95-4B20-9561-33D9077F594A}.Debug|x86.ActiveCfg = Debug|Win32
+		{D6950E9F-FA95-4B20-9561-33D9077F594A}.Debug|x86.Build.0 = Debug|Win32
+		{D6950E9F-FA95-4B20-9561-33D9077F594A}.Release|x64.ActiveCfg = Release|x64
+		{D6950E9F-FA95-4B20-9561-33D9077F594A}.Release|x64.Build.0 = Release|x64
+		{D6950E9F-FA95-4B20-9561-33D9077F594A}.Release|x86.ActiveCfg = Release|Win32
+		{D6950E9F-FA95-4B20-9561-33D9077F594A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
