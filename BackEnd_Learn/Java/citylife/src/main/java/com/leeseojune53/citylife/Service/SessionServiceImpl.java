@@ -8,6 +8,8 @@ import com.leeseojune53.citylife.Security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class SessionServiceImpl implements SessionService{
@@ -38,5 +40,10 @@ public class SessionServiceImpl implements SessionService{
         }
 
         return jwtTokenProvider.createToken(request.getUserId());
+    }
+
+    @Override
+    public List<User> rank() {
+        return userRepository.findTop3ByOrderByUserIdDesc();
     }
 }

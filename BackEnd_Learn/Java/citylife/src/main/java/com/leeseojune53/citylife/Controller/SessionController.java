@@ -1,5 +1,6 @@
 package com.leeseojune53.citylife.Controller;
 
+import com.leeseojune53.citylife.Entity.User;
 import com.leeseojune53.citylife.Payload.Request.LoginRequest;
 import com.leeseojune53.citylife.Payload.Response.TokenResponse;
 import com.leeseojune53.citylife.Security.JwtTokenProvider;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,6 +29,11 @@ public class SessionController {
         JwtTokenProvider jwtTokenProvider = new JwtTokenProvider();
         System.out.println("t" + jwtTokenProvider.getuserId(token));
         return new TokenResponse("성공", token, token);
+    }
+
+    @GetMapping("/ranking/Top3")
+    public List<User> ranking(){
+        return sessionService.rank();
     }
 
 }
