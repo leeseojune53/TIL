@@ -1,4 +1,4 @@
-package com.leeseojune53.citylife.Service;
+package com.leeseojune53.citylife.Service.Signup;
 
 import com.leeseojune53.citylife.Entity.User;
 import com.leeseojune53.citylife.Exceptions.UserAlreadySignupExceptions;

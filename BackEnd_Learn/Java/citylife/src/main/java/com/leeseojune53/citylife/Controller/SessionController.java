@@ -4,13 +4,10 @@ import com.leeseojune53.citylife.Entity.User;
 import com.leeseojune53.citylife.Payload.Request.LoginRequest;
 import com.leeseojune53.citylife.Payload.Response.TokenResponse;
 import com.leeseojune53.citylife.Security.JwtTokenProvider;
-import com.leeseojune53.citylife.Service.SessionService;
-import io.jsonwebtoken.Jwt;
+import com.leeseojune53.citylife.Service.Session.SessionService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,8 +24,19 @@ public class SessionController {
             ){
         String token = sessionService.CreateToken(loginRequest);
         JwtTokenProvider jwtTokenProvider = new JwtTokenProvider();
-        System.out.println("t" + jwtTokenProvider.getuserId(token));
+        System.out.println(jwtTokenProvider.getuserId(token));
         return new TokenResponse("성공", token, token);
+    }
+
+    @GetMapping("/test")
+    public String test(){
+        String asdf = "Bearer eyJhbGciOiJIUzI1NiIXVCJ9";
+        String token;
+        if(asdf.startsWith("")){
+            token = asdf.substring(7);
+        }
+        else return null;
+        return token;
     }
 
     @GetMapping("/ranking/Top3")

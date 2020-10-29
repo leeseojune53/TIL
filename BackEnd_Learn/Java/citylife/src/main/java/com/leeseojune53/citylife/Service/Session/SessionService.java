@@ -1,4 +1,4 @@
-package com.leeseojune53.citylife.Service;
+package com.leeseojune53.citylife.Service.Session;
 
 import com.leeseojune53.citylife.Entity.User;
 import com.leeseojune53.citylife.Payload.Request.LoginRequest;

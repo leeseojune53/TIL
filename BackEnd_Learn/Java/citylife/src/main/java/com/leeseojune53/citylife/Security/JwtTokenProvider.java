@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @Component
@@ -14,6 +15,12 @@ import java.util.Date;
 public class JwtTokenProvider {
     @Value("${jwt.secret}")
     private String secretKey;
+
+    @Value("${jwt.prefix}")
+    private String prefix;
+
+    @Value("${jwt.header}")
+    private String header;
 
     public String createToken(String userId){
         String result =  Jwts.builder()
@@ -56,5 +63,11 @@ public class JwtTokenProvider {
         }
     }
 
+    public String resolve(HttpServletRequest request){
+        String bearerToken = request.getHeader(header);
+        if(bearerToken!=null&&bearerToken.startsWith(prefix))
+            return bearerToken.substring(7);
+        return null;
+    }
 
 }

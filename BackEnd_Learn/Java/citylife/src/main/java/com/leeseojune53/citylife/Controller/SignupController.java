@@ -3,7 +3,7 @@ package com.leeseojune53.citylife.Controller;
 
 import com.leeseojune53.citylife.Payload.Request.SignRequest;
 import com.leeseojune53.citylife.Security.JwtTokenProvider;
-import com.leeseojune53.citylife.Service.SignupService;
+import com.leeseojune53.citylife.Service.Signup.SignupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
