@@ -1,10 +1,14 @@
 package com.leeseojune53.citylife.Security;
 
+import com.leeseojune53.citylife.Service.auth.AuthDetails;
+import com.leeseojune53.citylife.Service.auth.AuthDetailsService;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +17,8 @@ import java.util.Date;
 @Component
 @RequiredArgsConstructor
 public class JwtTokenProvider {
+    private final AuthDetailsService authDetailsService;
+
     @Value("${jwt.secret}")
     private String secretKey;
 
@@ -68,6 +74,11 @@ public class JwtTokenProvider {
         if(bearerToken!=null&&bearerToken.startsWith(prefix))
             return bearerToken.substring(7);
         return null;
+    }
+
+    public Authentication getAuthentication(String userId){
+        AuthDetails authDetails = authDetailsService.loadUserByUsername(userId);
+        return new UsernamePasswordAuthenticationToken(authDetails, "", authDetails.getAuthorities());
     }
 
 }
