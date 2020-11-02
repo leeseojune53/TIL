@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .size-select{
+                display: none;
+            }
+            
+            .pants-size{
+                display: none;
+            }
+        </style>
+
+        <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script>
+            $(document).on('change', '#option1', function(){
+                if($('#option1').val()=='셔츠'){
+                    $('.size-select').show();
+                    $('#option2').html('');
+                    var tmp = ` <option>95</option>
+                    <option>100</option>
+                    <option>105</option>`;
+                    $('#option2').append(tmp);
+                }else if($('#option1').val()=='바지'){
+                    $('.size-select').show();
+                    $('#option2').html('');
+                    var tmp = ` <option>25</option>
+                    <option>26</option>
+                    <option>27</option>`;
+                    $('#option2').append(tmp);
+                }
+            })
+        </script>
+        
+    </head>
+    <body>
+        <form class="container my-5">
+            <div class="form-group">
+                <p>상품선택</p>
+                <select name="form-control" id="option1">
+                    <option>모자</option>
+                    <option>셔츠</option>
+                    <option>바지</option>
+                </select>
+                <div class="size-select">
+                    <p class="mt-4">사이즈선택</p>
+                    <select class="form-control" id="option2">
+                        <option>95</option>
+                        <option>100</option>
+                        <option>105</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
