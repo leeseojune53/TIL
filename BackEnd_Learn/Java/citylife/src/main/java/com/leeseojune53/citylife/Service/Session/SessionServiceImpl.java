@@ -2,8 +2,8 @@ package com.leeseojune53.citylife.Service.Session;
 
 import com.leeseojune53.citylife.Entity.User;
 import com.leeseojune53.citylife.Payload.Request.LoginRequest;
-import com.leeseojune53.citylife.Repository.UserRepository;
 import com.leeseojune53.citylife.Security.JwtTokenProvider;
+import com.leeseojune53.citylife.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SessionServiceImpl implements SessionService{
 
-    private final UserRepository userRepository;
+    private final com.leeseojune53.citylife.Repository.UserRepository
     private final JwtTokenProvider jwtTokenProvider;
 
 //    @Override
