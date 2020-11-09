@@ -19,8 +19,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService{
 
-    @Value("${jwt.prefix}")
-    private String tokentype;
+    @Value("${jwt.exp.access}")
+    private Long accessTokenExpiration;
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -31,18 +31,18 @@ public class AuthServiceImpl implements AuthService{
     @Override
     public TokenResponse signIn(LoginRequest request) {
         return userRepository.findByUserId(request.getUserId())
-                .filter(user -> passwordEncoder.matches(user.getUserPw(), request.getUserPw()))
-                .map(User::getUsercode)
-                .map(usercode -> {
+                .filter(user -> passwordEncoder.matches(request.getUserPw(), user.getUserPw()))
+                .map(User::getId)
+                .map(id -> {
                     try{
-                        authenticationManager.authenticate(request.getAuthToken(usercode));
+                        authenticationManager.authenticate(request.getAuthToken(id));
                     }catch (Exception e){
                         throw new InvalidTokenException();
                     }
-                    String accesstoken = jwtTokenProvider.GenerateAccessToken(usercode);
-                    String refreshtoken = jwtTokenProvider.GenerateRefreshToken(usercode);
-                    refreshTokenService.save(new RefreshToken(usercode, refreshtoken));
-                    return new TokenResponse(accesstoken, refreshtoken, tokentype);
+                    String accesstoken = jwtTokenProvider.GenerateAccessToken(id);
+                    String refreshtoken = jwtTokenProvider.GenerateRefreshToken(id);
+                    refreshTokenService.save(new RefreshToken(id, refreshtoken));
+                    return new TokenResponse(accesstoken, refreshtoken, accessTokenExpiration.toString());
                 })
                 .orElseThrow(UserNotFoundException::new);
     }

@@ -9,13 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Entity
 @Table(name = "RefreshToken")
 
 public class RefreshToken {
     @Id
-    private Integer usercode;
+    private Integer id;
 
     private String RefreshToken;
 }

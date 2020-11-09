@@ -1,12 +1,24 @@
 package com.example.jwt.Security.Jwt.Auth;
 
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.Authentication;
+import com.example.jwt.Entity.User.UserRepository;
+import com.example.jwt.Exception.UserNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
-public class AuthDetailService implements AuthenticationManager {
+@Service
+@RequiredArgsConstructor
+public class AuthDetailService implements UserDetailsService {
+
+    private final UserRepository userRepository;
+
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        return null;
+    public AuthDetail loadUserByUsername(String id) throws UsernameNotFoundException {
+        return userRepository.findById(Integer.parseInt(id))
+                .map(AuthDetail::new)
+                .orElseThrow(UserNotFoundException::new);
     }
 }

@@ -5,6 +5,7 @@ import com.leeseojune53.citylife.Exceptions.UserAlreadySignupExceptions;
 import com.leeseojune53.citylife.Payload.Request.SignRequest;
 import com.leeseojune53.citylife.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class SignupServiceImpl implements SignupService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public boolean userSignupService(SignRequest request) {
@@ -20,7 +22,7 @@ public class SignupServiceImpl implements SignupService {
             userRepository.save(
                     User.builder()
                         .userId(request.getUserId())
-                        .userPw(request.getUserPw())
+                        .userPw(passwordEncoder.encode(request.getUserPw()))
                         .build()
             );
             return true;

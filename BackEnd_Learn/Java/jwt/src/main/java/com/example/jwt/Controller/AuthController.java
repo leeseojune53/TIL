@@ -2,14 +2,20 @@ package com.example.jwt.Controller;
 
 import com.example.jwt.Payload.Request.LoginRequest;
 import com.example.jwt.Payload.Response.TokenResponse;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.example.jwt.Service.Auth.AuthService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class AuthController {
 
-    @GetMapping("/auth")
-    public TokenResponse auth(LoginRequest request){
+    private final AuthService authService;
 
+    @PostMapping("/auth")
+    public TokenResponse auth(@RequestBody LoginRequest request){
+        return authService.signIn(request);
     }
 }

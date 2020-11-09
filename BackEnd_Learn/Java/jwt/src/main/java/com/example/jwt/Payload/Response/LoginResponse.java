@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class LoginResponse {
-    private boolean issuccess;
+    private boolean isSuccess;
     private User user;
 }

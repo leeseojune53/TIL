@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 public class SignupController {
     private final SignupService signupService;
 
     @PostMapping("/User")
-    public LoginResponse signup(@RequestBody SignupRequest request){
+    public LoginResponse signup(@RequestBody @Valid SignupRequest request){
         return signupService.signup(request);
     }
 }
