@@ -5,7 +5,6 @@ import com.example.jwt.Security.Jwt.Auth.AuthDetail;
 import com.example.jwt.Security.Jwt.Auth.AuthDetailService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -35,13 +34,13 @@ public class JwtTokenProvider {
 
     private final AuthDetailService authDetailService;
 
-    public String GenerateAccessToken(Integer id){
+    public String GenerateAccessToken(Integer id) {
         return Jwts.builder()
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + accessTokenExpiration * 1000))
                 .setSubject(id.toString())
+                .claim("type", "access_token")
                 .signWith(SignatureAlgorithm.HS256, secretKey)
-                .claim("type", "AccessToken")
                 .compact();
     }
 
@@ -65,11 +64,11 @@ public class JwtTokenProvider {
     }
 
     public boolean validateToken(String token){
+        System.out.println(Jwts.parser().setSigningKey(secretKey)
+                .parseClaimsJws(token).getBody().getSubject());
         try{
-            Jwts.parser()
-                    .parseClaimsJws(token)
-                    .getBody()
-                    .getSubject();
+            Jwts.parser().setSigningKey(secretKey)
+                    .parseClaimsJws(token).getBody().getSubject();
             return true;
         }catch(Exception e){
             throw new InvalidTokenException();
@@ -77,11 +76,11 @@ public class JwtTokenProvider {
     }
 
     public Authentication authentication(String token){
-        AuthDetail authDetail = authDetailService.loadUserByUsername(getusercode(token));
+        AuthDetail authDetail = authDetailService.loadUserByUsername(getid(token));
         return new UsernamePasswordAuthenticationToken(authDetail, "", authDetail.getAuthorities());
     }
 
-    public String getusercode(String token){
+    public String getid(String token){
         try{
             return Jwts.parser()
                     .setSigningKey(secretKey)

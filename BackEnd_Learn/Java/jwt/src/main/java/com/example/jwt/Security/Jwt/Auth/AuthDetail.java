@@ -4,6 +4,7 @@ import com.example.jwt.Entity.User.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
@@ -13,21 +14,26 @@ import java.util.Collection;
 @AllArgsConstructor
 public class AuthDetail implements UserDetails {
 
-    private final User user;
+    private final String userId;
+    private final String userPw;
+    private final String authorities;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return new ArrayList<>();
+        ArrayList<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
+        auth.add(new SimpleGrantedAuthority(authorities));
+        return auth;
     }
 
     @Override
     public String getPassword() {
-        return user.getUserPw();
+        return userPw;
     }
 
     @Override
     public String getUsername() {
-        return user.getUserId();
+        return userId;
     }
 
     @Override

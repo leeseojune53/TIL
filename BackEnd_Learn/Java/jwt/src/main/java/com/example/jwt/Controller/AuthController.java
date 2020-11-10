@@ -18,4 +18,5 @@ public class AuthController {
     public TokenResponse auth(@RequestBody LoginRequest request){
         return authService.signIn(request);
     }
+
 }
