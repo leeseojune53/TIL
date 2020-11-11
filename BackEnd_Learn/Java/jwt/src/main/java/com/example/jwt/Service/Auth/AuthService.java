@@ -5,4 +5,5 @@ import com.example.jwt.Payload.Response.TokenResponse;
 
 public interface AuthService {
     TokenResponse signIn(LoginRequest request);
+    TokenResponse refreshToken(String receivedToken);
 }

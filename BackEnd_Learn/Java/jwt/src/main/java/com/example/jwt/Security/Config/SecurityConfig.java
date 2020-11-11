@@ -26,13 +26,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .formLogin().disable();
         http.authorizeRequests()
                     .antMatchers("/auth").permitAll()
-                    .antMatchers("/User/**").permitAll()
-                    //.antMatchers("/show/**").hasAuthority("ROLE_USER")
+                    .antMatchers("/User").permitAll()
                 .anyRequest().authenticated()
                 .and()
                     .apply(new JwtConfigurer(jwtTokenProvider));
-//        .antMatchers("/show/**").permitAll();
-
     }
 
     @Bean

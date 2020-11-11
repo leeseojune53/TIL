@@ -5,6 +5,8 @@ import com.example.jwt.Entity.RefreshToken.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class RefreshTokenServiceImpl implements RefreshTokenService{
@@ -15,4 +17,10 @@ public class RefreshTokenServiceImpl implements RefreshTokenService{
     public void save(RefreshToken token) {
         refreshTokenRepository.save(token);
     }
+
+    @Override
+    public Optional<RefreshToken> findRefreshToken(String token) {
+        return refreshTokenRepository.findByRefreshToken(token);
+    }
+
 }

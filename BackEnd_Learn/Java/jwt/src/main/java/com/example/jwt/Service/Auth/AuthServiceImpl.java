@@ -46,4 +46,18 @@ public class AuthServiceImpl implements AuthService{
                 })
                 .orElseThrow(UserNotFoundException::new);
     }
+
+    @Override
+    public TokenResponse refreshToken(String receivedToken) {
+        if(!jwtTokenProvider.isRefreshToken(receivedToken))
+            throw new InvalidTokenException();
+        return refreshTokenService.findRefreshToken(receivedToken)
+                .map(refreshToken->{
+                    String generatedRefreshToken = jwtTokenProvider.GenerateRefreshToken(refreshToken.getId());
+                    String generatedAccessToken = jwtTokenProvider.GenerateAccessToken(refreshToken.getId());
+                    refreshTokenService.save(new RefreshToken(refreshToken.getId(), generatedRefreshToken));
+                    return new TokenResponse(generatedAccessToken, generatedRefreshToken, accessTokenExpiration.toString());
+                })
+                .orElseThrow(InvalidTokenException::new);
+    }
 }

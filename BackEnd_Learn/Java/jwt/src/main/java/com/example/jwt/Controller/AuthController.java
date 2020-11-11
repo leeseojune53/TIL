@@ -4,19 +4,23 @@ import com.example.jwt.Payload.Request.LoginRequest;
 import com.example.jwt.Payload.Response.TokenResponse;
 import com.example.jwt.Service.Auth.AuthService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/auth")
 public class AuthController {
 
     private final AuthService authService;
 
-    @PostMapping("/auth")
+    @PostMapping
     public TokenResponse auth(@RequestBody LoginRequest request){
         return authService.signIn(request);
+    }
+
+    @PutMapping
+    public TokenResponse update(@RequestHeader("refresh_token") String request){
+        return authService.refreshToken(request);
     }
 
 }

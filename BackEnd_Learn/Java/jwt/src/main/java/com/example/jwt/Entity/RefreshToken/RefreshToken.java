@@ -13,10 +13,11 @@ import javax.persistence.Table;
 @Getter
 @Entity
 @Table(name = "RefreshToken")
-
 public class RefreshToken {
     @Id
     private Integer id;
 
-    private String RefreshToken;
+    private String refreshToken;
+
+
 }

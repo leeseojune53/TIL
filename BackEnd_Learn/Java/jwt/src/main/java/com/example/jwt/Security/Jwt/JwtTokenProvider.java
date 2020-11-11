@@ -76,11 +76,11 @@ public class JwtTokenProvider {
     }
 
     public Authentication authentication(String token){
-        AuthDetail authDetail = authDetailService.loadUserByUsername(getid(token));
+        AuthDetail authDetail = authDetailService.loadUserByUsername(getId(token));
         return new UsernamePasswordAuthenticationToken(authDetail, "", authDetail.getAuthorities());
     }
 
-    public String getid(String token){
+    public String getId(String token){
         try{
             return Jwts.parser()
                     .setSigningKey(secretKey)
@@ -93,16 +93,7 @@ public class JwtTokenProvider {
     }
 
     public boolean isRefreshToken(String token){
-        try{
-            return Jwts.parser()
-                    .setSigningKey(secretKey)
-                    .parseClaimsJws(token)
-                    .getBody()
-                    .get("type")
-                    .equals("RefreshToken");
-        }catch(Exception e){
-            throw new InvalidTokenException();
-        }
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().get("type").equals("RefreshToken");
     }
 
 }
