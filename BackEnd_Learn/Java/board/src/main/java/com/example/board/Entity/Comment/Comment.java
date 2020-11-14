@@ -1,5 +1,8 @@
-package com.example.board.Entity;
+package com.example.board.Entity.Comment;
 
+import com.example.board.Entity.Board.Board;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,20 +13,24 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Board")
-@Builder
+@Table(name = "Comment")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class Board {
+@Builder
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
-    private String contents;
-    private String author;
+
+    private String userId;
+    private String comment;
 
     @CreationTimestamp
     private Date createAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Board board;
 }

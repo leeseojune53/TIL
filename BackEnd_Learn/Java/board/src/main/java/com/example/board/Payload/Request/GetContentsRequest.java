@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class WriteRequest {
-    private String title;
-    private String contents;
-    private String author;
+public class GetContentsRequest {
+    private int id;
 }

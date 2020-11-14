@@ -1,12 +1,11 @@
-package com.example.board.Service;
+package com.example.board.Service.Write;
 
-import com.example.board.Entity.Board;
+import com.example.board.Payload.Request.ModifyRequest;
 import com.example.board.Payload.Request.WriteRequest;
 import com.example.board.Payload.Response.WriteResponse;
 
-import java.util.List;
-
 public interface WriteService {
     WriteResponse Write(WriteRequest request);
-    List<Board> show();
+    WriteResponse Modify(ModifyRequest request);
+    WriteResponse content(int id);
 }

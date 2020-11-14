@@ -1,16 +1,11 @@
 package com.example.board.Controller;
 
-import com.example.board.Entity.Board;
+import com.example.board.Payload.Request.ModifyRequest;
 import com.example.board.Payload.Request.WriteRequest;
 import com.example.board.Payload.Response.WriteResponse;
-import com.example.board.Service.WriteService;
+import com.example.board.Service.Write.WriteService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,8 +17,15 @@ public class WriteController {
         return writeService.Write(request);
     }
 
-    @GetMapping("/show")
-    public List<Board> show(){
-        return writeService.show();
+    @PatchMapping("/modify") // 수정
+    public WriteResponse modify(@RequestBody ModifyRequest request){
+        return writeService.Modify(request);
     }
+
+    @GetMapping("/modify") // 수정할 데이터 가져오기
+    public WriteResponse contents(@RequestParam int id){
+        return writeService.content(id);
+    }
+
+
 }
