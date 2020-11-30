@@ -39,10 +39,10 @@ public class AuthServiceImpl implements AuthService{
                     }catch (Exception e){
                         throw new InvalidTokenException();
                     }
-                    String accesstoken = jwtTokenProvider.GenerateAccessToken(id);
-                    String refreshtoken = jwtTokenProvider.GenerateRefreshToken(id);
-                    refreshTokenService.save(new RefreshToken(id, refreshtoken));
-                    return new TokenResponse(accesstoken, refreshtoken, accessTokenExpiration.toString());
+                    String accessToken = jwtTokenProvider.GenerateAccessToken(id);
+                    String refreshToken = jwtTokenProvider.GenerateRefreshToken(id);
+                    refreshTokenService.save(new RefreshToken(id, refreshToken));
+                    return new TokenResponse(accessToken, refreshToken, accessTokenExpiration.toString());
                 })
                 .orElseThrow(UserNotFoundException::new);
     }

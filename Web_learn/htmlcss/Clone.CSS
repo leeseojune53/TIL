@@ -1,0 +1,24 @@
+.maintop{
+    width: 100%;
+    height: 64px;
+}
+
+.body{
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.header{
+    margin: 0px 71.6px;
+    height: 100%;
+    display: flex;
+    width: 1376px;
+    align-content: center;
+}
+
+.header img{
+    margin-top: 20px;
+    width: 71px;
+    height: 24px;
+}

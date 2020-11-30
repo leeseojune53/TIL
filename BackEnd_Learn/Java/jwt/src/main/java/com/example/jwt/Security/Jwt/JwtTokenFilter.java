@@ -1,7 +1,9 @@
 package com.example.jwt.Security.Jwt;
 
+import com.example.jwt.Security.Jwt.Auth.AuthDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
 import org.springframework.web.filter.OncePerRequestFilter;

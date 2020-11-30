@@ -16,7 +16,7 @@ import javax.validation.Valid;
 public class SignupController {
     private final SignupService signupService;
 
-    @PostMapping("/User")
+    @PostMapping("/user")
     public LoginResponse signup(@RequestBody @Valid SignupRequest request){
         return signupService.signup(request);
     }

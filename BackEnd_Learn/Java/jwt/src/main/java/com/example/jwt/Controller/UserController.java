@@ -1,6 +1,7 @@
 package com.example.jwt.Controller;
 
 import com.example.jwt.Entity.User.User;
+import com.example.jwt.Payload.Response.UserResponse;
 import com.example.jwt.Service.User.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,5 +17,10 @@ public class UserController {
     @GetMapping("/show/User")
     public List<User> showuser(){
         return userService.show();
+    }
+
+    @GetMapping("/show/mypage")
+    public UserResponse showmypage(){
+        return userService.showmypage();
     }
 }

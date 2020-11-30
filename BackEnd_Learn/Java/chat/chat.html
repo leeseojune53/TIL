@@ -3,35 +3,44 @@
     <head>
         <link rel="stylesheet" href="chat.css">
     </head>
+
+    <body>
     <script type="text/javascript">
-        var exampleSocket;
+        var wsUri = "ws://localhost:8080/websocket";
+        var websocket;
         var output;
-        var messagebuf;
-        function init(){
+        function init() {
             output = document.getElementById("output");
         }
-        function send(){
-            exampleSocket = new WebSocket("ws://localhost:8080/websocket");
-            
-            exampleSocket.onopen = function(e){
-                writeToScreen("연결 성공");
-                writeToScreen("메세지 보냄 : " + messagebuf);
-                exampleSocket.send(messagebuf);
+        function send() {
+            websocket = new WebSocket(wsUri);
+            websocket.onopen = function (evt) {
+                onOpen(evt)
             };
-            messagebuf = document.getElementById("message").value;
-            document.getElementById("message").value="";
-
-            exampleSocket.onmessage = function(e){
-                writeToScreen("메세지 받음 : " + e.data)
+            websocket.onmessage = function (evt) {
+                onMessage(evt)
             };
-
-            exampleSocket.onerror = function(e){
-                writeToScreen("에러 : " + e.data);
-            }
-            
+            websocket.onerror = function (evt) {
+                onError(evt)
+            };
         }
 
-        
+        function onOpen(evt) {
+            writeToScreen("Connected to Endpoint!");
+            var textID = document.getElementById("textID");
+            doSend(textID.value);
+        }
+        function onMessage(evt) {
+            writeToScreen("Message Received: " + evt.data);
+        }
+        function onError(evt) {
+            writeToScreen('ERROR: ' + evt.data);
+        }
+        function doSend(message) {
+            writeToScreen("Message Sent: " + message);
+            websocket.send(message);
+            //websocket.close();
+        }
         function writeToScreen(message) {
             var pre = document.createElement("p");
             pre.style.wordWrap = "break-word";
@@ -41,10 +50,14 @@
         }
         window.addEventListener("load", init, false);
     </script>
-    <body>
-        내용 : <input id="message" type="text" name="text" plac="put">
-        <button onclick="send();">보내기</button>
-
-        <div id = "output"></div>
+    <h1 style="text-align: center;">Hello World WebSocket Client</h1>
+    <br>
+    <div style="text-align: center;">
+        <form action="">
+            <input onclick="send()" value="Send" type="button">
+            <input id="textID" name="message" value="Hello WebSocket!" type="text"><br>
+        </form>
+    </div>
+    <div id="output"></div>
     </body>
 </html>
