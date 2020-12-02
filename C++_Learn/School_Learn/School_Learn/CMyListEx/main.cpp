@@ -5,10 +5,15 @@
 using	namespace	std;
 int	main()
 {
-	CMyListEx list;
-
+	
+	CMyListEx * buflist = new CMyListEx(0);
+	buflist->Insert(1);
+	buflist->Insert(2);
+	buflist->Insert(3);
+	CMyListEx* list = new CMyListEx(*buflist);
 	char n;
 	int insert;
+	
 	while (1) {
 		cout << "\n------------------------------------\n";
 		cout << "CMyList 메뉴\n1 : 삽입 Head\n2 : 삽입 Tail\n3 : 삭제 Head\n4 : 삭제 Tail\n5 : 출력 Head -> Tail\n6 : 출력 Tail -> Head\n0 : 종료\n";
@@ -27,7 +32,7 @@ int	main()
 				cout << "	0,	1,	2	중	숫자를	입력하세요~!\n";
 				continue;
 			}
-			list.InsertHead(insert);
+			list->InsertHead(insert);
 			getchar();
 			break;
 		case '2':
@@ -40,20 +45,20 @@ int	main()
 				cout << "	0,	1,	2	중	숫자를	입력하세요~!\n";
 				continue;
 			}
-			list.Insert(insert);
+			list->Insert(insert);
 			getchar();
 			break;
 		case '3':
-			list.DeleteHead();
+			list->DeleteHead();
 			break;
 		case '4':
-			list.DeleteTail();
+			list->DeleteTail();
 			break;
 		case '5':
-			list.PrintData();
+			list->PrintData();
 			break;
 		case '6':
-			list.PrintDataTail();
+			list->PrintDataTail();
 			break;
 		case '0':
 			return 0;
