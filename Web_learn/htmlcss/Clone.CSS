@@ -7,6 +7,7 @@
     margin: 0px;
     width: 100%;
     height: 100%;
+    background: rgb(248, 249, 250);
 }
 
 .header{
@@ -15,10 +16,55 @@
     display: flex;
     width: 1376px;
     align-content: center;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.header img{
+.logo{
     margin-top: 20px;
     width: 71px;
     height: 24px;
+    display: flex;
+    
+}
+
+.headerrig{
+    display: flex;
+    box-sizing: inherit;
+}
+
+.buttonnew{
+    width: 110px;
+    height: 32px;
+    border: solid black 0.5px;
+    border-radius: 23px;
+    font-weight: bold;
+    background: white;
+    outline: 0px;
+}
+
+.buttonnew:hover{
+    background: gray;
+    cursor: pointer;
+}
+
+.menu{
+    width: 1376px;
+    height: 48px;
+    margin-top: 24px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.menu div{
+    display: flex;
+}
+
+.itembox{
+    width: 335.9px;
+    height: 350px;
+    border: 1px solid #dee1e3;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 57px;
 }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chat main</title>
+</head>
+<body>
+    <form>
+        <input id="userId" type="text" placeholder="아이디">
+        <input id="userPw" type="text" placeholder="비밀번호">
+        <input  onclick="register()" value="회원가입" type="button">
+        <input type="button" onclick="login()" value="로그인">
+    </form>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+
+function register(){
+    var userId = document.getElementById('userId').value;
+    var userPw = document.getElementById('userPw').value;
+    axios({
+        url: 'http://localhost:8000' + '/register',
+        data:{
+            userId : userId,
+            userPw : userPw
+        },
+        method: 'post'
+    }).then((res)=>{
+        console.log(res.status);
+        switch(res.status){
+            case 200:{
+                alert("회원가입 성공!");
+            }
+        }
+    }).catch((error)=>{
+        console.log(error);
+        console.log(userId);
+        console.log(userPw);
+        alert("회원가입 실패.");
+    })
+}
+
+function login(){
+    var buserId = document.getElementById('userId').value;
+    var buserPw = document.getElementById('userPw').value;
+    axios({
+        url: 'http://localhost:8000' + '/auth',
+        data:{
+            userId : buserId,
+            userPw : buserPw
+        },
+        method: 'post'
+    }).then((res)=>{
+        console.log(res.status);
+        switch(res.status){
+            case 200:{
+                localStorage.setItem("accessToken", res.data.accessToken);
+                localStorage.setItem("refreshToken", res.data.refreshToken);
+                console.log("로그인 성공!");
+            }
+        }
+    }).catch((error)=>{
+        console.log(error);
+        console.log()
+        alert("로그인 실패.");
+    })
+}
+    
+</script>
+</body>
+</html>
