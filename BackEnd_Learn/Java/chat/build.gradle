@@ -23,9 +23,15 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.4.RELEASE'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.4.0'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.3.5.RELEASE'
+    compile 'mysql:mysql-connector-java'
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.2'
 }
 
 test {

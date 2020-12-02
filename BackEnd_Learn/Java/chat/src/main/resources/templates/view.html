@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket</title>
+</head>
+<body>
+<form>
+    <!-- 유저 명을 입력하는 텍스트 박스(기본 값은 anonymous(익명)) -->
+    <input id="user" type="text" value="anonymous">
+    <!-- 송신 메시지를 작성하는 텍스트 박스 -->
+    <input id="textMessage" type="text">
+    <!-- 메세지를 송신하는 버튼 -->
+    <input onclick="sendMessage()" value="보내기" type="button">
+    <!-- WebSocket 접속 종료하는 버튼 -->
+    <input onclick="disconnect()" value="연결 끊기" type="button">
+</form>
+<textarea id="messageTextArea" rows="10" cols="50" readonly></textarea>
+    <script type="text/javascript">
+        var websocket = new WebSocket("ws://localhost:8080/websocket")
+
+        var messageTextArea = document.getElementById("messageTextArea");
+        websocket.onopen = function(message){
+            messageTextArea.value += "Server connect\n";
+        };
+
+        websocket.onclose = function(message){
+            messageTextArea.value += "Server Disconnect\n";
+        };
+
+        websocket.onerror = function(message){
+            messageTextArea.value += "error\n";
+        };
+        websocket.onmessage = function(message){
+            messageTextArea.value += message.data + "\n";
+        };
+
+        function sendMessage(){
+            var date = new Date();
+            var resultdate = "";
+            if(date.getHours() < 10){
+                resultdate += "0"+date.getHours()+":";
+            }else resultdate += date.getHours()+":";
+            if(date.getMinutes() < 10){
+                resultdate += "0"+date.getMinutes()+":";
+            }else resultdate += date.getMinutes()+":";
+            if(date.getSeconds() < 10){
+                resultdate += "0"+date.getSeconds();
+            }else resultdate += date.getSeconds();
+            var user = document.getElementById("user");
+            var message = document.getElementById("textMessage");
+            messageTextArea.value += resultdate + "\t" + user.value + "(me) => " + message.value + "\n";
+            websocket.send("{{" + user.value + "}}" + message.value);
+            message.value = "";
+        }
+
+
+
+
+        function disconnect(){
+            websocket.close();
+        }
+
+
+    </script>
+</body>
+</html>

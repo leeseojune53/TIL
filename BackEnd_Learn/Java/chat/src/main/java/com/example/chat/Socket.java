@@ -6,56 +6,54 @@ import org.springframework.stereotype.Component;
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
-import java.util.Set;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Log
 @Component
 @ServerEndpoint(value = "/websocket")
 public class Socket {
-    private Session session;
-    public static Set<Socket> listeners = new CopyOnWriteArraySet<>();
+    public static List<Session> sessionUsers = Collections.synchronizedList(new ArrayList<>());
+    private static Pattern pattern = Pattern.compile("^\\{\\{.*?\\}\\}");
     private static int onlineCnt = 0;
 
     @OnOpen
     public void onOpen(Session session){
         onlineCnt++;
-        this.session = session;
-        listeners.add(this);
+        sessionUsers.add(session);
         log.info("onOpen, UserCount : " + onlineCnt);
     }
 
     @OnClose
     public void onClose(Session session){
         onlineCnt--;
-        listeners.remove(this);
+        sessionUsers.remove(session);
         log.info("onClose called, userCount:" + onlineCnt);
     }
 
     @OnMessage
-    public void onMessage(String message){
-        log.info("onMessage called, message:" + message);
-        broadcast(message);
-    }
-
-    @OnError
-    public void onError(Session session, Throwable throwable){
-        log.warning("onClose called, error:" + throwable.getMessage());
-        listeners.remove(this);
-        onlineCnt--;
-    }
-
-    public void broadcast(String message){
-        for(Socket listener : listeners){
-            listener.sendmessage(message);
+    public void onMessage(String message, Session userSession){
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+        String name = "anonymous";
+        Matcher matcher = pattern.matcher(message);
+        if(matcher.find()){
+            name = matcher.group();
         }
+        final String msg = message.replaceAll(pattern.pattern(), "");
+        final String username = name.replaceFirst("^\\{\\{", "").replaceFirst("\\}\\}$", "");
+
+        sessionUsers.forEach(session->{
+            if(session == userSession)
+                return;
+            try{
+                session.getBasicRemote().sendText(format.format(new Date()) + "\t" + username + "=>" + msg);
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        });
     }
 
-    private void sendmessage(String message){
-        try{
-            this.session.getBasicRemote().sendText(message);
-        }catch (IOException e){
-            log.warning("asdf");
-        }
-    }
 }
