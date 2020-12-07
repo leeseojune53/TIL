@@ -10,6 +10,6 @@ public:
 	void InsertHead(int num);
 	void DeleteHead();
 	void DeleteTail();
-	void PrintDataTail();
+	void PrintDataTail() const;
 private:
 };

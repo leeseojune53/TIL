@@ -33,7 +33,7 @@ void CMyListEx::Insert(int num) { // tail부터 입력
 
 
 
-void CMyListEx::PrintDataTail() {
+void CMyListEx::PrintDataTail() const{
 	DNode* buf = gettail();
 	int count = 0;
 	if (getLength() == 0) {

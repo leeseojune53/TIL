@@ -21,7 +21,7 @@ CMyList::~CMyList() {
 	}
 }
 
-DNode* CMyList::gethead() {
+DNode* CMyList::gethead() const {
 	return headNode;
 }
 
@@ -29,7 +29,7 @@ void CMyList::sethead(DNode* head) {
 	this->headNode = head;
 }
 
-DNode* CMyList::gettail() {
+DNode* CMyList::gettail() const {
 	return tailNode;
 }
 
@@ -37,7 +37,7 @@ void CMyList::settail(DNode* tail) {
 	this->tailNode = tail;
 }
 
-int CMyList::getLength() {
+int CMyList::getLength() const {
 	return m_nLength;
 }
 
@@ -124,7 +124,7 @@ int CMyList::Append(const CMyList list) {
 	return 1;
 }
 
-void CMyList::PrintData() { // head print
+void CMyList::PrintData() const{ // head print
 	DNode* buf = gethead();
 	int count = 0;
 	if (getLength() == 0) {

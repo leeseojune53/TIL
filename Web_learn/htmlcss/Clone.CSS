@@ -3,11 +3,12 @@
     height: 64px;
 }
 
-.body{
+body{
+    background-color: rgb(248, 249, 250);
     margin: 0px;
     width: 100%;
     height: 100%;
-    background: rgb(248, 249, 250);
+    
 }
 
 .header{
@@ -41,11 +42,14 @@
     font-weight: bold;
     background: white;
     outline: 0px;
+    transition: 0.2s;
 }
 
 .buttonnew:hover{
-    background: gray;
+    background: rgb(52, 58, 64);
+    color: white;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .menu{
@@ -61,10 +65,35 @@
 }
 
 .itembox{
-    width: 335.9px;
+    margin-left: 50px;
+    margin-top: 30px;
+    width: 300px;
     height: 350px;
-    border: 1px solid #dee1e3;
     border-radius: 4px;
     overflow: hidden;
     margin-right: 57px;
+    background: white;
+    transition: 0.5s;
+}
+
+.itembox img{
+    width: 320px;
+    height: 167px;
+    
+}
+
+.itembox:hover{
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.5s;
+}
+
+.textbox{
+    width: 288px;
+    height: 132px;
+    padding: 16px;
+}
+
+.textbox h4{
+    margin: 0px;
 }

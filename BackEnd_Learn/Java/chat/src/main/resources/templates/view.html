@@ -17,8 +17,9 @@
 </form>
 <textarea id="messageTextArea" rows="10" cols="50" readonly></textarea>
     <script type="text/javascript">
-        var websocket = new WebSocket("ws://localhost:8080/websocket")
-
+        const header = 'Bearer ' + localStorage.getItem('accessToken');
+        console.log(header);
+        var websocket = new WebSocket("ws://localhost:8000/websocket");
         var messageTextArea = document.getElementById("messageTextArea");
         websocket.onopen = function(message){
             messageTextArea.value += "Server connect\n";

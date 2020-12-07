@@ -28,12 +28,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .cors().and()
                 .sessionManagement().disable()
                 .formLogin().disable();
-//        http.authorizeRequests()
-//                .antMatchers(HttpMethod.POST, "/auth").permitAll()
-//                .antMatchers(HttpMethod.POST, "/register").permitAll()
-//                .antMatchers("/main").permitAll()
-//                .anyRequest().authenticated()
-//                .and().apply(new JwtConfigurer(jwtTokenProvider));
+        http.authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/auth").permitAll()
+                .antMatchers(HttpMethod.POST, "/register").permitAll()
+                .antMatchers("ws://localhost:8000/websocket").permitAll()
+                .antMatchers("/main").permitAll()
+                .antMatchers("/chat").permitAll()
+                .anyRequest().authenticated()
+                .and().apply(new JwtConfigurer(jwtTokenProvider));
     }
 
 

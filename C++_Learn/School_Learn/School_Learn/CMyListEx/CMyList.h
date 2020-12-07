@@ -12,13 +12,13 @@ public:
 	CMyList(int m_nLength);
 	virtual ~CMyList();
 	virtual void Insert(int num);
-	virtual void PrintData();
+	virtual void PrintData() const;
 	virtual int isOverlap(int num);
-	DNode* gethead();
+	DNode* gethead() const;
 	void sethead(DNode* head);
-	DNode* gettail();
+	DNode* gettail() const;
 	void settail(DNode* tail);
-	int getLength();
+	int getLength() const;
 	void setLength(int Length);
 	CMyList& operator+=(const CMyList&);
 	int Append(const CMyList);

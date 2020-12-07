@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -87,5 +88,12 @@ public class JwtTokenProvider {
     public Authentication authentication(String token){
         AuthDetails authDetails = authDetailsService.loadUserByUsername(getId(token));
         return new UsernamePasswordAuthenticationToken(authDetails, "", authDetails.getAuthorities());
+    }
+
+    public void checkToken(String token){
+        if(token!=null && validateToken(token) && !isRefreshToken(token)){
+            Authentication auth = authentication(token);
+            SecurityContextHolder.getContext().setAuthentication(auth);
+        }
     }
 }

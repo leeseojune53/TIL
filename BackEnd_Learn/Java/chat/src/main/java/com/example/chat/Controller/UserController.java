@@ -19,10 +19,11 @@ public class UserController {
         userService.register(request);
     }
 
-    @PostMapping("/auth")
-    public TokenResponse auth(@RequestBody UserRequest request){
+    @PostMapping("/auth")    public TokenResponse auth(@RequestBody UserRequest request){
         System.out.println(request.getUserId() + "\t" + request.getUserPw());
-        chatController.chat();
-        return userService.auth(request);
+        TokenResponse response = userService.auth(request);
+        System.out.println(response.getAccessToken());
+        chatController.chat(response.getAccessToken());
+        return response;
     }
 }

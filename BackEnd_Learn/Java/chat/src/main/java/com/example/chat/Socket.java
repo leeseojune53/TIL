@@ -1,6 +1,8 @@
 package com.example.chat;
 
+import com.example.chat.Security.Jwt.Auth.AuthDetails;
 import lombok.extern.java.Log;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
@@ -39,9 +41,10 @@ public class Socket {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
         String name = "anonymous";
         Matcher matcher = pattern.matcher(message);
-        if(matcher.find()){
-            name = matcher.group();
-        }
+//        if(matcher.find()){
+//            name = matcher.group();
+//        }
+        name = ((AuthDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
         final String msg = message.replaceAll(pattern.pattern(), "");
         final String username = name.replaceFirst("^\\{\\{", "").replaceFirst("\\}\\}$", "");
 

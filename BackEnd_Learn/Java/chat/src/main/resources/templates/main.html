@@ -9,16 +9,18 @@
     <input id="userId" type="text" placeholder="아이디">
     <input id="userPw" type="text" placeholder="비밀번호">
     <input  onclick="register()" value="회원가입" type="button">
-    <input type="button" onclick="login()" value="로그인">
+    <input type="button" onclick="login()" value="로그인" id="loginbtn">
 </form>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
+    const baseurl = 'http://localhost:8000'
+    const submit = document.getElementById('loginbtn');
 
     function register(){
         var userId = document.getElementById('userId').value;
         var userPw = document.getElementById('userPw').value;
         axios({
-            url: 'http://localhost:8000' + '/register',
+            url: baseurl + '/register',
             data:{
                 userId : userId,
                 userPw : userPw
@@ -43,7 +45,7 @@
         var buserId = document.getElementById('userId').value;
         var buserPw = document.getElementById('userPw').value;
         axios({
-            url: 'http://localhost:8000' + '/auth',
+            url: baseurl + '/auth',
             data:{
                 userId : buserId,
                 userPw : buserPw
@@ -56,6 +58,7 @@
                     localStorage.setItem("accessToken", res.data.accessToken);
                     localStorage.setItem("refreshToken", res.data.refreshToken);
                     console.log("로그인 성공!");
+                    //location.replace(baseurl+'/chat');
                 }
             }
         }).catch((error)=>{
@@ -64,6 +67,11 @@
             alert("로그인 실패.");
         })
     }
+
+    submit.addEventListener('click', function(){
+        const header = 'Bearer ' + localStorage.getItem('accessToken');
+        location.replace(baseurl + '/chat');
+    })
 
 </script>
 </body>
