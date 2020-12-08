@@ -11,7 +11,7 @@ public:
 	CMyList() { m_nLength = 0; };
 	CMyList(int m_nLength);
 	virtual ~CMyList();
-	virtual void Insert(int num);
+	void Insert(int num);
 	virtual void PrintData() const;
 	virtual int isOverlap(int num);
 	DNode* gethead() const;

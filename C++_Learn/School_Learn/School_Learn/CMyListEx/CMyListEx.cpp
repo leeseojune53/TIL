@@ -6,29 +6,29 @@ CMyListEx::CMyListEx(const CMyListEx& list) {
 	Append(list);
 }
 
-void CMyListEx::Insert(int num) { // tail부터 입력
-	CMyList::Insert(num);
-	//if (!isOverlap(num)) {
-	//	return;
-	//}
-	//setLength(getLength() + 1);
-	////pHead가 NULL일떄
-	//DNode* newnode = new DNode;
-	//newnode->data = num;
-	//newnode->front = gettail();
-	//newnode->back = nullptr;
-	//if (gethead() == NULL) {
-	//	sethead(newnode);
-	//	settail(newnode);
-	//	PrintData();
-	//	return;
-	//}
-	//gettail()->back = newnode;
-	//settail(gettail()->back);
-	//
-	//PrintData();
-
-}
+//void CMyListEx::Insert(int num) { // tail부터 입력
+//	CMyList::Insert(num);
+//	//if (!isOverlap(num)) {
+//	//	return;
+//	//}
+//	//setLength(getLength() + 1);
+//	////pHead가 NULL일떄
+//	//DNode* newnode = new DNode;
+//	//newnode->data = num;
+//	//newnode->front = gettail();
+//	//newnode->back = nullptr;
+//	//if (gethead() == NULL) {
+//	//	sethead(newnode);
+//	//	settail(newnode);
+//	//	PrintData();
+//	//	return;
+//	//}
+//	//gettail()->back = newnode;
+//	//settail(gettail()->back);
+//	//
+//	//PrintData();
+//
+//}
 
 
 
