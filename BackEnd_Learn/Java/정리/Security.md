@@ -2,7 +2,7 @@
 
 HMAC 인증이란?
 
-![image-20201208201316339](C:\Users\sung0\AppData\Roaming\Typora\typora-user-images\image-20201208201316339.png)
+![image-20201208201316339](.\image\image-20201208201316339.png)
 
 ## FilterChain(필터체인)이란?
 
@@ -18,7 +18,7 @@ FilterChain은 이런 Filter들이 모여서 만들어짐.
 
 ## CSRF(Cross-site request forgery)
 
-![image-20201208201338366](C:\Users\sung0\AppData\Roaming\Typora\typora-user-images\image-20201208201338366.png)
+![image-20201208201338366](.\image\image-20201208201338366.png)
 
 ## Authentication(인증)
 
