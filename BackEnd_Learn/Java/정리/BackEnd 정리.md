@@ -109,7 +109,7 @@ Aspect-Oriented Programming
 
 흩어진 Aspect들을 모아서 모듈화 하는 기법임.
 
-![image-20201208201643172](.\image\image-20201208201643172.png)
+![image-20201208201643172](./image/image-20201208201643172.png)
 
 색칠 되어있는 부분을 Concern이라 한다.
 
@@ -119,7 +119,7 @@ Aspect-Oriented Programming
 
 흩어진 기능들을 모을 때 사용하는것이 Aspect이다. 각각 Concern 별로 Aspect를 만들어 주고, 어느 클래스에서 사용되는지 적어주는 방식.
 
-![image-20201208201654668](.\image\image-20201208201654668.png)
+![image-20201208201654668](./image/image-20201208201654668.png)
 
 용어 정리
 
@@ -145,7 +145,7 @@ Join Point : 끼어들 지점.
 
 ## Filter, Interceptor, AOP 차이
 
-![image-20201208201707870](.\image\image-20201208201707870.png)
+![image-20201208201707870](./image/image-20201208201707870.png)
 
 Interceptor하고 Filter은 Servlet단에서 실행됨.
 
