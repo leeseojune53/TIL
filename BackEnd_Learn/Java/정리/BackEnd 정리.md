@@ -35,7 +35,7 @@ ORM에서 Relational은 개발자가 사용하는 관계형데이터베이스를
 
 # JPA(Java Persistence API)
 
-![image-20201208201629503](C:\Users\sung0\AppData\Roaming\Typora\typora-user-images\image-20201208201629503.png)
+![image-20201208201629503](C:\Programming\TIL\BackEnd_Learn\Java\정리\image-20201208201629503.png)
 
 자바 ORM기술에 대한 표준 명세로, JAVA에서 제공하는 API이다.(스프링 X)
 
