@@ -146,3 +146,11 @@ void CMyList::PrintData() const{ // head print
 	cout << "데이터 개수 : " << getLength() << "개\n";
 
 }
+
+void CMyList::showmenu(){
+	cout << "----------------------\n";
+	cout << "CMyList 메뉴\n";
+	cout << "1 삽입\n2 출력\n0 종료\n";
+	cout << "----------------------\n";
+	cout << "메뉴를 고르세요 : ";
+}

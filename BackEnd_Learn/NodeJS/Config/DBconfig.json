@@ -1,0 +1,7 @@
+{
+    "host" : "localhost",
+    "user" : "host",
+    "password" : "lee@1234",
+    "database" : "nodejs",
+    "asdf" : "adsf"
+}

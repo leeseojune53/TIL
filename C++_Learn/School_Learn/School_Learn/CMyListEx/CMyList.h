@@ -22,6 +22,7 @@ public:
 	void setLength(int Length);
 	CMyList& operator+=(const CMyList&);
 	int Append(const CMyList);
+	virtual void showmenu();
 private:
 	DNode* headNode = nullptr;
 	DNode* tailNode = nullptr;

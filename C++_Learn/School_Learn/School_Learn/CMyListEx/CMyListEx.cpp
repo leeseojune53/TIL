@@ -6,6 +6,13 @@ CMyListEx::CMyListEx(const CMyListEx& list) {
 	Append(list);
 }
 
+void CMyListEx::showmenu() {
+	cout << "\n------------------------------------\n";
+	cout << "CMyList 메뉴\n1 : 삽입 Head\n2 : 삽입 Tail\n3 : 삭제 Head\n4 : 삭제 Tail\n5 : 출력 Head -> Tail\n6 : 출력 Tail -> Head\n0 : 종료\n";
+	cout << "------------------------------------\n";
+	cout << "메뉴를 고르세요(숫자 입력) : ";
+}
+
 //void CMyListEx::Insert(int num) { // tail부터 입력
 //	CMyList::Insert(num);
 //	//if (!isOverlap(num)) {

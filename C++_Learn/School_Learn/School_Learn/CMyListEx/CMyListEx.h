@@ -11,5 +11,6 @@ public:
 	void DeleteHead();
 	void DeleteTail();
 	void PrintDataTail() const;
+	virtual void showmenu();
 private:
 };

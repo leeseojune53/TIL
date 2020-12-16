@@ -15,10 +15,11 @@ int	main()
 	int insert;
 	
 	while (1) {
-		cout << "\n------------------------------------\n";
+		/*cout << "\n------------------------------------\n";
 		cout << "CMyList 메뉴\n1 : 삽입 Head\n2 : 삽입 Tail\n3 : 삭제 Head\n4 : 삭제 Tail\n5 : 출력 Head -> Tail\n6 : 출력 Tail -> Head\n0 : 종료\n";
 		cout << "------------------------------------\n";
-		cout << "메뉴를 고르세요(숫자 입력) : ";
+		cout << "메뉴를 고르세요(숫자 입력) : ";*/
+		list->showmenu();
 		cin >> n;
 		switch (n)
 		{
