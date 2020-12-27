@@ -6,11 +6,33 @@ using	namespace	std;
 int	main()
 {
 	
-	CMyListEx * buflist = new CMyListEx(0);
+	/*CMyListEx * buflist = new CMyListEx(0);
 	buflist->Insert(1);
 	buflist->Insert(2);
 	buflist->Insert(3);
-	CMyListEx* list = new CMyListEx(*buflist);
+	CMyListEx* list = new CMyListEx(*buflist);*/
+	CMyListEx* buflist = new CMyListEx(0);
+
+	buflist->Insert(1);
+
+	buflist->Insert(2);
+
+	buflist->Insert(3);
+
+	CMyListEx* list = new CMyListEx(0);
+
+	list->Insert(4);
+
+	list->Insert(5);
+
+	list->Insert(6);
+
+
+
+	*list += *buflist;
+
+	list->PrintData();
+
 	char n;
 	int insert;
 	

@@ -109,7 +109,7 @@ CMyList& CMyList::operator+=(const CMyList& rhs) {
 
 int CMyList::Append(const CMyList list) {
 	cout << "length!!" << m_nLength;
-	m_nLength = list.m_nLength;
+	//m_nLength = list.m_nLength;
 	DNode* buf;
 	buf = list.headNode;
 	while (1) {
