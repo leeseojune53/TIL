@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailVerify</title>
+</head>
+<body>
+<form th:action="@{/user/verify}" method="post">
+    <input name="email" placeholder="이메일 주소"> <br>
+    <button>인증코드 발송</button>
+</form>
+<form th:action="@{/user/verify/code}" method="post">
+    <input name="email" placeholder="이메일 주소"> <br>
+    <input name="authCode" placeholder="인증코드"> <br>
+    <button>인증</button>
+</form>
+<br>
+<form th:action="@{/user}" method="post">
+    <input name="email" placeholder="이메일 주소(id)"> <br>
+    <input type="password" name="password" placeholder="비밀번호"> <br>
+    <button>회원가입</button>
+</form>
+</body>
+</html>

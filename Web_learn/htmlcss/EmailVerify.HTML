@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailVerify</title>
+</head>
+<body>
+    <form th:action="@{/user/verify}" method="POST">
+        <input name="address" placeholder="이메일 주소"> <br>
+        <button>인증코드 발송</button>
+    </form>
+    <form th:action="@{/user/verify}" method="PUT">
+        <input name="address" placeholder="이메일 주소"> <br>
+        <input name="authCode" placeholder="인증코드"> <br>
+        <button>인증</button>
+    </form>
+    <br>
+    <form th:action="@{/user}" method="POST">
+        <input name="email" placeholder="이메일 주소(id)"> <br>
+        <input type="password" name="password" placeholder="비밀번호"> <br>
+    </form>
+</body>
+</html>
