@@ -5,26 +5,30 @@ import com.example.codeverify.Payload.EmailRequest;
 import com.example.codeverify.Payload.request.Signup;
 import com.example.codeverify.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
 
     @PostMapping("/verify")
-    public void randomCode(EmailRequest request){
+    public String randomCode(EmailRequest request){
         userService.sendAuthCode(request);
+        return "main";
     }
 
     @PostMapping("/verify/code")
-    public void verify(AuthCode authCode){
+    public String verify(AuthCode authCode){
         userService.authCode(authCode);
+        return "main";
     }
 
     @PostMapping
-    public void signup(Signup request){
+    public String signup(Signup request){
         userService.signup(request);
+        return "main";
     }
 }

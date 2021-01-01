@@ -12,6 +12,7 @@ import com.example.codeverify.verification.EmailVerificationRepository;
 import com.example.codeverify.verification.EmailVerificationStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -22,6 +23,7 @@ import java.util.Random;
 public class UserServiceImpl implements UserService{
     private final EmailVerificationRepository emailVerificationRepository;
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
     private final MailService mailService;
 
     public String randomCode() {
@@ -70,8 +72,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public void signup(Signup signup) {
         String email = signup.getEmail();
-        String password = signup.getPassword();
-
+        String password = passwordEncoder.encode(signup.getPassword());
         emailVerificationRepository.findById(email)
                 .filter(EmailVerification::isVerified)
                 .orElseThrow(ExpiredAuthCodeException::new);
