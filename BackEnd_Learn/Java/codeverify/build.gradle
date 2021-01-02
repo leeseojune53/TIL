@@ -36,6 +36,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.3.5.RELEASE'
+    //compile group: 'com.amazonaws', name: 'aws-java-sdk-ses', version: '1.11.930'
+    implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.930')
+    implementation 'com.amazonaws:aws-java-sdk-ses'
+
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+
 
 }
 

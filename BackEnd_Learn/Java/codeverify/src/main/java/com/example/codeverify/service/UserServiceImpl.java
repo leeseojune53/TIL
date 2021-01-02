@@ -7,6 +7,7 @@ import com.example.codeverify.entity.user.User;
 import com.example.codeverify.entity.user.UserRepository;
 import com.example.codeverify.exception.ExpiredAuthCodeException;
 import com.example.codeverify.exception.UserAlreadyExistException;
+import com.example.codeverify.mail.MailService;
 import com.example.codeverify.verification.EmailVerification;
 import com.example.codeverify.verification.EmailVerificationRepository;
 import com.example.codeverify.verification.EmailVerificationStatus;
@@ -45,7 +46,7 @@ public class UserServiceImpl implements UserService{
                 .ifPresent(user ->{
                     throw new UserAlreadyExistException();
         });
-        mailService.mailSend(request.getEmail(), code);
+        mailService.sendMail(request.getEmail(), code);
         emailVerificationRepository.save(
                 EmailVerification.builder()
                         .email(request.getEmail())
