@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.0'
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
 }
@@ -36,11 +36,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.3.5.RELEASE'
-    //compile group: 'com.amazonaws', name: 'aws-java-sdk-ses', version: '1.11.930'
-    implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.930')
-    implementation 'com.amazonaws:aws-java-sdk-ses'
+    //compile group: 'com.amazonaws', name: 'aws-java-sdk-ses', version: '1.11.847'
+    compile group: 'software.amazon.awssdk', name: 'ses', version: '2.15.57'
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-core', version: '1.11.930'
 
-    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
 
 
 }

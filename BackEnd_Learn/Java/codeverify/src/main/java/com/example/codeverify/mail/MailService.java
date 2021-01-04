@@ -1,18 +1,17 @@
 package com.example.codeverify.mail;
 
-import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceAsync;
-import com.amazonaws.services.simpleemail.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.context.Context;
 
 @Service
 @RequiredArgsConstructor
 public class MailService {
     private final JavaMailSender mailSender;
     private static final String FROM_ADDRESS = "wasabi53535@gmail.com";
-    private final AmazonSimpleEmailServiceAsync amazonSimpleEmailServiceAsync;
+    private final AwsSesUtils awsSesUtils;
 
     public void mailSend(String mail, String code) {
         SimpleMailMessage message = new SimpleMailMessage();
@@ -30,18 +29,23 @@ public class MailService {
         final String SUBJECT = "CodeVerify 인증코드 : " + code;
         final String HTMLBODY = "<h1>귀하의 인증코드는 " + code + " 입니다.</h1>";
 
-        SendEmailRequest request = new SendEmailRequest()
-                .withDestination(
-                        new Destination().withToAddresses(TO)
-                )
-                .withMessage(new Message()
-                .withBody(new Body()
-                .withHtml(new Content()
-                .withCharset("UTF-8").withData(HTMLBODY)))
-                .withSubject(new Content()
-                .withCharset("UTF-8").withData(SUBJECT)))
-                .withSource(FROM);
+//        SendEmailRequest request = new SendEmailRequest()
+//                .withDestination(
+//                        new Destination().withToAddresses(TO)
+//                )
+//                .withMessage(new Message()
+//                .withBody(new Body()
+//                .withHtml(new Content()
+//                .withCharset("UTF-8").withData(HTMLBODY)))
+//                .withSubject(new Content()
+//                .withCharset("UTF-8").withData(SUBJECT)))
+//                .withSource(FROM);
+//
+//        amazonSimpleEmailServiceAsync.sendEmailAsync(request);
 
-        amazonSimpleEmailServiceAsync.sendEmailAsync(request);
+        Context context = new Context();
+        context.setVariable("test", "test1111");
+
+        awsSesUtils.singleEmailRequest(TO, SUBJECT, "test", context);
     }
 }
