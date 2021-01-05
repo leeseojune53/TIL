@@ -42,7 +42,7 @@ public class Sender {
 
             // Send the email.
             client.sendEmail(senderDto.toSendRequestDto());
-            log.info("Email sent!");
+            log.info("Email send! : " + senderDto.getTo().get(0));
 
         } catch (Exception ex) {
             log.error("The email was not sent.");
