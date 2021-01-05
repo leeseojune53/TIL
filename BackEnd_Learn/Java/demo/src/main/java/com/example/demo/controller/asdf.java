@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.Payload.User;
+import com.example.demo.Test;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +12,10 @@ import java.util.Arrays;
 
 @RequestMapping(value = "/member")
 @RestController
+@RequiredArgsConstructor
 public class asdf {
+    private final Test test;
+
     @GetMapping("/user")
     public User userTest() {
         return new User("leeseojune", "1234!@#$");
@@ -26,7 +31,7 @@ public class asdf {
     }
 
     @GetMapping("/a")
-    public String test() {
-        return "hello";
+    public void test() {
+        test.asdf();
     }
 }

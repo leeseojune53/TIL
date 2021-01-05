@@ -7,15 +7,20 @@ import com.example.codeverify.entity.user.User;
 import com.example.codeverify.entity.user.UserRepository;
 import com.example.codeverify.exception.ExpiredAuthCodeException;
 import com.example.codeverify.exception.UserAlreadyExistException;
-import com.example.codeverify.mail.MailService;
+//import com.example.codeverify.mail.MailService;
+import com.example.codeverify.mail.Sender;
+import com.example.codeverify.mail.SenderDto;
 import com.example.codeverify.verification.EmailVerification;
 import com.example.codeverify.verification.EmailVerificationRepository;
 import com.example.codeverify.verification.EmailVerificationStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -25,7 +30,8 @@ public class UserServiceImpl implements UserService{
     private final EmailVerificationRepository emailVerificationRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final MailService mailService;
+    private final Sender sender;
+
 
     public String randomCode() {
         StringBuilder result = new StringBuilder();
@@ -42,11 +48,21 @@ public class UserServiceImpl implements UserService{
     @Override
     public void sendAuthCode(EmailRequest request) { // 코드 발송
         String code = randomCode();
+
         userRepository.findByEmail(request.getEmail())
                 .ifPresent(user ->{
                     throw new UserAlreadyExistException();
         });
-        mailService.sendMail(request.getEmail(), code);
+
+        List list = new ArrayList();
+        list.add(request.getEmail());
+        SenderDto dto = SenderDto.builder()
+                .from("wasabi53535@gmail.com")
+                .to(list)
+                .subject("codeverify 인증코드 : " + code)
+                .content(code).build();
+        sender.send(dto);
+
         emailVerificationRepository.save(
                 EmailVerification.builder()
                         .email(request.getEmail())
@@ -68,6 +84,7 @@ public class UserServiceImpl implements UserService{
 
         emailVerification.verify();
         emailVerificationRepository.save(emailVerification);
+        log.info("auth Success User_mail : " + authCode.getEmail());
     }
 
     @Override
@@ -84,5 +101,6 @@ public class UserServiceImpl implements UserService{
                 .password(password)
                 .build()
         );
+        log.info("Signup Success User_amil : " + email);
     }
 }
