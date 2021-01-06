@@ -22,6 +22,9 @@ public class User {
     @Column(length = 100, nullable = false)
     private String password;
 
+    @Column(length = 100, nullable = false)
+    private String nickname;
+
     @ElementCollection
     @CollectionTable(name = "friends")
     private List<Integer> friends;
