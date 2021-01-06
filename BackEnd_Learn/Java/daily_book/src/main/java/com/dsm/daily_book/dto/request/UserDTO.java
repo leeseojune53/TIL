@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
-public class User {
+public class UserDTO {
 
     @Getter
     @AllArgsConstructor
@@ -13,6 +13,7 @@ public class User {
     public static class register{
         private String email;
         private String password;
+        private String nickname;
     }
 
     @Getter
@@ -25,5 +26,20 @@ public class User {
         public UsernamePasswordAuthenticationToken getAuthToken(int userCode){
             return new UsernamePasswordAuthenticationToken(userCode, password);
         }
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class mail{
+        private String email;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class authCode{
+        private String email;
+        private String code;
     }
 }
