@@ -11,8 +11,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.Date;
-import org.springframework.security.core.Authentication;
 
 @RequiredArgsConstructor
 public class JwtTokenFilter extends GenericFilterBean {
@@ -26,7 +24,6 @@ public class JwtTokenFilter extends GenericFilterBean {
             Authentication auth = jwtTokenProvider.authentication(token);
             SecurityContextHolder.getContext().setAuthentication(auth);
         }
-        System.out.println(SecurityContextHolder.getContext().getAuthentication());
         chain.doFilter(request,response);
     }
 }

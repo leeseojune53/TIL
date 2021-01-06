@@ -13,6 +13,6 @@ public class DiaryDTO {
     public static class write{
         private String subject;
         private String content;
-        private Mood mood;
+        private int mood;
     }
 }

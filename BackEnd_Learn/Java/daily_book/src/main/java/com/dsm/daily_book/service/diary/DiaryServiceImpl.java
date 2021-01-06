@@ -3,6 +3,8 @@ package com.dsm.daily_book.service.diary;
 import com.dsm.daily_book.dto.request.DiaryDTO;
 import com.dsm.daily_book.entity.diary.Diary;
 import com.dsm.daily_book.entity.diary.DiaryRepository;
+import com.dsm.daily_book.entity.diary.Mood;
+import com.dsm.daily_book.entity.user.User;
 import com.dsm.daily_book.entity.user.UserRepository;
 import com.dsm.daily_book.exception.user.UserNotFoundException;
 import com.dsm.daily_book.security.jwt.AuthenticationFacade;
@@ -20,14 +22,16 @@ public class DiaryServiceImpl implements DiaryService{
 
     @Override
     public void write(DiaryDTO.write request) {
+        String email = authenticationFacade.getUser().getEmail();
+        System.out.println(request.getSubject());
         try{
-            userRepository.findByEmail(authenticationFacade.getUser().getEmail())
+            userRepository.findByEmail(email)
                     .map(user ->
                         diaryRepository.save(
                                 Diary.builder()
                                         .subject(request.getSubject())
                                         .content(request.getContent())
-                                        .mood(request.getMood())
+                                        .mood(Mood.value(request.getMood()))
                                         .writer(user)
                                         .build()
                         )
