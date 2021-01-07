@@ -42,4 +42,11 @@ public class UserDTO {
         private String email;
         private String code;
     }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class changeNickname{
+        private String nickname;
+    }
 }

@@ -58,6 +58,8 @@ public class DiaryServiceImpl implements DiaryService{
         for(int j=0;j<i;j++){
             date.add(diaries.get(j).getWriteDate().getDate());
         }
-        return new DiaryDTO.date(date);
+        HashSet<Integer> buf = new HashSet<Integer>(date);
+        List<Integer> result = new ArrayList<Integer>(buf);
+        return new DiaryDTO.date(result);
     }
 }
