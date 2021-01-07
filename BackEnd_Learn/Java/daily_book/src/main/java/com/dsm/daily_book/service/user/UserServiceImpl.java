@@ -1,7 +1,7 @@
 package com.dsm.daily_book.service.user;
 
-import com.dsm.daily_book.dto.request.UserDTO;
-import com.dsm.daily_book.dto.response.TokenDTO;
+import com.dsm.daily_book.dto.UserDTO;
+import com.dsm.daily_book.dto.TokenDTO;
 import com.dsm.daily_book.entity.email.EmailVerification;
 import com.dsm.daily_book.entity.email.EmailVerificationRepository;
 import com.dsm.daily_book.entity.email.EmailVerificationStatus;
@@ -94,6 +94,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public TokenDTO.token auth(UserDTO.auth request) { // 로그인
+        log.info("auth email : " + request.getEmail());
         return userRepository.findByEmail(request.getEmail())
                 .filter(user -> passwordEncoder.matches(request.getPassword(), user.getPassword()))
                 .map(User::getUser_code)

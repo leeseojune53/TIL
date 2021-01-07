@@ -1,6 +1,7 @@
 package com.dsm.daily_book.entity.user;
 
 import com.dsm.daily_book.entity.diary.Diary;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -37,6 +38,7 @@ public class User {
     @CollectionTable(name = "friends_request_receive")
     private List<Integer> friends_request_receive;
 
-    @OneToMany(mappedBy = "writer")
+    @OneToMany(mappedBy = "writer", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Diary> diaries;
 }

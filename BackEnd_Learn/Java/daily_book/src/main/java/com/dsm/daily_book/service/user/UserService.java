@@ -1,7 +1,7 @@
 package com.dsm.daily_book.service.user;
 
-import com.dsm.daily_book.dto.request.UserDTO;
-import com.dsm.daily_book.dto.response.TokenDTO;
+import com.dsm.daily_book.dto.UserDTO;
+import com.dsm.daily_book.dto.TokenDTO;
 
 public interface UserService {
     void sendAuthCode(UserDTO.mail request);

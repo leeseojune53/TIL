@@ -1,4 +1,4 @@
-package com.dsm.daily_book.dto.request;
+package com.dsm.daily_book.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

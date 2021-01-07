@@ -1,7 +1,7 @@
 package com.dsm.daily_book.controller;
 
-import com.dsm.daily_book.dto.request.UserDTO;
-import com.dsm.daily_book.dto.response.TokenDTO;
+import com.dsm.daily_book.dto.UserDTO;
+import com.dsm.daily_book.dto.TokenDTO;
 import com.dsm.daily_book.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
