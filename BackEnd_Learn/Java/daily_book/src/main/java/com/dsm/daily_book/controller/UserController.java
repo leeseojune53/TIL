@@ -4,10 +4,7 @@ import com.dsm.daily_book.dto.UserDTO;
 import com.dsm.daily_book.dto.TokenDTO;
 import com.dsm.daily_book.service.user.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,5 +29,10 @@ public class UserController {
     @PostMapping("/auth")
     public TokenDTO.token auth(@RequestBody UserDTO.auth request){
         return userService.auth(request);
+    }
+
+    @PatchMapping("/nickname")
+    public void nickname(@RequestBody UserDTO.changeNickname request){
+        userService.changeNickname(request);
     }
 }

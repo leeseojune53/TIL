@@ -8,5 +8,5 @@ public interface UserService {
     void verifyAuthCode(UserDTO.authCode request);
     void register(UserDTO.register request);
     TokenDTO.token auth(UserDTO.auth request);
-    void nickname()
+    void changeNickname(UserDTO.changeNickname request);
 }

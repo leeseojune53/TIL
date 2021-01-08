@@ -15,6 +15,7 @@ import com.dsm.daily_book.exception.user.ExpiredAuthCodeException;
 import com.dsm.daily_book.exception.email.InvalidAuthEmailException;
 import com.dsm.daily_book.exception.user.UserAlreadyExistException;
 import com.dsm.daily_book.exception.user.UserNotFoundException;
+import com.dsm.daily_book.security.jwt.AuthenticationFacade;
 import com.dsm.daily_book.security.jwt.JwtTokenProvider;
 import com.dsm.daily_book.service.mail.EmailService;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,7 @@ public class UserServiceImpl implements UserService{
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider jwtProvider;
+    private final AuthenticationFacade authenticationFacade;
 
     @Value("${jwt.exp.refresh}")
     private Long refreshExp;
@@ -118,7 +120,15 @@ public class UserServiceImpl implements UserService{
                 .orElseThrow(UserNotFoundException::new);
     }
 
-    public String randomCode() {
+    @Override
+    public void changeNickname(UserDTO.changeNickname request) {
+        User user = getUser();
+        user.setNickname(request.getNickname());
+        userRepository.save(user);
+        log.info("nickname change email : " + user.getEmail());
+    }
+
+    private String randomCode() {
         StringBuilder result = new StringBuilder();
         String[] codes = "QWERTYUIOPASDFGHJKLZXCVBNM0123456789".split("");
 
@@ -128,5 +138,9 @@ public class UserServiceImpl implements UserService{
 
         log.info("randomCode: " + result.toString());
         return result.toString();
+    }
+
+    private User getUser(){
+        return authenticationFacade.getUser();
     }
 }
