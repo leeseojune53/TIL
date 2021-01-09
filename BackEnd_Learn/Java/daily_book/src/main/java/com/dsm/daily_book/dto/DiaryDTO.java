@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 public class DiaryDTO {
@@ -32,6 +33,16 @@ public class DiaryDTO {
     @NoArgsConstructor
     public static class date{
         private List<Integer> date;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class diary{
+        private String subject;
+        private String content;
+        private int mood;
+        private Date date;
     }
 
 }
