@@ -45,4 +45,12 @@ public class DiaryDTO {
         private Date date;
     }
 
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class loadDate{
+        private int month;
+        private int date;
+    }
+
 }
