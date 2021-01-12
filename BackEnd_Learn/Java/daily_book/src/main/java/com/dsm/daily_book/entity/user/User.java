@@ -1,11 +1,16 @@
 package com.dsm.daily_book.entity.user;
 
+import com.dsm.daily_book.entity.Friend.Friend;
+import com.dsm.daily_book.entity.Friend.FriendReceive;
+import com.dsm.daily_book.entity.Friend.FriendSend;
 import com.dsm.daily_book.entity.diary.Diary;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity(name = "user")
 @AllArgsConstructor
@@ -26,17 +31,17 @@ public class User {
     @Column(length = 100, nullable = false)
     private String nickname;
 
-    @ElementCollection
-    @CollectionTable(name = "friends")
-    private List<Integer> friends;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private Set<Friend> friends = new HashSet<>();
 
-    @ElementCollection
-    @CollectionTable(name = "friends_request_send")
-    private List<Integer> friends_request_send;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private Set<FriendSend> friends_request_send = new HashSet<>();
 
-    @ElementCollection
-    @CollectionTable(name = "friends_request_receive")
-    private List<Integer> friends_request_receive;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private Set<FriendReceive> friends_request_receive = new HashSet<>();
 
     @OneToMany(mappedBy = "writer", fetch = FetchType.EAGER)
     @JsonManagedReference

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,9 +23,9 @@ public class DiaryController {
         return diaryService.writeDay();
     }
 
-    @GetMapping("/diary/{date}")
-    public DiaryDTO.diary load(@PathVariable("date") Date date){
-        return diaryService
+    @GetMapping("/diary/{month}/{date}")
+    public List<DiaryDTO.diary> load(@PathVariable("month") int month, @PathVariable("date") int date){
+        return diaryService.findDay(new DiaryDTO.loadDate(month, date));
     }
 
     @GetMapping("/day")

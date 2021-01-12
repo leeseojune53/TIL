@@ -73,10 +73,13 @@ public class DiaryServiceImpl implements DiaryService{
 
         for(i=0;i<diaryList.size();i++){
             Date date = diaryList.get(i).getWriteDate();
-            if(date.getDate() == request.getDate() && date.getMonth() == request.getMonth()){
+            if(date.getDate() == request.getDate() && date.getMonth()+1 == request.getMonth()){
+
                 Diary diary = diaryList.get(i);
-                requestList.add(diary.getSubject(), diary.getContent(), diary.getMood(), diary.getWriteDate());
+                requestList.add(new DiaryDTO.diary(diary.getSubject(), diary.getContent(), Mood.reverseValue(diary.getMood()), diary.getWriteDate()));
             }
         }
+        log.info("findDay email : " + user.getEmail());
+        return requestList;
     }
 }

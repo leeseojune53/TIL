@@ -27,4 +27,18 @@ public enum Mood {
                 return HAPPY;
         }
     }
+
+    public static int reverseValue(Mood value){
+        if(value.equals(HAPPY))
+            return 1;
+        else if(value.equals(FINE))
+            return 2;
+        else if(value.equals(BAD))
+            return 3;
+        else if(value.equals(SAD))
+            return 4;
+        else if(value.equals(ANGRY))
+            return 5;
+        else return 1;
+    }
 }
