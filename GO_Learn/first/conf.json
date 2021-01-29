@@ -1,7 +1,0 @@
-{
-  "USER" : "root",
-  "PASS" : "lee@1234",
-  "HOST" : "localhost",
-  "PORT" : "3306",
-  "DBNAME" : "go"
-}
