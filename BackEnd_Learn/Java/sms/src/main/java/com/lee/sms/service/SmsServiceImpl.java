@@ -9,6 +9,7 @@ import com.lee.sms.entity.user.User;
 import com.lee.sms.entity.user.UserRepository;
 import com.lee.sms.exception.ExpiredAuthCode;
 import com.lee.sms.exception.NumberNotExist;
+import com.lee.sms.exception.UserSave;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.nurigo.java_sdk.api.Message;
@@ -33,7 +34,7 @@ public class SmsServiceImpl implements SmsService{
     @Value("${sms.apikey}")
     private String API_KEY;
 
-    @Value("${sms.apisec}")
+    @Value("${sms.secret}")
     private String API_SEC;
 
     @Value("${sms.num}")
@@ -44,7 +45,7 @@ public class SmsServiceImpl implements SmsService{
 
         Message coolSms = new Message(API_KEY, API_SEC);
 
-        HashMap<String, String> params = new HashMap<String, String>();
+        HashMap<String, String> params = new HashMap<>();
         params.put("to", phone);
         params.put("from", NUM);
         params.put("type", "SMS");
@@ -59,7 +60,7 @@ public class SmsServiceImpl implements SmsService{
                     .status(VerifyStatus.UNVERIFIED)
                     .build()
                     );
-            JSONObject obj = (JSONObject) coolSms.send(params);
+            JSONObject obj = coolSms.send(params);
             log.info(obj.toString());
         }catch (CoolsmsException e){
             log.error(e.getMessage());
@@ -88,13 +89,18 @@ public class SmsServiceImpl implements SmsService{
                 .filter(Verify::isVerified)
                 .orElseThrow(ExpiredAuthCode::new);
 
-        userRepository.save(
-                User.builder()
-                .name(request.getName())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .phone(request.getPhone())
-                .build()
-        );
+        try{
+            userRepository.save(
+                    User.builder()
+                            .name(request.getName())
+                            .password(passwordEncoder.encode(request.getPassword()))
+                            .phone(request.getPhone())
+                            .build()
+            );
+        }catch (Exception e){
+            throw new UserSave();
+        }
+
         log.info("register Success : " + request.getName());
     }
 }
