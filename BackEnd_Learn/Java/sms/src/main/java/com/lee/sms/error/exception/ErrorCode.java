@@ -11,6 +11,7 @@ public enum ErrorCode {
 
     NUMBER_NOT_EXIST(404, "verify number not exist."),
     EXPIRED_AUTH_CODE(400, "verify was expired."),
+    USER_SAVE(500, "User Save Error."),
     NUMBER_NOT_MATCH(400, "verify number not match");
 
     private final int status;
