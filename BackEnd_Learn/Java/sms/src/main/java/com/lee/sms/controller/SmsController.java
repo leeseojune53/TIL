@@ -22,13 +22,13 @@ public class SmsController {
     @PostMapping("/sms")
     public void send(@RequestBody PhoneDTO.PhoneNumber request){
         Random random = new Random();
-        String numStr = "";
+        StringBuilder numStr = new StringBuilder();
 
         for(int i=0;i<4;i++)
-            numStr += Integer.toString(random.nextInt(10));
+            numStr.append(random.nextInt(10));
 
         log.info("Phone : " + request.getPhone() + ", num : " + numStr);
-        smsService.send(request.getPhone(), numStr);
+        smsService.send(request.getPhone(), numStr.toString());
 
     }
 
