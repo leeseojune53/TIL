@@ -18,7 +18,8 @@ class AuthDetails(val user: Optional<User>): UserDetails {
     }
 
     override fun getUsername(): String {
-        return user.name
+        return user
+                .map { t: User -> t.name }.get()
     }
 
     override fun isCredentialsNonExpired(): Boolean {
@@ -26,7 +27,8 @@ class AuthDetails(val user: Optional<User>): UserDetails {
     }
 
     override fun getPassword(): String {
-        return ""
+        return user
+                .map { t: User -> t.password }.get()
     }
 
     override fun isAccountNonExpired(): Boolean {
