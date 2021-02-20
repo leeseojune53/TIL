@@ -16,7 +16,8 @@ repositories {
 }
 
 dependencies {
-    implementation("io.jsonwebtoken:jjwt")
+    compile("io.jsonwebtoken:jjwt:0.9.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("mysql:mysql-connector-java")
     implementation("org.springframework.boot:spring-boot-starter-security")
