@@ -6,8 +6,8 @@ import org.springframework.data.redis.core.TimeToLive
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 
-@RedisHash("")
-class User(
+@RedisHash("token")
+class Token(
         @Id
         val token: String? = null,
         @TimeToLive
