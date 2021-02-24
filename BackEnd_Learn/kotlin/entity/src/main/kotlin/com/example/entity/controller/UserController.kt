@@ -15,8 +15,8 @@ class UserController (val userService: UserService) {
     }
 
     @PostMapping("/user/auth")
-    fun userLogin(@RequestBody request: UserDTO.UserInfo){
-        userService.login(request)
+    fun userLogin(@RequestBody request: UserDTO.UserInfo) : UserDTO.Token{
+        return userService.login(request)
     }
 
 }
