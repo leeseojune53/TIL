@@ -28,6 +28,9 @@ class JwtTokenProvider(private val authDetailsService: AuthDetailsService) {
     @Value("\${jwt.exp.access}")
     var accessExp: Long = 0L
 
+    @Value("\${jwt.exp.refresh}")
+    var refreshExp: Long = 0L
+
     fun generateAccessToken(id: Int): String{
         return Jwts.builder()
                 .signWith(SignatureAlgorithm.HS256, getSigningKey())
@@ -36,6 +39,17 @@ class JwtTokenProvider(private val authDetailsService: AuthDetailsService) {
                 .claim("type", "access")
                 .setIssuedAt(Date())
                 .setExpiration(Date(System.currentTimeMillis() + accessExp * 1000))
+                .compact()
+    }
+
+    fun generateRefreshToken(id: Int): String{
+        return Jwts.builder()
+                .signWith(SignatureAlgorithm.HS256, getSigningKey())
+                .setHeaderParam("typ", "JWT")
+                .setSubject(id.toString())
+                .claim("type", "refresh")
+                .setIssuedAt(Date())
+                .setExpiration(Date(System.currentTimeMillis() + refreshExp * 1000))
                 .compact()
     }
 
