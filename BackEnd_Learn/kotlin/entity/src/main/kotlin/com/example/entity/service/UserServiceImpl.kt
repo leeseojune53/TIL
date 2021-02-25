@@ -1,7 +1,6 @@
 package com.example.entity.service
 
 import com.example.entity.dto.UserDTO
-import com.example.entity.entity.token.Token
 import com.example.entity.entity.token.TokenRepository
 import com.example.entity.entity.user.User
 import com.example.entity.entity.user.UserRepository
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class UserServiceImpl (val userRepository: UserRepository,
-                       //val tokenRepository: TokenRepository,
+                       val tokenRepository: TokenRepository,
                        val passwordEncoder: PasswordEncoder,
                        val jwtTokenProvider: JwtTokenProvider,
                        val authenticationManager: AuthenticationManager) : UserService {
