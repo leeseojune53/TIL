@@ -1,11 +1,16 @@
+import { useState } from "react";
 
-const Test = ({data}:{data:string}) =>{
-    return (
-        <div>
-            <h1>First React</h1>
-            <h2>{data}</h2>
-        </div>
-    )
+const Test = () =>{
+    const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
 }
 
 export default Test;

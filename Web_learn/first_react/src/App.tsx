@@ -5,7 +5,7 @@ import Test from './component/test';
 
 function App() {
   return (
-    <Test data = "이서준"></Test>
+    <Test></Test>
   )
 }
 
