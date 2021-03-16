@@ -25,7 +25,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.4.3'
-    implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.974'
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3control', version: '1.11.457'
+
 }
 
 test {
