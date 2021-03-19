@@ -15,7 +15,8 @@
 # def count_lenth(word: str, num: int) -> int:
 #     return 1
 # seasons = ['Spring', 'Summer', 'Fall', 'Winter']
-# print(dir())
+# # print(dir())
+#
+# for i in range(100000000000000000000000000000):
+#     print(i)
 
-for i in range(100000000000000000000000000000):
-    print(i)
