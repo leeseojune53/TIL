@@ -5,7 +5,7 @@ const client = mysql.createConnection({
     password: db_config.password,
     database: db_config.database,
     host: db_config.host,
-    port:3306
+    port:3306   
 })
 
 client.connect();
