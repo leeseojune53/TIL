@@ -17,12 +17,8 @@ public class TodoServiceImpl implements TodoService{
     private final TodoRepository todoRepository;
 
     @Override
-    public List<TodoDTO.Todo> getAll() {
-        List<TodoDTO.Todo> result = new ArrayList<>();
-        for(Todo todo : todoRepository.findAll()){
-            result.add(new TodoDTO.Todo(todo));
-        }
-        return result;
+    public Iterable<Todo> getAll() {
+        return todoRepository.findAll();
     }
 
     @Override
