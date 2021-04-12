@@ -46,4 +46,11 @@ public class TodoServiceImpl implements TodoService{
     public void delete(int todoId) {
         todoRepository.deleteById(todoId);
     }
+
+    @Override
+    public void modify(TodoDTO.Modify request, int todoId) {
+        todoRepository.save(
+                todoRepository.findById(todoId).orElseThrow(NotFoundException::new).changeContent(request.getContent())
+        );
+    }
 }
