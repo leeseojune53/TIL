@@ -9,4 +9,5 @@ public interface TodoService {
     void addTodo(TodoDTO.Add request);
     void check(int todoId);
     void delete(int todoId);
+    void modify(TodoDTO.Modify request, int todoId);
 }
