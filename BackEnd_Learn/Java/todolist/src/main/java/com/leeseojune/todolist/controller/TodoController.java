@@ -34,4 +34,9 @@ public class TodoController {
         return todoService.getAll();
     }
 
+    @PutMapping("/modify/{todoId}")
+    public void check(@RequestBody TodoDTO.Modify request, @PathVariable("todoId") int todoId){
+        todoService.modify(request, todoId);
+    }
+
 }
