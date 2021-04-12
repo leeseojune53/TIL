@@ -35,7 +35,8 @@ public class ImageServiceImpl implements ImageService{
         Graphics2D graphics2D = outputImage.createGraphics();
         graphics2D.drawImage(inputImage, 0, 0, 300, 400, null);
         graphics2D.dispose();
-
+        outputImage.getGraphics().drawImage(ImageIO.read(file), 0, 0,300, 400, 10, 60, 500, 500, null);
+    
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(outputImage, "png", baos);
 
