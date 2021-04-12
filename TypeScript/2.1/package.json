@@ -1,0 +1,14 @@
+{
+  "name": "2.1",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "leeseojune",
+  "license": "ISC"
+}
