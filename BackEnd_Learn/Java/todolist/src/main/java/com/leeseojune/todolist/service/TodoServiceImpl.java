@@ -7,9 +7,6 @@ import com.leeseojune.todolist.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class TodoServiceImpl implements TodoService{
