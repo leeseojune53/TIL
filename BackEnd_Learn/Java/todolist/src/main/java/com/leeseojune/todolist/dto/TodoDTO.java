@@ -28,4 +28,11 @@ public class TodoDTO {
 
     }
 
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Modify{
+        private String content;
+    }
+
 }
