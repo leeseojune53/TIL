@@ -27,4 +27,9 @@ public class Todo {
         return this;
     }
 
+    public Todo changeContent(String content) {
+        this.content = content;
+        return this;
+    }
+
 }
