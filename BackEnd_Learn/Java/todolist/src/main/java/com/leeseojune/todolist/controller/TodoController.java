@@ -1,6 +1,7 @@
 package com.leeseojune.todolist.controller;
 
 import com.leeseojune.todolist.dto.TodoDTO;
+import com.leeseojune.todolist.entity.Todo;
 import com.leeseojune.todolist.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class TodoController {
     }
 
     @GetMapping("/todo")
-    public List<TodoDTO.Todo> getAll() {
+    public Iterable<Todo> getAll() {
         return todoService.getAll();
     }
 
