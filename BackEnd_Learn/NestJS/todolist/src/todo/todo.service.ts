@@ -26,6 +26,10 @@ export class TodoService {
         this.todoRepository.save({id: id, content: content, isCheck: todo.isCheck});
     }
 
+    delete(id: number){
+        this.todoRepository.delete({id: id});
+    }
+
 
 
 }
