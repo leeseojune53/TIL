@@ -3,7 +3,24 @@ package day_0416;
 public class RemoteControlExample {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		RemoteControl rc = new RemoteControl() {
+
+			@Override
+			public void turnOn() {
+				
+			}
+
+			@Override
+			public void turnOff() {
+				
+			}
+
+			@Override
+			public void setVolume(int volume) {
+				
+			}
+			
+		}
 
 	}
 
