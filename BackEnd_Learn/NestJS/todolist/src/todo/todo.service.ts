@@ -21,6 +21,11 @@ export class TodoService {
         this.todoRepository.save({id: todo.id, content: todo.content, isCheck: !todo.isCheck});
     }
 
+    async change(id: number, content: string){
+        let todo: Todo = await this.todoRepository.findOne({id: id});
+        this.todoRepository.save({id: id, content: content, isCheck: todo.isCheck});
+    }
+
 
 
 }
