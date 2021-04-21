@@ -344,3 +344,5 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 BackEnd_Learn/NestJS/todolist/.env
+
+BackEnd_Learn/NestJS/socket/.env
