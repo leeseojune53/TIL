@@ -1,5 +1,5 @@
 "use strict";
-var test = "hi";
+let test = "hi";
 switch (test) {
     case "asdf":
         console.log("asdf");
