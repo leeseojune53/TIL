@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,8 +26,13 @@ public class S3Controller {
     }
 
     @GetMapping("/object")
-    public byte[] getObject(@RequestBody FileDTO.FileName request) throws IOException {
-        return imageService.getObject(request.getName());
+    public byte[] getObject(@RequestParam("filename") String fileName) throws IOException {
+        return imageService.getObject(fileName);
+    }
+
+    @GetMapping("/url")
+    public String getUrl(@RequestParam("filename") String fileName) throws MalformedURLException {
+        return imageService.generateObjectUrl(fileName);
     }
 
 
