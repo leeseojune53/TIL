@@ -1,4 +1,4 @@
-package day_0512;
+package day_0512.a1;
 
 public class ThrowsExample {
 	public static void main(String[] args) {
@@ -11,5 +11,6 @@ public class ThrowsExample {
 	
 	public static void findClass() throws ClassNotFoundException {
 		Class clazz = Class.forName("java.lang.String2");
+		throw new ClassNotFoundException();
 	}
 }
