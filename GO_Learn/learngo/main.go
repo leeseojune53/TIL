@@ -26,11 +26,36 @@ func superAdd(numbers ...int) int {
 	return sum
 }
 
+// func canIDrink(age int) bool {
+// 	if koreanAge := age + 2; koreanAge < 18 {
+// 		return false
+// 	}
+// 	return true
+// }
+
+func pointer(){
+	a := 2
+	b := &a
+	a = 100
+	fmt.Println(&a, *b)
+}
+
+func array(){
+	names := []string{"hi", "lee", "k"}
+	fmt.Println(names)
+}
+
 func canIDrink(age int) bool {
-	if koreanAge := age + 2; koreanAge < 18 {
+	switch{
+	case age < 18:
+		return false
+	case age == 18:
+		return true
+	case age > 50:
+		return false
+	default:
 		return false
 	}
-	return true
 }
 
 func repeatMe(words ...string) {
@@ -38,5 +63,5 @@ func repeatMe(words ...string) {
 }
 
 func main() {
-	fmt.Println(canIDrink(18))
+	array()
 }
