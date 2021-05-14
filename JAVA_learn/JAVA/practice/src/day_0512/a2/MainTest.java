@@ -15,6 +15,7 @@ public class MainTest {
 			System.out.println(messgae);
 			System.out.println();
 			e.printStackTrace();
+			StringBuffer
 		}
 	}
 	
