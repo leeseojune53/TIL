@@ -9,9 +9,9 @@ import org.springframework.web.multipart.MultipartException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(MultipartException.class)
-    protected ResponseEntity<ErrorResponse> testHandler(MultipartException e) {
-        return new ResponseEntity<>(new ErrorResponse(200, "No File"), HttpStatus.OK);
-    }
+//    @ExceptionHandler(MultipartException.class)
+//    protected ResponseEntity<ErrorResponse> testHandler(MultipartException e) {
+//        return new ResponseEntity<>(new ErrorResponse(200, "No File"), HttpStatus.OK);
+//    }
 
 }
