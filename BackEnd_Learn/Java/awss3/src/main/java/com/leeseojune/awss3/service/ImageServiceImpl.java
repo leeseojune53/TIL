@@ -51,10 +51,7 @@ public class ImageServiceImpl extends AWS4Signer implements ImageService {
 
     @Override
     public String upload(MultipartFile file) throws IOException {
-        if(file == null) {
-            System.out.println("error!!");
-            throw new RuntimeException();
-        }
+        if(file.isEmpty()) throw new RuntimeException();
         String originalFilename = file.getOriginalFilename();
         String ext = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
         String randomName = UUID.randomUUID().toString();
