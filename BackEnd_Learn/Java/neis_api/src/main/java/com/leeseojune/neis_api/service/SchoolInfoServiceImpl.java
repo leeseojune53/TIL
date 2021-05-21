@@ -14,11 +14,15 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class SchoolInfoServiceImpl implements SchoolInfoService{
 
     private static final String BASEURL = "https://open.neis.go.kr/hub/mealServiceDietInfo";
+    private static final Pattern PATTERN_BRACKET = Pattern.compile("\\([^\\(\\)]+\\)");
+    private static final String MENUPATTERN = "[^\\uAC00-\\uD7AF\\u1100-\\u11FF\\u3130-\\u318F\n]";
 
     @Override
     public MealDTO.MealRes getMeal(String schoolCode, String scCode, String date) throws IOException, SAXException, ParserConfigurationException {
@@ -38,7 +42,7 @@ public class SchoolInfoServiceImpl implements SchoolInfoService{
                 Element element = (Element) node;
 
                 List<String> menu = new ArrayList<>();
-                String[] menus = getTagValue("DDISH_NM", element).split("[^\\uAC00-\\uD7AF\\u1100-\\u11FF\\u3130-\\u318F\n]");
+                String[] menus = deleteBracketTextByPattern(getTagValue("DDISH_NM", element)).split(MENUPATTERN);
 
                 for(String value : menus){
                     if(value.length() != 0) {
@@ -72,6 +76,25 @@ public class SchoolInfoServiceImpl implements SchoolInfoService{
         if(nValue == null)
             return "";
         return nValue.getNodeValue();
+    }
+
+    private static String deleteBracketTextByPattern(String text) {
+
+        Matcher matcher = PATTERN_BRACKET.matcher(text);
+
+        String pureText = text;
+        String removeTextArea;
+
+        while(matcher.find()) {
+            int startIndex = matcher.start();
+            int endIndex = matcher.end();
+
+            removeTextArea = pureText.substring(startIndex, endIndex);
+            pureText = pureText.replace(removeTextArea, "");
+            matcher = PATTERN_BRACKET.matcher(pureText);
+        }
+
+        return pureText;
     }
 
 }
