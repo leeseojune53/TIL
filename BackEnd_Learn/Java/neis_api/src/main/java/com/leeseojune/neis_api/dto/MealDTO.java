@@ -10,14 +10,6 @@ import java.util.List;
 public class MealDTO {
 
     @AllArgsConstructor
-    @Getter
-    public static class MealReq {
-        String schoolCode;
-        String scCode;
-        String date;
-    }
-
-    @AllArgsConstructor
     @NoArgsConstructor
     @Getter
     @Setter
