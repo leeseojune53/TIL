@@ -28,7 +28,7 @@ public class SchoolInfoServiceImpl implements SchoolInfoService{
     private static final String MENU_PATTERN = "[^\\uAC00-\\uD7AF\\u1100-\\u11FF\\u3130-\\u318F\n]";
 
     @Override
-    public MealDTO.MealRes getMeal(String schoolCode, String scCode, String date) throws IOException, SAXException, ParserConfigurationException {
+    public MealDTO getMeal(String schoolCode, String scCode, String date) throws IOException, SAXException, ParserConfigurationException {
         DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
         Document doc = dBuilder.parse(MEAL_BASEURL + "?ATPT_OFCDC_SC_CODE=" + scCode + "&SD_SCHUL_CODE=" + schoolCode + "&MLSV_YMD=" + date);
@@ -37,7 +37,7 @@ public class SchoolInfoServiceImpl implements SchoolInfoService{
 
         NodeList nList = doc.getElementsByTagName("row");
 
-        MealDTO.MealRes response = new MealDTO.MealRes();
+        MealDTO response = new MealDTO();
 
         for(int i=0, length = nList.getLength(); i < length; i++){
             Node node = nList.item(i);
@@ -73,7 +73,7 @@ public class SchoolInfoServiceImpl implements SchoolInfoService{
     }
 
     @Override
-    public List<SchoolDTO.SchoolRes> getSchool(String name) throws ParserConfigurationException, IOException, SAXException {
+    public List<SchoolDTO> getSchool(String name) throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
         name = URLEncoder.encode(name, "UTF-8");
@@ -85,13 +85,13 @@ public class SchoolInfoServiceImpl implements SchoolInfoService{
 
         NodeList nList = doc.getElementsByTagName("row");
 
-        List<SchoolDTO.SchoolRes> response = new ArrayList<>();
+        List<SchoolDTO> response = new ArrayList<>();
 
         for(int i=0, length = nList.getLength(); i < length; i++){
             Node node = nList.item(i);
             if(node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;
-                response.add(new SchoolDTO.SchoolRes(getTagValue("ATPT_OFCDC_SC_CODE", element), getTagValue("SD_SCHUL_CODE", element),
+                response.add(new SchoolDTO(getTagValue("ATPT_OFCDC_SC_CODE", element), getTagValue("SD_SCHUL_CODE", element),
                         getTagValue("LCTN_SC_NM", element), getTagValue("SCHUL_NM", element)));
             }
         }

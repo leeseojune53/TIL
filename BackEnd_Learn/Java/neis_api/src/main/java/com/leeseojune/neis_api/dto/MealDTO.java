@@ -7,16 +7,14 @@ import lombok.Setter;
 
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class MealDTO {
 
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Getter
-    @Setter
-    public static class MealRes {
-        private List<String> breakfast;
-        private List<String> lunch;
-        private List<String> dinner;
-    }
+    private List<String> breakfast;
+    private List<String> lunch;
+    private List<String> dinner;
 
 }

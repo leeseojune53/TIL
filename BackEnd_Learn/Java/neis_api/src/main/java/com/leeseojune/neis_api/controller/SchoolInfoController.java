@@ -20,12 +20,12 @@ public class SchoolInfoController {
     private final SchoolInfoService schoolInfoService;
 
     @GetMapping("/meal")
-    public MealDTO.MealRes getMeal(@RequestParam("schoolCode") String schoolCode, @RequestParam("scCode") String scCode, @RequestParam("date") String date) throws IOException, ParserConfigurationException, SAXException {
+    public MealDTO getMeal(@RequestParam("schoolCode") String schoolCode, @RequestParam("scCode") String scCode, @RequestParam("date") String date) throws IOException, ParserConfigurationException, SAXException {
         return schoolInfoService.getMeal(schoolCode, scCode, date);
     }
 
     @GetMapping("/school")
-    public List<SchoolDTO.SchoolRes> getSchool(@RequestParam("name") String name) throws IOException, SAXException, ParserConfigurationException {
+    public List<SchoolDTO> getSchool(@RequestParam("name") String name) throws IOException, SAXException, ParserConfigurationException {
         return schoolInfoService.getSchool(name);
     }
 

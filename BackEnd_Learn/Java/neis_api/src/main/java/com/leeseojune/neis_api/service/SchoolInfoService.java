@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface SchoolInfoService {
 
-    MealDTO.MealRes getMeal(String schoolCode, String scCode, String date) throws IOException, SAXException, ParserConfigurationException;
-    List<SchoolDTO.SchoolRes> getSchool(String name) throws ParserConfigurationException, IOException, SAXException;
+    MealDTO getMeal(String schoolCode, String scCode, String date) throws IOException, SAXException, ParserConfigurationException;
+    List<SchoolDTO> getSchool(String name) throws ParserConfigurationException, IOException, SAXException;
 
 }
