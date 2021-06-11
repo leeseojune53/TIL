@@ -19,7 +19,7 @@ public class S3Controller {
     private final ImageService imageService;
 
     @PostMapping("/upload")
-    public void upload(@RequestPart("file") @Nullable MultipartFile file) throws IOException {
+    public void upload(@RequestPart("file") MultipartFile file) throws IOException {
         imageService.upload(file);
     }
 
