@@ -346,3 +346,5 @@ healthchecksdb
 BackEnd_Learn/NestJS/todolist/.env
 
 BackEnd_Learn/NestJS/socket/.env
+
+*.class
