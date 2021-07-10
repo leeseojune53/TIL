@@ -13,8 +13,10 @@ public class Controller {
     @GetMapping("/meal")
     public void meal() {
         try{
-            for(School school : neisApi.getSchoolByName("대덕")) {
-                System.out.println(school.getName());
+            for(School school : neisApi.getSchoolByName("대덕소")) {
+                System.out.println(school.getScCode() + " " + school.getSchoolCode() + " " + school.getName());
+                System.out.println(neisApi.getMealsByRelativeDay(0, school.getScCode(), school.getSchoolCode()).getBreakfast());
+                System.out.println();
             }
         }catch (Exception e) {
             System.out.println("Error");

@@ -22,12 +22,12 @@ public class ImageController {
         imageService.upload(file);
     }
 
-    @GetMapping(
+    @PostMapping(
             value = "/image",
             produces = MediaType.IMAGE_JPEG_VALUE
     )
-    public byte[] getImage(@RequestParam("path") String path) throws IOException {
-        return imageService.getImage(path);
+    public byte[] getImage(@RequestParam("file") MultipartFile file) throws IOException {
+        return imageService.getImage(file);
     }
 
 }

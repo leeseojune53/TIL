@@ -1,5 +1,6 @@
 package com.leeseojune.image.service;
 
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -23,23 +24,26 @@ public class ImageServiceImpl implements ImageService{
     }
 
     @Override
-    public byte[] getImage(String path) throws IOException {
+    public byte[] getImage(MultipartFile file) throws IOException {
 
-        File file = new File(PATH + path);
+        BufferedImage in = ImageIO.read(file.getInputStream());
 
-        BufferedImage inputImage = ImageIO.read(file);
+        BufferedImage outputImage = cropImage(in);
 
-        BufferedImage outputImage =
-                new BufferedImage(300, 400, inputImage.getType());
+        BufferedImage newImage = new BufferedImage(
+                in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
-        Graphics2D graphics2D = outputImage.createGraphics();
-        graphics2D.drawImage(inputImage, 0, 0, 300, 400, null);
-        graphics2D.dispose();
-        outputImage.getGraphics().drawImage(ImageIO.read(file), 0, 0,300, 400, 10, 60, 500, 500, null);
-    
+        Graphics2D g = newImage.createGraphics();
+        g.drawImage(in, 0, 0, null);
+        g.dispose();
+
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(outputImage, "png", baos);
 
         return baos.toByteArray();
+    }
+
+    private BufferedImage cropImage(BufferedImage image) {
+        return image.getSubimage(image.getWidth()/2, image.getHeight()/2, 300, 400);
     }
 }
