@@ -1,0 +1,23 @@
+syntax="proto3";
+option java_multiple_files = true;
+option java_package = "io.github.leeseojune53.proto";
+option java_outer_classname = "PostProto";
+
+service Post {
+  rpc getPost(PostRequest) returns (PostReply) {}
+}
+
+message PostRequest {
+  int32 userId = 1;
+}
+
+message PostEntry {
+  int32 userId = 1;
+  string userName = 2;
+  string value = 3;
+  bool result = 4;
+}
+
+message PostReply {
+  repeated PostEntry result = 1;
+}
