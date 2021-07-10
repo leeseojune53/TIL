@@ -1,0 +1,24 @@
+gpring:
+  application:
+    name: post-server
+grpc:
+  client:
+    user-server:
+      address: 'static://127.0.0.1:9898'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+  server:
+    port: 9899
+spring:
+  jpa:
+    database: mysql
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    url: jdbc:mysql://${DB_URL}:3306/${DB_NAME}?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    username: ${DB_USER}
+    password: ${DB_PASS}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+server:
+  port: 8083
