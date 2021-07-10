@@ -1,0 +1,102 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.4.5")
+    }
+}
+
+plugins {
+    id 'com.google.protobuf' version '0.8.16'
+    id 'org.springframework.boot' version '2.4.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+ext {
+    set('grpcVersion', '1.32.1')
+}
+
+group = 'io.github.leeseojune53'
+version = '0.0.1'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // for gRpc'
+    implementation 'net.devh:grpc-client-spring-boot-starter:2.11.0.RELEASE'
+    implementation 'net.devh:grpc-server-spring-boot-starter:2.11.0.RELEASE'
+    implementation 'com.google.protobuf:protobuf-java-util:3.17.3'
+
+    // for spring boot
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    implementation 'mysql:mysql-connector-java'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { details ->
+        if ("io.grpc".equalsIgnoreCase(details.requested.group)) {
+            details.useVersion '1.37.0'
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/protoGen'
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.5.1'
+    }
+
+
+    clean {
+        delete "$generatedFilesBaseDir/main/protoGen"
+    }
+
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.37.0"
+        }
+    }
+
+    generateProtoTasks {
+        ofSourceSet('main').each { task ->
+            task.builtins {
+                java {
+                    outputSubDir = 'protoGen'
+                }
+            }
+            task.plugins {
+                grpc {
+                    outputSubDir = 'protoGen'
+                }
+            }
+        }
+    }
+
+    generatedFilesBaseDir = "$projectDir/src/"
+
+}
