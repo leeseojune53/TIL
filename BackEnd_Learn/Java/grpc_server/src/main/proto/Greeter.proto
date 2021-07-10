@@ -1,0 +1,24 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "net.devh.boot.grpc.examples.lib";
+option java_outer_classname = "GreeterProto";
+
+service Greeter {
+  rpc SayHello ( HelloRequest ) returns ( HelloReply ) {}
+}
+
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+message MapFieldEntry {
+  string name = 1;
+  bool result = 2;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  MapFieldEntry result = 1;
+}
