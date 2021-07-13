@@ -12,10 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
-@Setter
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class User implements UserDetails {
 
@@ -28,9 +25,13 @@ public class User implements UserDetails {
     @Column
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "role", joinColumns = @JoinColumn(name = "Id"))
-    @Builder.Default
     private List<Role> roles = new ArrayList<>();
 
+    @Builder
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
