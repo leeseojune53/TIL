@@ -5,7 +5,6 @@ import io.github.leeseojune53.auth.dto.UserRegisterRequest;
 import io.github.leeseojune53.auth.entity.user.Role;
 import io.github.leeseojune53.auth.entity.user.User;
 import io.github.leeseojune53.auth.entity.user.UserRepository;
-import io.github.leeseojune53.auth.exception.UserNotFoundException;
 import io.github.leeseojune53.auth.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,7 +20,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void userRegister(UserRegisterRequest registerRequest) {
-
         User newUser = User.builder()
                 .name(registerRequest.getName())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
@@ -30,7 +28,6 @@ public class UserServiceImpl implements UserService{
         newUser.getRoles().add(Role.ROLE_ADMIN);
 
         userRepository.save(newUser);
-
     }
 
     @Override
