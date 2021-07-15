@@ -1,32 +1,24 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int main() {
-	int size, input, i, cnt = 0, top = -1;
-	int* stack;
-	long sum = 0;
-	scanf("%d", &size);
-	stack = malloc(sizeof(int) * size);
+    int arr[5] = { 0, };
+    int sum = 0;
 
-	for (i = 0; i < size; i++) {
-		scanf("%d", &input);
-		if (input == 0 && top != -1) {
-			stack[top] = 0;
-			--top;
-			--cnt;
-		}
-		else {
-			stack[++top] = input;
-			++cnt;
-		}
-	}
-
-
-
-	for (i = 0; i < cnt; i++) {
-		sum += stack[i];
-	}
-
-	printf("%ld", sum);
-
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+        sum += arr[i];
+    }
+    printf("%d\n", sum / 5);
+    for (int i = 0; i < 5; i++) {
+        if (arr[i] <= 10) {
+            printf("%d 프로그래밍 기초반", arr[i]);
+        }
+        else if (arr[i] < 45) {
+            printf("%d 프로그래밍반", arr[i]);
+        }
+        else {
+            printf("%d 다른 방과후 수업", arr[i]);
+        }
+    }
+    return 0;
 }
