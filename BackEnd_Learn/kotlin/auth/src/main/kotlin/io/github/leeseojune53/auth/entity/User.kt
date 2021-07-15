@@ -18,7 +18,7 @@ class User(
     @CollectionTable(name = "role", joinColumns = arrayOf(JoinColumn(name = "name")))
     private var roles : MutableList<Role>
 ): UserDetails {
-    override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
+    override fun getAuthorities(): MutableCollection<GrantedAuthority> {
         val rolesToString = roles.stream().map { obj: Role -> obj.name }.collect(Collectors.toList())
         return rolesToString.stream().map { role: String -> SimpleGrantedAuthority(role) }.collect(Collectors.toList())
     }
