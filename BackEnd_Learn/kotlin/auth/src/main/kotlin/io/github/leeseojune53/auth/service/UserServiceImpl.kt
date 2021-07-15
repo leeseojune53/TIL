@@ -16,7 +16,8 @@ class UserServiceImpl (
             name = userRegisterRequest.name,
             password = userRegisterRequest.password
         )
-        user.authorities.add()
+        user.authorities.add(Role.ROLE_USER)
+
 
         userRepository.save(user)
     }
