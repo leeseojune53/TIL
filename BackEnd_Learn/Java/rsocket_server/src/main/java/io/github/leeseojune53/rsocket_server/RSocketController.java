@@ -9,6 +9,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Controller;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.time.Instant;
 
@@ -20,8 +21,8 @@ public class RSocketController {
     private final MessageRepository messages;
 
     @MessageMapping("send")
-    public void sendMessage(String message) {
-        this.messages.save(new Message(message, Instant.now())).log().then();
+    public Mono<Void> sendMessage(String p) {
+        return this.messages.save(new Message(p, Instant.now())).log().then();
     }
 
     @MessageMapping("messages")
