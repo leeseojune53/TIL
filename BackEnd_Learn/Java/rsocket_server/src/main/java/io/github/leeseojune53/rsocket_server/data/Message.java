@@ -15,10 +15,13 @@ public class Message {
 
     private String body;
 
+    private String roomName;
+
     private Instant sentAt;
 
-    public Message(String body, Instant sentAt) {
+    public Message(String body, String roomName, Instant sentAt) {
         this.body = body;
+        this.roomName = roomName;
         this.sentAt = sentAt;
     }
 
