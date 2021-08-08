@@ -7,5 +7,5 @@ import reactor.core.publisher.Flux;
 
 public interface MessageRepository extends ReactiveMongoRepository<Message, String> {
     @Tailable
-    Flux<Message> getMessageBy();
+    Flux<Message> getMessageByRoomName(String roomName);
 }
