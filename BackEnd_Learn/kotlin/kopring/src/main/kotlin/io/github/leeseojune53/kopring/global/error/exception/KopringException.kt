@@ -1,11 +1,11 @@
 package io.github.leeseojune53.kopring.global.error.exception
 
 open class KopringException(
-		private val errorCode: ErrorCode
+    private val errorCode: ErrorCode
 ) : RuntimeException() {
-	val status: Int
-	get() = errorCode.status
+    val status: Int
+        get() = errorCode.status
 
-	val errorMessage: String
-	get() = errorCode.message
+    val errorMessage: String
+        get() = errorCode.message
 }

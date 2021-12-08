@@ -9,13 +9,13 @@ import javax.persistence.Id
 
 @Entity
 class User(
-		@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-		val id: Long = 0,
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0,
 
-		@NotNull
-		val name: String,
+    @NotNull
+    val name: String,
 
-		@Column(length = 60)
-		@NotNull
-		val password: String,
+    @Column(length = 60)
+    @NotNull
+    val password: String,
 )
