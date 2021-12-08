@@ -1,0 +1,25 @@
+spring:
+#  redis:
+#    password: ${REDIS_PASS}
+#    host: ${REDIS_HOST}
+#    port: ${REDIS_PORT}
+  jpa:
+    generate-ddl: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    password: ${DB_PASS}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USER}
+    url: jdbc:mysql://${DB_URL}:3306/${DB_NAME}?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+#jwt:
+#  header: ${JWT_HEADER}
+#  access:
+#    exp: ${JWT_ACCESS_EXP}
+#  secret: ${JWT_SECRET}
+#  prefix: ${JWT_PREFIX}
+#  refresh:
+#    exp: ${JWT_REFRESH_EXP}
