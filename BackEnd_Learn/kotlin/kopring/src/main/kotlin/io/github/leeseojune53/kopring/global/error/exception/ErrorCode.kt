@@ -8,6 +8,7 @@ enum class ErrorCode(
     val message: String
 ) {
 
-    USER_NOT_FOUND(400, "User not found.")
+    USER_NOT_FOUND(400, "User not found."),
+    INVALID_PASSWORD(400, "Invalid Password.")
 
 }
