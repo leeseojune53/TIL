@@ -2,11 +2,15 @@ package io.github.leeseojune53.kopring.domain.user.service
 
 import io.github.leeseojune53.kopring.domain.user.domain.User
 import io.github.leeseojune53.kopring.domain.user.domain.repositories.UserRepository
+import io.github.leeseojune53.kopring.domain.user.exception.AlreadyExistNameException
+import io.github.leeseojune53.kopring.domain.user.exception.InvalidPasswordException
+import io.github.leeseojune53.kopring.domain.user.exception.UserNotFoundException
 import io.github.leeseojune53.kopring.domain.user.presentation.dto.request.UserRequest
+import io.github.leeseojune53.kopring.global.security.auth.AuthDetailsService
 import io.github.leeseojune53.kopring.global.security.jwt.JwtProperties
 import io.github.leeseojune53.kopring.global.security.jwt.JwtTokenProvider
 import org.junit.jupiter.api.Assertions.assertNotNull
-import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 
 import org.mockito.Mockito.*
@@ -21,12 +25,14 @@ internal class UserServiceTest {
 
     private val jwtProperties: JwtProperties = mock(JwtProperties::class.java)
 
-    private val jwtTokenProvider: JwtTokenProvider = JwtTokenProvider(jwtProperties)
+    private val authDetailsService = AuthDetailsService(userRepository)
+
+    private val jwtTokenProvider: JwtTokenProvider = JwtTokenProvider(jwtProperties, authDetailsService)
 
     private val userService: UserService = UserService(userRepository, passwordEncoder, jwtTokenProvider)
 
     @Test
-    fun 유저_회원가입() {
+    fun 유저_회원가입_성공() {
         //given
         var savedUser: User? = null
         val name = "Testname"
@@ -34,14 +40,31 @@ internal class UserServiceTest {
         val userRequest = UserRequest(name, password)
 
         //when
-        `when`(userRepository.save(any(User::class.java))).thenAnswer { invocation ->
+        `when`(userRepository.save(any(User::class.java))).then { invocation ->
             savedUser = invocation.arguments[0] as User
-            invocation.arguments[0]
+            savedUser
         }
         userService.saveUser(userRequest)
 
         //then
         assertNotNull(savedUser)
+    }
+
+    @Test
+    fun 유저_회원가입_실패() {
+        //given
+        val name = "Test"
+        val password = "pw"
+        val userRequest = UserRequest(name = name, password = password)
+        val user = User(name = name, password = password)
+
+        //when
+        `when`(userRepository.findByName(name)).thenReturn(user)
+
+        //then
+        assertThrows(AlreadyExistNameException::class.java) {
+            userService.saveUser(userRequest)
+        }
     }
 
     @Test
@@ -67,6 +90,51 @@ internal class UserServiceTest {
         //then
         assertNotNull(response.accessToken)
         assertNotNull(response.refreshToken)
+    }
+
+    @Test
+    fun 로그인_실패_유저_없음() {
+        //given
+        val name = "Testname"
+        val password = "TestPW"
+        val request = UserRequest(name, password)
+
+        //when
+        `when`(jwtProperties.getAccessExp())
+            .thenReturn(1000)
+        `when`(jwtProperties.getRefreshExp())
+            .thenReturn(1000)
+        `when`(jwtProperties.secret)
+            .thenReturn("test")
+
+        //then
+        assertThrows(UserNotFoundException::class.java) {
+            userService.login(request)
+        }
+    }
+
+    @Test
+    fun 로그인_실패_잘못된_비밀번호() {
+        //given
+        val name = "Testname"
+        val password = "TestPW"
+        val user = User(name = name, password = passwordEncoder.encode(password + "I"))
+        val request = UserRequest(name, password)
+
+        //when
+        `when`(userRepository.findByName(name))
+            .thenReturn(user)
+        `when`(jwtProperties.getAccessExp())
+            .thenReturn(1000)
+        `when`(jwtProperties.getRefreshExp())
+            .thenReturn(1000)
+        `when`(jwtProperties.secret)
+            .thenReturn("test")
+
+        //then
+        assertThrows(InvalidPasswordException::class.java) {
+            userService.login(request)
+        }
     }
 
 }
