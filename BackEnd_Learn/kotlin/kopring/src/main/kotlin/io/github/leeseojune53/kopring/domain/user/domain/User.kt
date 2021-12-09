@@ -13,6 +13,7 @@ class User(
     val id: Long = 0,
 
     @NotNull
+    @Column(unique = true)
     val name: String,
 
     @Column(length = 60)
