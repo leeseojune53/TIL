@@ -9,6 +9,9 @@ enum class ErrorCode(
 ) {
 
     USER_NOT_FOUND(400, "User not found."),
-    INVALID_PASSWORD(400, "Invalid Password.")
+    ALREADY_EXIST_NAME(400, "Already exist name."),
+    INVALID_PASSWORD(400, "Invalid password."),
+    EXPIRED_TOKEN(401, "Expired token."),
+    INVALID_TOKEN(401, "Invalid token")
 
 }
