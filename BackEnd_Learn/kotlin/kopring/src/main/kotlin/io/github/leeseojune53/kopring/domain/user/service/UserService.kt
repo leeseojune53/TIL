@@ -2,6 +2,7 @@ package io.github.leeseojune53.kopring.domain.user.service
 
 import io.github.leeseojune53.kopring.domain.user.domain.User
 import io.github.leeseojune53.kopring.domain.user.domain.repositories.UserRepository
+import io.github.leeseojune53.kopring.domain.user.exception.AlreadyExistNameException
 import io.github.leeseojune53.kopring.domain.user.exception.InvalidPasswordException
 import io.github.leeseojune53.kopring.domain.user.exception.UserNotFoundException
 import io.github.leeseojune53.kopring.domain.user.presentation.dto.request.UserRequest
@@ -18,13 +19,14 @@ class UserService(
 ) {
 
     fun saveUser(request: UserRequest) {
+        userRepository.findByName(request.name)?.let { throw AlreadyExistNameException.EXCEPTION }
+
         userRepository.save(
             User(
                 name = request.name,
                 password = passwordEncoder.encode(request.password)
             )
         )
-        userRepository.findByName(request.name)
     }
 
     fun login(request: UserRequest): TokenResponse {
@@ -32,10 +34,8 @@ class UserService(
             ?: throw UserNotFoundException.EXCEPTION
 
         if (passwordEncoder.matches(request.password, user.password)) {
-            //generate token
             val accessToken = jwtTokenProvider.generateAccessToken(user.name)
             val refreshToken = jwtTokenProvider.generateRefreshToken(user.name)
-            print(refreshToken)
             return TokenResponse(accessToken, refreshToken)
         } else throw InvalidPasswordException.EXCEPTION
     }
