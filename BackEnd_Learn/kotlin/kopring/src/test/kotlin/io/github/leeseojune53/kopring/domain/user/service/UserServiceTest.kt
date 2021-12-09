@@ -1,5 +1,6 @@
 package io.github.leeseojune53.kopring.domain.user.service
 
+import io.github.leeseojune53.kopring.domain.refresh_token.domain.repositories.RefreshTokenRepository
 import io.github.leeseojune53.kopring.domain.user.domain.User
 import io.github.leeseojune53.kopring.domain.user.domain.repositories.UserRepository
 import io.github.leeseojune53.kopring.domain.user.exception.AlreadyExistNameException
@@ -21,6 +22,8 @@ internal class UserServiceTest {
 
     private val userRepository: UserRepository = mock(UserRepository::class.java)
 
+    private val refreshTokenRepository: RefreshTokenRepository = mock(RefreshTokenRepository::class.java)
+
     private val passwordEncoder: PasswordEncoder = BCryptPasswordEncoder()
 
     private val jwtProperties: JwtProperties = mock(JwtProperties::class.java)
@@ -29,7 +32,8 @@ internal class UserServiceTest {
 
     private val jwtTokenProvider: JwtTokenProvider = JwtTokenProvider(jwtProperties, authDetailsService)
 
-    private val userService: UserService = UserService(userRepository, passwordEncoder, jwtTokenProvider)
+    private val userService: UserService =
+        UserService(userRepository, refreshTokenRepository, passwordEncoder, jwtTokenProvider, jwtProperties)
 
     @Test
     fun 유저_회원가입_성공() {
