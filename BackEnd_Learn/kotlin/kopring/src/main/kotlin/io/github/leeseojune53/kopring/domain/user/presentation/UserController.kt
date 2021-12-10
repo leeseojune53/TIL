@@ -4,10 +4,7 @@ import io.github.leeseojune53.kopring.domain.user.presentation.dto.request.UserR
 import io.github.leeseojune53.kopring.domain.user.presentation.dto.response.TokenResponse
 import io.github.leeseojune53.kopring.domain.user.service.UserService
 import org.springframework.http.HttpStatus
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.ResponseStatus
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class UserController(
@@ -23,6 +20,11 @@ class UserController(
     @PostMapping("/login")
     fun signIn(@RequestBody request: UserRequest): TokenResponse {
         return userService.login(request)
+    }
+
+    @PutMapping("/refresh")
+    fun tokenRefresh(@RequestHeader("Refresh-Token") token: String): TokenResponse {
+        return userService.tokenRefresh(token);
     }
 
 }
