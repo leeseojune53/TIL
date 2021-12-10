@@ -1,10 +1,12 @@
 package io.github.leeseojune53.kopring.domain.user.service
 
+import io.github.leeseojune53.kopring.domain.refresh_token.domain.RefreshToken
 import io.github.leeseojune53.kopring.domain.refresh_token.domain.repositories.RefreshTokenRepository
 import io.github.leeseojune53.kopring.domain.user.domain.User
 import io.github.leeseojune53.kopring.domain.user.domain.repositories.UserRepository
 import io.github.leeseojune53.kopring.domain.user.exception.AlreadyExistNameException
 import io.github.leeseojune53.kopring.domain.user.exception.InvalidPasswordException
+import io.github.leeseojune53.kopring.domain.user.exception.TokenNotFoundException
 import io.github.leeseojune53.kopring.domain.user.exception.UserNotFoundException
 import io.github.leeseojune53.kopring.domain.user.presentation.dto.request.UserRequest
 import io.github.leeseojune53.kopring.global.security.auth.AuthDetailsService
@@ -138,6 +140,43 @@ internal class UserServiceTest {
         //then
         assertThrows(InvalidPasswordException::class.java) {
             userService.login(request)
+        }
+    }
+
+    @Test
+    fun 토큰_재발급_성공() {
+        //given
+        val refreshToken = "test_token"
+
+        //when
+        `when`(refreshTokenRepository.findByToken(refreshToken))
+            .thenReturn(RefreshToken("test", "test_token", 1000L))
+        `when`(jwtProperties.getAccessExp())
+            .thenReturn(1000)
+        `when`(jwtProperties.getRefreshExp())
+            .thenReturn(1000)
+        `when`(jwtProperties.secret)
+            .thenReturn("test")
+        val response = userService.tokenRefresh(refreshToken)
+
+        //then
+        assertNotNull(response)
+        assertNotNull(response.accessToken)
+        assertNotNull(response.refreshToken)
+    }
+
+    @Test
+    fun 토큰_재발급_실패() {
+        //given
+        val refreshToken = "test_token"
+
+        //when
+        `when`(refreshTokenRepository.findByToken(refreshToken))
+            .thenReturn(null)
+
+        //then
+        assertThrows(TokenNotFoundException::class.java) {
+            userService.tokenRefresh(refreshToken)
         }
     }
 
