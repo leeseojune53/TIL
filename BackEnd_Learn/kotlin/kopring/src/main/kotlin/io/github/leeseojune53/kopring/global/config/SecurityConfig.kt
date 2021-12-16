@@ -26,6 +26,7 @@ class SecurityConfig(
         http
             .authorizeRequests()
             .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+            .antMatchers("/actuator/**").permitAll()
             .antMatchers(HttpMethod.POST, "/register").permitAll()
             .antMatchers(HttpMethod.POST, "/login").permitAll()
             .anyRequest().authenticated()

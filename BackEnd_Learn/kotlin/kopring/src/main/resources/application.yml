@@ -1,8 +1,8 @@
 spring:
-#  redis:
-#    password: ${REDIS_PASS}
-#    host: ${REDIS_HOST}
-#    port: ${REDIS_PORT}
+  redis:
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+    password: ${REDIS_PASS}
   jpa:
     generate-ddl: true
     database: mysql
@@ -14,11 +14,23 @@ spring:
     url: jdbc:mysql://${DB_URL}:3306/${DB_NAME}?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
   jackson:
     property-naming-strategy: SNAKE_CASE
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
 
 jwt:
-  header: ${JWT_HEADER}
+  header: ${JWT_HEADER:Authorization}
   exp:
-    access: ${JWT_ACCESS_EXP}
-    refresh: ${JWT_REFRESH_EXP}
-  secret: ${JWT_SECRET}
-  prefix: ${JWT_PREFIX}
+    access: ${JWT_ACCESS_EXP:1000}
+    refresh: ${JWT_REFRESH_EXP:10000}
+  secret: ${JWT_SECRET:test}
+  prefix: ${JWT_PREFIX:Bearer}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 18080
