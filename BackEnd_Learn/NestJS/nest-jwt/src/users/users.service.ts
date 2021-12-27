@@ -1,33 +1,30 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { AuthService } from 'src/auth/auth.service';
-import { Repository } from 'typeorm/repository/Repository';
-import * as Bcrypt from 'bcrypt';
-import { User } from './user.entity';
-import { UserDto } from './users.dto';
+import {BadRequestException, Inject, Injectable} from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
+import { UserDto } from './dto/request/users.dto';
+import { UserRepository } from 'src/shared/user/entity/user.repository';
+import {REQUEST} from "@nestjs/core";
+import {Request} from "express";
+import {User} from "../shared/user/entity/user.entity";
+import {InformationResponse} from "./dto/response/information.dto";
 
 @Injectable()
 export class UsersService {
     constructor(
-        @InjectRepository(User)
-        private userRepository: Repository<User>,
+        private readonly userRepository: UserRepository,
+        @Inject(REQUEST) readonly request: Request
     ){}
 
     async save(userDto: UserDto) {
-        let password: string = await Bcrypt.hash(userDto.password);
-        this.userRepository.save({userName: userDto.userName, password: userDto.password});
+        if(await this.userRepository.findOne({name: userDto.name})){
+            throw new BadRequestException("Duplicated name.")
+        }
+        const password: string = await bcrypt.hash(userDto.password, 12);
+        await this.userRepository.save({name: userDto.name, password: password});
     }
 
-    async findOne(userName: string): Promise<User> {
-        return await this.userRepository.findOne({userName: userName});
+    async queryInformation() {
+        const user = (this.request.user as User)
+        return new InformationResponse(user.id, user.name)
     }
 
-    findById(id: number) : Promise<User> {
-        return this.userRepository.findOne(id);
-    }
-
-    async login(userDto: UserDto) {
-        let user: User = await this.userRepository.findOne({userName: userDto.userName, })
-        
-    }
 }
