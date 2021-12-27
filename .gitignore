@@ -349,3 +349,5 @@ BackEnd_Learn/NestJS/todolist/.env
 BackEnd_Learn/NestJS/socket/.env
 
 *.class
+
+BackEnd_Learn/NestJS/nest-jwt/.env
