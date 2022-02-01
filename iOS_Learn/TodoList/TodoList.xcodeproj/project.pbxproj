@@ -11,7 +11,7 @@
 		A10D524E2791764E00F49658 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D524D2791764E00F49658 /* ContentView.swift */; };
 		A10D52502791765000F49658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10D524F2791765000F49658 /* Assets.xcassets */; };
 		A10D52532791765000F49658 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10D52522791765000F49658 /* Preview Assets.xcassets */; };
-		A10D525E2798099800F49658 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D525D2798099800F49658 /* Todo.swift */; };
+		A10D525E2798099800F49658 /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D525D2798099800F49658 /* TodoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +20,7 @@
 		A10D524D2791764E00F49658 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A10D524F2791765000F49658 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A10D52522791765000F49658 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A10D525D2798099800F49658 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		A10D525D2798099800F49658 /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 				A10D524D2791764E00F49658 /* ContentView.swift */,
 				A10D524F2791765000F49658 /* Assets.xcassets */,
 				A10D52512791765000F49658 /* Preview Content */,
-				A10D525D2798099800F49658 /* Todo.swift */,
+				A10D525D2798099800F49658 /* TodoView.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -142,7 +142,7 @@
 			files = (
 				A10D524E2791764E00F49658 /* ContentView.swift in Sources */,
 				A10D524C2791764E00F49658 /* TodoListApp.swift in Sources */,
-				A10D525E2798099800F49658 /* Todo.swift in Sources */,
+				A10D525E2798099800F49658 /* TodoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
