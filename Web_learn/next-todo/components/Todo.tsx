@@ -25,7 +25,7 @@ const Textbox = styled.div`
 interface ViewProps {
   todo: string;
 }
-export default function View({ todo }: ViewProps) {
+export default function Todo({ todo }: ViewProps) {
   return (
     <Container>
       <Box>

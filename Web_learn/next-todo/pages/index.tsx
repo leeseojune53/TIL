@@ -1,18 +1,23 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import View from "../components/header";
+import { useState } from "react";
+import InputBox from "../components/Inputbox";
+import Todo from "../components/Todo";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const todoList = ["todo1", "todo2"];
+  const [todoList, setTodoList] = useState<string[]>([]);
+  const addValue = (value: string) => {
+    setTodoList([...todoList, value]);
+  };
+
   return (
     <div>
+      <InputBox addValue={addValue}></InputBox>
       {todoList.map((value) => (
-        <View todo={value} />
+        <Todo todo={value} />
       ))}
-      <View todo="todo list1." />
-      <View todo="todo list2." />
     </div>
   );
 };
