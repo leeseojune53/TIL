@@ -1,19 +1,25 @@
 import styled from "@emotion/styled";
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+import { TodoType } from "../pages";
 
 const FlexBox = styled.div`
   display: flex;
 `;
 
+const Container = styled(FlexBox)`
+  justify-content: center;
+`;
+
 const Box = styled(FlexBox)`
-  align-items: center;
   border: 1px solid #000000;
   border-radius: 10px;
   width: 300px;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const FrontBox = styled(FlexBox)`
+  display: flex;
+  align-items: center;
 `;
 
 const Textbox = styled.div`
@@ -22,15 +28,37 @@ const Textbox = styled.div`
   text-align: center;
 `;
 
+const Button = styled(FlexBox)`
+  padding-left: 15px;
+`;
+
 interface ViewProps {
-  todo: string;
+  todo: TodoType;
+  onCheck: (id: number) => void;
+  onDelete: (id: number) => void;
 }
-export default function Todo({ todo }: ViewProps) {
+export default function Todo({ todo, onCheck, onDelete }: ViewProps) {
   return (
     <Container>
       <Box>
-        <input type="checkbox" />
-        <Textbox>{todo}</Textbox>
+        <FrontBox>
+          <input
+            type="checkbox"
+            onClick={() => {
+              onCheck(todo.id);
+            }}
+          />
+          <Textbox>{todo.value}</Textbox>
+        </FrontBox>
+        <Button>
+          <button
+            onClick={() => {
+              onDelete(todo.id);
+            }}
+          >
+            X🗑️
+          </button>
+        </Button>
       </Box>
     </Container>
   );
