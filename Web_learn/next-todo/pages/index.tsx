@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
-import InputBox from "../components/Inputbox";
+import { useEffect, useState } from "react";
+import Input from "../components/Input";
 import Todo from "../components/Todo";
 import styles from "../styles/Home.module.css";
 
@@ -13,35 +13,39 @@ export type TodoType = {
 };
 
 const Home: NextPage = () => {
-  let id = 1;
   const [todoList, setTodoList] = useState<TodoType[]>([]);
+  const [cursor, setCursor] = useState<number>(0);
 
   const addValue = (value: string) => {
-    setTodoList([...todoList, { id: id++, value: value, checked: false }]);
+    setCursor(cursor + 1);
+    setTodoList([...todoList, { id: cursor, value: value, checked: false }]);
   };
 
   const onCheck = (id: number) => {
-    let todo = todoList.find((element) => element.id === id);
+    let todo = todoList.map((e) => e.id === id);
     if (todo) {
-      todo.checked = !todo.checked;
+      setTodoList(
+        todoList.map((e) => (e.id === id ? { ...e, checked: !e.checked } : e))
+      );
     } else {
       alert("존재하지 않는 Todo입니다.");
     }
   };
 
   const onDelete = (id: number) => {
-    setTodoList(
-      todoList.filter((element) => {
-        element.id === id;
-      })
-    );
+    setTodoList(todoList.filter((e) => e.id !== id));
   };
 
   return (
     <div>
-      <InputBox addValue={addValue}></InputBox>
+      <Input addValue={addValue}></Input>
       {todoList.map((value) => (
-        <Todo todo={value} onCheck={onCheck} onDelete={onDelete} />
+        <Todo
+          key={value.id}
+          todo={value}
+          onCheck={onCheck}
+          onDelete={onDelete}
+        />
       ))}
     </div>
   );
