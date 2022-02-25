@@ -7,10 +7,14 @@ const Container = styled.div`
   padding: 10px 0px 50px;
 `;
 
-interface InputBoxProps {
+const InputBox = styled.div`
+  padding-right: 10px;
+`;
+
+interface InputProps {
   addValue: (value: string) => void;
 }
-export default function InputBox({ addValue }: InputBoxProps) {
+export default function Input({ addValue }: InputProps) {
   const [text, setText] = useState("");
 
   const textChangeHandler = (e: any) => {
@@ -27,7 +31,9 @@ export default function InputBox({ addValue }: InputBoxProps) {
 
   return (
     <Container>
-      <input type="text" value={text} onChange={textChangeHandler} />
+      <InputBox>
+        <input type="text" value={text} onChange={textChangeHandler} />
+      </InputBox>
       <button onClick={onChange}>submit</button>
     </Container>
   );
