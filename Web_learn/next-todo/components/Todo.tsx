@@ -1,7 +1,17 @@
 import styled from "@emotion/styled";
 import { TodoType } from "../pages";
+import {
+  AiFillCheckCircle,
+  AiOutlineCheckCircle,
+  AiOutlineDelete,
+} from "react-icons/ai";
+import { useEffect, useState } from "react";
 
 const FlexBox = styled.div`
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: flex;
 `;
 
@@ -15,11 +25,13 @@ const Box = styled(FlexBox)`
   width: 300px;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 `;
 
 const FrontBox = styled(FlexBox)`
   display: flex;
   align-items: center;
+  padding-left: 10px;
 `;
 
 const Textbox = styled.div`
@@ -30,6 +42,7 @@ const Textbox = styled.div`
 
 const Button = styled(FlexBox)`
   padding-left: 15px;
+  padding-right: 10px;
 `;
 
 interface ViewProps {
@@ -38,26 +51,37 @@ interface ViewProps {
   onDelete: (id: number) => void;
 }
 export default function Todo({ todo, onCheck, onDelete }: ViewProps) {
+  const getButton = (value: boolean) => {
+    if (value) {
+      return <AiFillCheckCircle />;
+    } else {
+      return <AiOutlineCheckCircle />;
+    }
+  };
+
+  const onClick = () => {
+    onCheck(todo.id);
+  };
+
   return (
     <Container>
       <Box>
         <FrontBox>
-          <input
-            type="checkbox"
+          <div
             onClick={() => {
-              onCheck(todo.id);
+              onClick();
             }}
-          />
+          >
+            {getButton(todo.checked)}
+          </div>
           <Textbox>{todo.value}</Textbox>
         </FrontBox>
         <Button>
-          <button
+          <AiOutlineDelete
             onClick={() => {
               onDelete(todo.id);
             }}
-          >
-            X🗑️
-          </button>
+          />
         </Button>
       </Box>
     </Container>
