@@ -14,7 +14,28 @@ export type TodoType = {
 
 const Home: NextPage = () => {
   const [todoList, setTodoList] = useState<TodoType[]>([]);
+
   const [cursor, setCursor] = useState<number>(0);
+
+  useEffect(() => {
+    const localTodo = localStorage.getItem("todoList");
+
+    localTodo !== null ? setTodoList(JSON.parse(localTodo)) : [];
+  }, []);
+
+  useEffect(() => {
+    const localCursor = localStorage.getItem("cursor");
+
+    localCursor !== null ? setCursor(JSON.parse(localCursor)) : 0;
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+  }, [todoList]);
+
+  useEffect(() => {
+    localStorage.setItem("cursor", JSON.stringify(cursor));
+  }, [cursor]);
 
   const addValue = (value: string) => {
     setCursor(cursor + 1);
