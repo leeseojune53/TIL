@@ -29,10 +29,21 @@ export default function Input({ addValue }: InputProps) {
     }
   };
 
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      onChange();
+    }
+  };
+
   return (
     <Container>
       <InputBox>
-        <input type="text" value={text} onChange={textChangeHandler} />
+        <input
+          type="text"
+          value={text}
+          onKeyPress={onKeyPress}
+          onChange={textChangeHandler}
+        />
       </InputBox>
       <button onClick={onChange}>submit</button>
     </Container>
