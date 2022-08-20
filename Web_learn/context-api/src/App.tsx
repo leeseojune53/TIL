@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { AppContext, AppContextInterface } from "./context/contextApiContext";
 import Header from "./component/Header";
+import Content from "./component/Content";
 
 function App() {
   const [isDark, setIsDart] = useState(false);
@@ -19,6 +20,7 @@ function App() {
   return (
     <AppContext.Provider value={appContext}>
       <Header></Header>
+      <Content></Content>
       <button onClick={changeMode}></button>
     </AppContext.Provider>
   );
