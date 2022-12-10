@@ -6,7 +6,7 @@
     "start": "node src/app.js"
   },
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "i18next": "^15.1.1",
     "i18next-express-middleware": "^1.8.0",
     "i18next-node-fs-backend": "^2.1.3"
